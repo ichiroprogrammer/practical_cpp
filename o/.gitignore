@@ -1,0 +1,15 @@
+*
+!.gitignore
+!coding_style.md
+!comment.md
+!core_lang_spec.md
+!cpp_idioms.md
+!design_pattern.md
+!practical_intro.md
+!naming_practice.md
+!programming_convention.md
+!sample_code.md
+!solid.md
+!stdlib_and_concepts.md
+!template_meta_programming.md
+

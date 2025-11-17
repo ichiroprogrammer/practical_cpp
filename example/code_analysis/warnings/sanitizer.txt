@@ -1,0 +1,588 @@
+code_analysis.cpp:300:9: runtime error: signed integer overflow: 2147483647 + 1 cannot be represented in type 'int'
+code_analysis.cpp:306:9: runtime error: signed integer overflow: 9223372036854775807 + 1 cannot be represented in type 'long int'
+=================================================================
+@@@ sample begin 3:0
+
+==4691==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x602000000410 in thread T0:
+  object passed to delete has wrong type:
+  size of the allocated type:   8 bytes;
+  size of the deallocated type: 1 bytes.
+    #0 0x7f79c7b5422f in operator delete(void*, unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:172
+    #1 0x55aae7e44f4f in std::default_delete<NonVirtualDestructorBase>::operator()(NonVirtualDestructorBase*) const /usr/include/c++/11/bits/unique_ptr.h:85
+    #2 0x55aae7e42954 in std::unique_ptr<NonVirtualDestructorBase, std::default_delete<NonVirtualDestructorBase> >::~unique_ptr() /usr/include/c++/11/bits/unique_ptr.h:361
+    #3 0x55aae7e37129 in non_virtual_destructor() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:190
+    #4 0x55aae7e3b7fd in exec_background(void (*)()) /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:366
+    #5 0x55aae7e3ba66 in all() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:378
+    #6 0x55aae7e3baf0 in CodeAnalysis_others_Test::TestBody() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:382
+    #7 0x55aae7e919e0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x969e0)
+    #8 0x55aae7e8986c in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8e86c)
+    #9 0x55aae7e63623 in testing::Test::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x68623)
+    #10 0x55aae7e64050 in testing::TestInfo::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x69050)
+    #11 0x55aae7e649af in testing::TestSuite::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x699af)
+    #12 0x55aae7e74162 in testing::internal::UnitTestImpl::RunAllTests() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x79162)
+    #13 0x55aae7e92b03 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x97b03)
+    #14 0x55aae7e8ab12 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8fb12)
+    #15 0x55aae7e72859 in testing::UnitTest::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x77859)
+    #16 0x55aae7ea90aa in RUN_ALL_TESTS() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae0aa)
+    #17 0x55aae7ea9023 in main (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae023)
+    #18 0x7f79c6f38d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f)
+    #19 0x7f79c6f38e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f)
+    #20 0x55aae7e35204 in _start (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x3a204)
+
+@@@ ignore begin
+0x602000000410 is located 0 bytes inside of 8-byte region [0x602000000410,0x602000000418)
+allocated by thread T0 here:
+    #0 0x7f79c7b531c7 in operator new(unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:99
+    #1 0x55aae7e41f73 in std::_MakeUniq<NonVirtualDestructorDerived>::__single_object std::make_unique<NonVirtualDestructorDerived, char const (&) [2]>(char const (&) [2]) /usr/include/c++/11/bits/unique_ptr.h:962
+    #2 0x55aae7e3706e in non_virtual_destructor() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:189
+    #3 0x55aae7e3b7fd in exec_background(void (*)()) /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:366
+    #4 0x55aae7e3ba66 in all() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:378
+    #5 0x55aae7e3baf0 in CodeAnalysis_others_Test::TestBody() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:382
+    #6 0x55aae7e919e0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x969e0)
+    #7 0x55aae7e8986c in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8e86c)
+    #8 0x55aae7e63623 in testing::Test::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x68623)
+    #9 0x55aae7e64050 in testing::TestInfo::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x69050)
+    #10 0x55aae7e649af in testing::TestSuite::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x699af)
+    #11 0x55aae7e74162 in testing::internal::UnitTestImpl::RunAllTests() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x79162)
+    #12 0x55aae7e92b03 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x97b03)
+    #13 0x55aae7e8ab12 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8fb12)
+    #14 0x55aae7e72859 in testing::UnitTest::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x77859)
+    #15 0x55aae7ea90aa in RUN_ALL_TESTS() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae0aa)
+    #16 0x55aae7ea9023 in main (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae023)
+    #17 0x7f79c6f38d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f)
+
+@@@ ignore end
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch ../../../../src/libsanitizer/asan/asan_new_delete.cpp:172 in operator delete(void*, unsigned long)
+@@@ sample end
+
+==4691==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+==4691==ABORTING
+=================================================================
+==4692==ERROR: AddressSanitizer: attempting double-free on 0x602000000430 in thread T0:
+    #0 0x7f79c7b5422f in operator delete(void*, unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:172
+    #1 0x55aae7e3f593 in IllegalShallowCopy::~IllegalShallowCopy() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:120
+    #2 0x55aae7e36a0d in illegal_shallow_copy() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:133
+    #3 0x55aae7e3b7fd in exec_background(void (*)()) /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:366
+    #4 0x55aae7e3ba66 in all() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:378
+    #5 0x55aae7e3baf0 in CodeAnalysis_others_Test::TestBody() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:382
+    #6 0x55aae7e919e0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x969e0)
+    #7 0x55aae7e8986c in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8e86c)
+    #8 0x55aae7e63623 in testing::Test::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x68623)
+    #9 0x55aae7e64050 in testing::TestInfo::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x69050)
+    #10 0x55aae7e649af in testing::TestSuite::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x699af)
+    #11 0x55aae7e74162 in testing::internal::UnitTestImpl::RunAllTests() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x79162)
+    #12 0x55aae7e92b03 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x97b03)
+    #13 0x55aae7e8ab12 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8fb12)
+    #14 0x55aae7e72859 in testing::UnitTest::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x77859)
+    #15 0x55aae7ea90aa in RUN_ALL_TESTS() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae0aa)
+    #16 0x55aae7ea9023 in main (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae023)
+    #17 0x7f79c6f38d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f)
+    #18 0x7f79c6f38e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f)
+    #19 0x55aae7e35204 in _start (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x3a204)
+
+0x602000000430 is located 0 bytes inside of 4-byte region [0x602000000430,0x602000000434)
+freed by thread T0 here:
+    #0 0x7f79c7b5422f in operator delete(void*, unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:172
+    #1 0x55aae7e3f593 in IllegalShallowCopy::~IllegalShallowCopy() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:120
+    #2 0x55aae7e369ee in illegal_shallow_copy() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:133
+    #3 0x55aae7e3b7fd in exec_background(void (*)()) /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:366
+    #4 0x55aae7e3ba66 in all() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:378
+    #5 0x55aae7e3baf0 in CodeAnalysis_others_Test::TestBody() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:382
+    #6 0x55aae7e919e0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x969e0)
+    #7 0x55aae7e8986c in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8e86c)
+    #8 0x55aae7e63623 in testing::Test::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x68623)
+    #9 0x55aae7e64050 in testing::TestInfo::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x69050)
+    #10 0x55aae7e649af in testing::TestSuite::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x699af)
+    #11 0x55aae7e74162 in testing::internal::UnitTestImpl::RunAllTests() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x79162)
+    #12 0x55aae7e92b03 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x97b03)
+    #13 0x55aae7e8ab12 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8fb12)
+    #14 0x55aae7e72859 in testing::UnitTest::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x77859)
+    #15 0x55aae7ea90aa in RUN_ALL_TESTS() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae0aa)
+    #16 0x55aae7ea9023 in main (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae023)
+    #17 0x7f79c6f38d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f)
+
+previously allocated by thread T0 here:
+    #0 0x7f79c7b531c7 in operator new(unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:99
+    #1 0x55aae7e3f41c in IllegalShallowCopy::IllegalShallowCopy() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:119
+    #2 0x55aae7e36981 in illegal_shallow_copy() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:129
+    #3 0x55aae7e3b7fd in exec_background(void (*)()) /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:366
+    #4 0x55aae7e3ba66 in all() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:378
+    #5 0x55aae7e3baf0 in CodeAnalysis_others_Test::TestBody() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:382
+    #6 0x55aae7e919e0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x969e0)
+    #7 0x55aae7e8986c in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8e86c)
+    #8 0x55aae7e63623 in testing::Test::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x68623)
+    #9 0x55aae7e64050 in testing::TestInfo::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x69050)
+    #10 0x55aae7e649af in testing::TestSuite::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x699af)
+    #11 0x55aae7e74162 in testing::internal::UnitTestImpl::RunAllTests() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x79162)
+    #12 0x55aae7e92b03 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x97b03)
+    #13 0x55aae7e8ab12 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8fb12)
+    #14 0x55aae7e72859 in testing::UnitTest::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x77859)
+    #15 0x55aae7ea90aa in RUN_ALL_TESTS() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae0aa)
+    #16 0x55aae7ea9023 in main (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae023)
+    #17 0x7f79c6f38d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f)
+
+SUMMARY: AddressSanitizer: double-free ../../../../src/libsanitizer/asan/asan_new_delete.cpp:172 in operator delete(void*, unsigned long)
+==4692==ABORTING
+
+=================================================================
+==4693==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 4 byte(s) in 1 object(s) allocated from:
+    #0 0x7f79c7b531c7 in operator new(unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:99
+    #1 0x55aae7e3f320 in Pimpl::PimplCore::PimplCore() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:59
+    #2 0x55aae7e36194 in Pimpl::Pimpl() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:66
+    #3 0x55aae7e36312 in incomplete_class() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:72
+    #4 0x55aae7e3b7fd in exec_background(void (*)()) /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:366
+    #5 0x55aae7e3ba66 in all() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:378
+    #6 0x55aae7e3baf0 in CodeAnalysis_others_Test::TestBody() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:382
+    #7 0x55aae7e919e0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x969e0)
+    #8 0x55aae7e8986c in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8e86c)
+    #9 0x55aae7e63623 in testing::Test::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x68623)
+    #10 0x55aae7e64050 in testing::TestInfo::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x69050)
+    #11 0x55aae7e649af in testing::TestSuite::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x699af)
+    #12 0x55aae7e74162 in testing::internal::UnitTestImpl::RunAllTests() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x79162)
+    #13 0x55aae7e92b03 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x97b03)
+    #14 0x55aae7e8ab12 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8fb12)
+    #15 0x55aae7e72859 in testing::UnitTest::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x77859)
+    #16 0x55aae7ea90aa in RUN_ALL_TESTS() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae0aa)
+    #17 0x55aae7ea9023 in main (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae023)
+    #18 0x7f79c6f38d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f)
+
+SUMMARY: AddressSanitizer: 4 byte(s) leaked in 1 allocation(s).
+=================================================================
+==4699==ERROR: AddressSanitizer: heap-use-after-free on address 0x602000000410 at pc 0x55aae7e37451 bp 0x7ffdc07c7ab0 sp 0x7ffdc07c7aa0
+READ of size 4 at 0x602000000410 thread T0
+    #0 0x55aae7e37450 in access_deleted_memory() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:202
+    #1 0x55aae7e3b7fd in exec_background(void (*)()) /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:366
+    #2 0x55aae7e3ba66 in all() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:378
+    #3 0x55aae7e3baf0 in CodeAnalysis_others_Test::TestBody() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:382
+    #4 0x55aae7e919e0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x969e0)
+    #5 0x55aae7e8986c in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8e86c)
+    #6 0x55aae7e63623 in testing::Test::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x68623)
+    #7 0x55aae7e64050 in testing::TestInfo::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x69050)
+    #8 0x55aae7e649af in testing::TestSuite::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x699af)
+    #9 0x55aae7e74162 in testing::internal::UnitTestImpl::RunAllTests() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x79162)
+    #10 0x55aae7e92b03 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x97b03)
+    #11 0x55aae7e8ab12 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8fb12)
+    #12 0x55aae7e72859 in testing::UnitTest::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x77859)
+    #13 0x55aae7ea90aa in RUN_ALL_TESTS() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae0aa)
+    #14 0x55aae7ea9023 in main (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae023)
+    #15 0x7f79c6f38d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f)
+    #16 0x7f79c6f38e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f)
+    #17 0x55aae7e35204 in _start (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x3a204)
+
+0x602000000410 is located 0 bytes inside of 4-byte region [0x602000000410,0x602000000414)
+freed by thread T0 here:
+    #0 0x7f79c7b5422f in operator delete(void*, unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:172
+    #1 0x55aae7e4546b in std::default_delete<X>::operator()(X*) const /usr/include/c++/11/bits/unique_ptr.h:85
+    #2 0x55aae7e42d4c in std::unique_ptr<X, std::default_delete<X> >::~unique_ptr() /usr/include/c++/11/bits/unique_ptr.h:361
+    #3 0x55aae7e3737e in access_deleted_memory() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:201
+    #4 0x55aae7e3b7fd in exec_background(void (*)()) /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:366
+    #5 0x55aae7e3ba66 in all() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:378
+    #6 0x55aae7e3baf0 in CodeAnalysis_others_Test::TestBody() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:382
+    #7 0x55aae7e919e0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x969e0)
+    #8 0x55aae7e8986c in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8e86c)
+    #9 0x55aae7e63623 in testing::Test::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x68623)
+    #10 0x55aae7e64050 in testing::TestInfo::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x69050)
+    #11 0x55aae7e649af in testing::TestSuite::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x699af)
+    #12 0x55aae7e74162 in testing::internal::UnitTestImpl::RunAllTests() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x79162)
+    #13 0x55aae7e92b03 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x97b03)
+    #14 0x55aae7e8ab12 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8fb12)
+    #15 0x55aae7e72859 in testing::UnitTest::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x77859)
+    #16 0x55aae7ea90aa in RUN_ALL_TESTS() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae0aa)
+    #17 0x55aae7ea9023 in main (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae023)
+    #18 0x7f79c6f38d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f)
+
+previously allocated by thread T0 here:
+    #0 0x7f79c7b531c7 in operator new(unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:99
+    #1 0x55aae7e42a03 in std::_MakeUniq<X>::__single_object std::make_unique<X>() /usr/include/c++/11/bits/unique_ptr.h:962
+    #2 0x55aae7e372e7 in access_deleted_memory() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:199
+    #3 0x55aae7e3b7fd in exec_background(void (*)()) /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:366
+    #4 0x55aae7e3ba66 in all() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:378
+    #5 0x55aae7e3baf0 in CodeAnalysis_others_Test::TestBody() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:382
+    #6 0x55aae7e919e0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x969e0)
+    #7 0x55aae7e8986c in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8e86c)
+    #8 0x55aae7e63623 in testing::Test::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x68623)
+    #9 0x55aae7e64050 in testing::TestInfo::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x69050)
+    #10 0x55aae7e649af in testing::TestSuite::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x699af)
+    #11 0x55aae7e74162 in testing::internal::UnitTestImpl::RunAllTests() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x79162)
+    #12 0x55aae7e92b03 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x97b03)
+    #13 0x55aae7e8ab12 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8fb12)
+    #14 0x55aae7e72859 in testing::UnitTest::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x77859)
+    #15 0x55aae7ea90aa in RUN_ALL_TESTS() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae0aa)
+    #16 0x55aae7ea9023 in main (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae023)
+    #17 0x7f79c6f38d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f)
+
+SUMMARY: AddressSanitizer: heap-use-after-free /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:202 in access_deleted_memory()
+Shadow bytes around the buggy address:
+  0x0c047fff8030: fa fa fd fa fa fa 00 fa fa fa fd fd fa fa fd fa
+  0x0c047fff8040: fa fa 00 fa fa fa 00 00 fa fa 00 fa fa fa 00 fa
+  0x0c047fff8050: fa fa fd fa fa fa fd fa fa fa fd fa fa fa fd fa
+  0x0c047fff8060: fa fa fd fa fa fa fd fd fa fa fd fd fa fa fd fd
+  0x0c047fff8070: fa fa 00 fa fa fa fd fd fa fa fd fd fa fa 00 00
+=>0x0c047fff8080: fa fa[fd]fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff8090: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff80a0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff80b0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff80c0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff80d0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==4699==ABORTING
+=================================================================
+==4700==ERROR: AddressSanitizer: stack-use-after-scope on address 0x7ffdc07c7b00 at pc 0x55aae7e377b5 bp 0x7ffdc07c7ab0 sp 0x7ffdc07c7aa0
+READ of size 4 at 0x7ffdc07c7b00 thread T0
+    #0 0x55aae7e377b4 in access_after_scope() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:210
+    #1 0x55aae7e3b7fd in exec_background(void (*)()) /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:366
+    #2 0x55aae7e3ba66 in all() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:378
+    #3 0x55aae7e3baf0 in CodeAnalysis_others_Test::TestBody() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:382
+    #4 0x55aae7e919e0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x969e0)
+    #5 0x55aae7e8986c in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8e86c)
+    #6 0x55aae7e63623 in testing::Test::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x68623)
+    #7 0x55aae7e64050 in testing::TestInfo::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x69050)
+    #8 0x55aae7e649af in testing::TestSuite::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x699af)
+    #9 0x55aae7e74162 in testing::internal::UnitTestImpl::RunAllTests() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x79162)
+    #10 0x55aae7e92b03 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x97b03)
+    #11 0x55aae7e8ab12 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8fb12)
+    #12 0x55aae7e72859 in testing::UnitTest::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x77859)
+    #13 0x55aae7ea90aa in RUN_ALL_TESTS() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae0aa)
+    #14 0x55aae7ea9023 in main (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae023)
+    #15 0x7f79c6f38d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f)
+    #16 0x7f79c6f38e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f)
+    #17 0x55aae7e35204 in _start (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x3a204)
+
+Address 0x7ffdc07c7b00 is located in stack of thread T0 at offset 48 in frame
+    #0 0x55aae7e3758e in access_after_scope() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:207
+
+  This frame has 2 object(s):
+    [48, 52) '<unknown>' <== Memory access at offset 48 is inside this variable
+    [64, 68) 'b' (line 210)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-scope /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:210 in access_after_scope()
+Shadow bytes around the buggy address:
+  0x1000380f0f10: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0f20: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0f30: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0f40: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0f50: 00 00 00 00 00 00 00 00 00 00 f1 f1 f1 f1 f1 f1
+=>0x1000380f0f60:[f8]f2 04 f3 f3 f3 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0f70: 00 00 00 00 00 00 f1 f1 f1 f1 04 f3 f3 f3 00 00
+  0x1000380f0f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0f90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0fa0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0fb0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==4700==ABORTING
+code_analysis.cpp:158:23: runtime error: index 8 out of bounds for type 'unsigned int [8]'
+code_analysis.cpp:158:23: runtime error: load of address 0x7ffdc07c7b00 with insufficient space for an object of type 'uint32_t'
+0x7ffdc07c7b00: note: pointer points here
+ 00 00 00 00  98 ee a8 c7 79 7f 00 00  ea d2 b9 c7 79 7f 00 00  08 00 00 00 30 00 00 00  40 7c 7c c0
+              ^ 
+=================================================================
+==4701==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7ffdc07c7b00 at pc 0x55aae7e36ea0 bp 0x7ffdc07c7aa0 sp 0x7ffdc07c7a90
+READ of size 4 at 0x7ffdc07c7b00 thread T0
+    #0 0x55aae7e36e9f in array_access(int) /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:158
+    #1 0x55aae7e36f4e in array_stask_read_overflow() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:163
+    #2 0x55aae7e3b7fd in exec_background(void (*)()) /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:366
+    #3 0x55aae7e3ba66 in all() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:378
+    #4 0x55aae7e3baf0 in CodeAnalysis_others_Test::TestBody() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:382
+    #5 0x55aae7e919e0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x969e0)
+    #6 0x55aae7e8986c in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8e86c)
+    #7 0x55aae7e63623 in testing::Test::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x68623)
+    #8 0x55aae7e64050 in testing::TestInfo::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x69050)
+    #9 0x55aae7e649af in testing::TestSuite::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x699af)
+    #10 0x55aae7e74162 in testing::internal::UnitTestImpl::RunAllTests() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x79162)
+    #11 0x55aae7e92b03 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x97b03)
+    #12 0x55aae7e8ab12 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8fb12)
+    #13 0x55aae7e72859 in testing::UnitTest::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x77859)
+    #14 0x55aae7ea90aa in RUN_ALL_TESTS() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae0aa)
+    #15 0x55aae7ea9023 in main (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae023)
+    #16 0x7f79c6f38d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f)
+    #17 0x7f79c6f38e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f)
+    #18 0x55aae7e35204 in _start (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x3a204)
+
+Address 0x7ffdc07c7b00 is located in stack of thread T0 at offset 64 in frame
+    #0 0x55aae7e36c3d in array_access(int) /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:155
+
+  This frame has 1 object(s):
+    [32, 64) 'array' (line 156) <== Memory access at offset 64 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:158 in array_access(int)
+Shadow bytes around the buggy address:
+  0x1000380f0f10: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0f20: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0f30: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0f40: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0f50: 00 00 00 00 00 00 00 00 f1 f1 f1 f1 00 00 00 00
+=>0x1000380f0f60:[f3]f3 f3 f3 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0f70: 00 00 00 00 00 00 f1 f1 f1 f1 04 f3 f3 f3 00 00
+  0x1000380f0f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0f90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0fa0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0fb0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==4701==ABORTING
+=================================================================
+==4702==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7ffdc07c7b1c at pc 0x55aae7e37990 bp 0x7ffdc07c7a90 sp 0x7ffdc07c7a80
+WRITE of size 4 at 0x7ffdc07c7b1c thread T0
+    #0 0x55aae7e3798f in array_fill(unsigned int*) /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:217
+    #1 0x55aae7e37b2e in array_stask_write_overflow() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:225
+    #2 0x55aae7e3b7fd in exec_background(void (*)()) /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:366
+    #3 0x55aae7e3ba66 in all() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:378
+    #4 0x55aae7e3baf0 in CodeAnalysis_others_Test::TestBody() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:382
+    #5 0x55aae7e919e0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x969e0)
+    #6 0x55aae7e8986c in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8e86c)
+    #7 0x55aae7e63623 in testing::Test::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x68623)
+    #8 0x55aae7e64050 in testing::TestInfo::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x69050)
+    #9 0x55aae7e649af in testing::TestSuite::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x699af)
+    #10 0x55aae7e74162 in testing::internal::UnitTestImpl::RunAllTests() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x79162)
+    #11 0x55aae7e92b03 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x97b03)
+    #12 0x55aae7e8ab12 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8fb12)
+    #13 0x55aae7e72859 in testing::UnitTest::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x77859)
+    #14 0x55aae7ea90aa in RUN_ALL_TESTS() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae0aa)
+    #15 0x55aae7ea9023 in main (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae023)
+    #16 0x7f79c6f38d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f)
+    #17 0x7f79c6f38e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f)
+    #18 0x55aae7e35204 in _start (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x3a204)
+
+Address 0x7ffdc07c7b1c is located in stack of thread T0 at offset 60 in frame
+    #0 0x55aae7e379f1 in array_stask_write_overflow() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:222
+
+  This frame has 1 object(s):
+    [32, 60) 'array' (line 223) <== Memory access at offset 60 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:217 in array_fill(unsigned int*)
+Shadow bytes around the buggy address:
+  0x1000380f0f10: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0f20: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0f30: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0f40: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0f50: 00 00 00 00 00 00 00 00 00 00 00 00 f1 f1 f1 f1
+=>0x1000380f0f60: 00 00 00[04]f3 f3 f3 f3 00 00 00 00 00 00 00 00
+  0x1000380f0f70: 00 00 00 00 00 00 f1 f1 f1 f1 04 f3 f3 f3 00 00
+  0x1000380f0f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0f90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0fa0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0fb0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==4702==ABORTING
+=================================================================
+==4703==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55aae7f1b83c at pc 0x55aae7e37990 bp 0x7ffdc07c7b30 sp 0x7ffdc07c7b20
+WRITE of size 4 at 0x55aae7f1b83c thread T0
+    #0 0x55aae7e3798f in array_fill(unsigned int*) /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:217
+    #1 0x55aae7e37be9 in array_global_write_overflow() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:232
+    #2 0x55aae7e3b7fd in exec_background(void (*)()) /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:366
+    #3 0x55aae7e3ba66 in all() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:378
+    #4 0x55aae7e3baf0 in CodeAnalysis_others_Test::TestBody() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:382
+    #5 0x55aae7e919e0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x969e0)
+    #6 0x55aae7e8986c in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8e86c)
+    #7 0x55aae7e63623 in testing::Test::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x68623)
+    #8 0x55aae7e64050 in testing::TestInfo::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x69050)
+    #9 0x55aae7e649af in testing::TestSuite::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x699af)
+    #10 0x55aae7e74162 in testing::internal::UnitTestImpl::RunAllTests() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x79162)
+    #11 0x55aae7e92b03 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x97b03)
+    #12 0x55aae7e8ab12 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8fb12)
+    #13 0x55aae7e72859 in testing::UnitTest::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x77859)
+    #14 0x55aae7ea90aa in RUN_ALL_TESTS() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae0aa)
+    #15 0x55aae7ea9023 in main (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae023)
+    #16 0x7f79c6f38d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f)
+    #17 0x7f79c6f38e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f)
+    #18 0x55aae7e35204 in _start (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x3a204)
+
+0x55aae7f1b83c is located 0 bytes to the right of global variable 'array' defined in 'code_analysis.cpp:228:10' (0x55aae7f1b820) of size 28
+0x55aae7f1b83c is located 36 bytes to the left of global variable 'test_info_' defined in 'code_analysis.cpp:283:1' (0x55aae7f1b860) of size 8
+SUMMARY: AddressSanitizer: global-buffer-overflow /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:217 in array_fill(unsigned int*)
+Shadow bytes around the buggy address:
+  0x0ab5dcfdb6b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ab5dcfdb6c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ab5dcfdb6d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ab5dcfdb6e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ab5dcfdb6f0: 00 00 00 00 01 f9 f9 f9 f9 f9 f9 f9 00 f9 f9 f9
+=>0x0ab5dcfdb700: f9 f9 f9 f9 00 00 00[04]f9 f9 f9 f9 00 f9 f9 f9
+  0x0ab5dcfdb710: f9 f9 f9 f9 00 f9 f9 f9 f9 f9 f9 f9 00 f9 f9 f9
+  0x0ab5dcfdb720: f9 f9 f9 f9 00 00 f9 f9 f9 f9 f9 f9 00 00 00 00
+  0x0ab5dcfdb730: 00 00 f9 f9 f9 f9 f9 f9 00 00 00 00 00 00 f9 f9
+  0x0ab5dcfdb740: f9 f9 f9 f9 00 00 00 00 00 00 f9 f9 f9 f9 f9 f9
+  0x0ab5dcfdb750: 00 00 00 00 00 00 f9 f9 f9 f9 f9 f9 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==4703==ABORTING
+code_analysis.cpp:311:51: runtime error: division by zero
+code_analysis.cpp:241:14: runtime error: load of address 0x7ffdc07c7b20 with insufficient space for an object of type 'uint32_t'
+0x7ffdc07c7b20: note: pointer points here
+ 00 00 00 00  80 7b 7c c0 fd 7f 00 00  00 0c bd 75 12 17 b1 32  18 c6 a9 c7 79 7f 00 00  40 7d 7c c0
+              ^ 
+=================================================================
+==4706==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7ffdc07c7b20 at pc 0x55aae7e37e6c bp 0x7ffdc07c7aa0 sp 0x7ffdc07c7a90
+READ of size 4 at 0x7ffdc07c7b20 thread T0
+    #0 0x55aae7e37e6b in pointer_overflow() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:241
+    #1 0x55aae7e3b7fd in exec_background(void (*)()) /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:366
+    #2 0x55aae7e3ba66 in all() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:378
+    #3 0x55aae7e3baf0 in CodeAnalysis_others_Test::TestBody() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:382
+    #4 0x55aae7e919e0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x969e0)
+    #5 0x55aae7e8986c in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8e86c)
+    #6 0x55aae7e63623 in testing::Test::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x68623)
+    #7 0x55aae7e64050 in testing::TestInfo::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x69050)
+    #8 0x55aae7e649af in testing::TestSuite::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x699af)
+    #9 0x55aae7e74162 in testing::internal::UnitTestImpl::RunAllTests() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x79162)
+    #10 0x55aae7e92b03 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x97b03)
+    #11 0x55aae7e8ab12 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x8fb12)
+    #12 0x55aae7e72859 in testing::UnitTest::Run() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x77859)
+    #13 0x55aae7ea90aa in RUN_ALL_TESTS() (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae0aa)
+    #14 0x55aae7ea9023 in main (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0xae023)
+    #15 0x7f79c6f38d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f)
+    #16 0x7f79c6f38e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f)
+    #17 0x55aae7e35204 in _start (/home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/sanitizer/example.exe+0x3a204)
+
+Address 0x7ffdc07c7b20 is located in stack of thread T0 at offset 96 in frame
+    #0 0x55aae7e37c0e in pointer_overflow() /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:236
+
+  This frame has 2 object(s):
+    [48, 52) 'y' (line 241)
+    [64, 96) 'array' (line 237) <== Memory access at offset 96 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/ichiro/ichiroprogrammer/comprehensive_cpp/example/code_analysis/code_analysis.cpp:241 in pointer_overflow()
+Shadow bytes around the buggy address:
+  0x1000380f0f10: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0f20: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0f30: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0f40: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0f50: 00 00 00 00 00 00 00 00 f1 f1 f1 f1 f1 f1 04 f2
+=>0x1000380f0f60: 00 00 00 00[f3]f3 f3 f3 00 00 00 00 00 00 00 00
+  0x1000380f0f70: 00 00 00 00 00 00 f1 f1 f1 f1 04 f3 f3 f3 00 00
+  0x1000380f0f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0f90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0fa0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000380f0fb0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==4706==ABORTING
+code_analysis.cpp:245:57: runtime error: shift exponent -1 is negative
+code_analysis.cpp:272:11: runtime error: member call on null pointer of type 'struct NullObj'
+code_analysis.cpp:276:9: runtime error: execution reached the end of a value-returning function without returning a value
+code_analysis.cpp:319:7: runtime error: division of -2147483648 by -1 cannot be represented in type 'int'
+code_analysis.cpp:319:7: runtime error: negation of -2147483648 cannot be represented in type 'int'; cast to an unsigned type to negate this value to itself
+code_analysis.cpp:332:14: runtime error: load of misaligned address 0x7ffdc07c7b24 for type 'long unsigned int', which requires 8 byte alignment
+0x7ffdc07c7b24: note: pointer points here
+  80 7b 7c c0 fd 7f 00 00  00 0c bd 75 12 17 b1 32  18 c6 a9 c7 79 7f 00 00  40 7d 7c c0 fd 7f 00 00
+              ^ 
+@@@ sample begin 3:1
+
+code_analysis.cpp:390:17: runtime error: 4.29497e+09 is outside the range of representable values of type 'int'
+@@@ sample end
