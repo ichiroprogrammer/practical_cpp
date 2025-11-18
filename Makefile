@@ -13,7 +13,7 @@ MDS:=practical_intro.md \
      programming_convention.md coding_style.md naming_practice.md \
      comment.md solid.md design_pattern.md template_meta_programming.md \
      core_lang_spec.md stdlib_and_concepts.md cpp_idioms.md \
-     bibliography.md appendix.md
+     bibliography.md 
 
 INDEX_OPT:=--exclude $(addsuffix :1,$(MDS) sample_code.md)
 

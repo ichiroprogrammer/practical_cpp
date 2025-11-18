@@ -71,6 +71,6 @@ ___
 - [標準ライブラリとプログラミングの概念](stdlib_and_concepts.md#SS_10)
 - [C++慣用語句](cpp_idioms.md#SS_11)
 - [参考文献](bibliography.md#SS_12)
-- [Sample Code](sample_code.md#SS_14)
+- [Sample Code](sample_code.md#SS_13)
 
 
