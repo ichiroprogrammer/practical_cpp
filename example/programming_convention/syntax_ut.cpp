@@ -46,7 +46,7 @@ void f(int32_t a) noexcept
     IGNORE_UNUSED_VAR(a, b, c);
 }
 
-volatile bool volatile_flag;
+bool volatile volatile_flag;
 
 void f() noexcept
 {

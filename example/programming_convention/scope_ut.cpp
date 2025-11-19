@@ -42,7 +42,7 @@ TEST(ProgrammingConvention, Inner)
         ASSERT_STREQ("abc", fs.String());
     }
     {
-        const auto fs = StaticString<4>{'a', 'b', 'c'};
+        auto const fs = StaticString<4>{'a', 'b', 'c'};
 
         static_assert(sizeof(4) == fs.Size());
         ASSERT_STREQ("abc", fs.String());

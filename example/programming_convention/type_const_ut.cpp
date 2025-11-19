@@ -54,18 +54,18 @@ void f(std::vector<int32_t>& vec)
 const std::string s;  // NG
 std::string const t;  // OK
 
-const std::string* s_ptr;  // NG
+std::string const* s_ptr;  // NG
 std::string const* t_ptr;  // OK
 
-const std::string& f();  // NG 関数の宣言
+std::string const& f();  // NG 関数の宣言
 std::string const& g();  // OK 関数の宣言
 
 char        abc[]{"abc"};
-const char* a = abc;  // NG *aはconst
+char const* a = abc;  // NG *aはconst
 char const* b = abc;  // OK *aはconst
 char* const c = abc;  // NG *aではなく、aがconstになり、意味が変わる
 
-const char* const d = abc;  // NG
+char const* const d = abc;  // NG
 char const* const e = abc;  // OK
 // @@@ sample end
 SUPPRESS_WARN_END;
