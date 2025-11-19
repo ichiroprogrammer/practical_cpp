@@ -1,5 +1,5 @@
 SRCS:=\
-	coding_style.cpp comment.cpp debug.cpp naming.cpp ut.cpp
+	coding_style.cpp comment.cpp debug.cpp naming.cpp
 
 OBJDIR:=
 SHARED:=../../essential/
