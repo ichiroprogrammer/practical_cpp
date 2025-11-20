@@ -42,7 +42,7 @@ __この章の構成__
   
   
 
-[インデックス](practical_intro.md#SS_1_4)に戻る。  
+[インデックス](practical_intro.md#SS_1_3)に戻る。  
 
 ___
 

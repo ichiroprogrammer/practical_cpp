@@ -232,7 +232,7 @@ __この章の構成__
   
   
 
-[インデックス](practical_intro.md#SS_1_4)に戻る。  
+[インデックス](practical_intro.md#SS_1_3)に戻る。  
 
 ___
 
@@ -2729,8 +2729,8 @@ CONDには、型特性や定数式などの任意のconstexprな条件式を指�
         int get() const noexcept { return x_; }
 
         // メンバ関数の比較演算子
-        bool operator==(const Integer& other) const noexcept { return x_ == other.x_; }
-        bool operator<(const Integer& other) const noexcept { return x_ < other.x_; }
+        bool operator==(Integer const& other) const noexcept { return x_ == other.x_; }
+        bool operator<(Integer const& other) const noexcept { return x_ < other.x_; }
 
     private:
         int x_;
@@ -2747,7 +2747,7 @@ C++20以降より、`=default`により==演算子を自動生成させること
     public:
         Integer(int x) noexcept : x_{x} {}
 
-        bool operator==(const Integer& other) const noexcept = default;  // 自動生成
+        bool operator==(Integer const& other) const noexcept = default;  // 自動生成
 
     private:
         int x_;
@@ -2771,9 +2771,9 @@ C++20以降より、`=default`により==演算子を自動生成させること
         int get() const noexcept { return x_; }
 
         // メンバ関数の比較演算子に見えるが、非メンバ関数
-        friend bool operator==(const Integer& lhs, const Integer& rhs) noexcept { return lhs.x_ == rhs.x_; }
+        friend bool operator==(Integer const& lhs, Integer const& rhs) noexcept { return lhs.x_ == rhs.x_; }
 
-        friend bool operator<(const Integer& lhs, const Integer& rhs) noexcept { return lhs.x_ < rhs.x_; }
+        friend bool operator<(Integer const& lhs, Integer const& rhs) noexcept { return lhs.x_ < rhs.x_; }
 
     private:
         int x_;
@@ -2825,7 +2825,7 @@ C++20から導入された[<=>演算子](core_lang_spec.md#SS_9_6_4_1)の定義�
         int x;
         int y;
 
-        auto operator<=>(const Point& other) const noexcept = default;  // 三方比較演算子 (C++20)
+        auto operator<=>(Point const& other) const noexcept = default;  // 三方比較演算子 (C++20)
         // 通常autoとするが、実際の戻り型はstd::strong_ordering
     };
 ```
@@ -2868,12 +2868,12 @@ C++20から導入された[<=>演算子](core_lang_spec.md#SS_9_6_4_1)の定義�
         int x;
         int y;
 
-        std::strong_ordering operator<=>(const Point& other) const noexcept
+        std::strong_ordering operator<=>(Point const& other) const noexcept
         {
             return std::tie(x, y) <=> std::tie(other.x, other.y);
         }
 
-        bool operator==(const Point& other) const noexcept { return std::tie(x, y) == std::tie(other.x, other.y); }
+        bool operator==(Point const& other) const noexcept { return std::tie(x, y) == std::tie(other.x, other.y); }
     };
 ```
 
@@ -4644,7 +4644,7 @@ co_yieldを使用したコルーチンと同じ機能を持つクラスのco_yie
     /// @brief 偶数のみをフィルタリングする
     /// @param input フィルタ対象の Generator
     /// @return フィルタ後の Generator
-    Generator<int> filter_even(const Generator<int>& input)
+    Generator<int> filter_even(Generator<int> const& input)
     {
         std::vector<int> filtered;
         auto             gen = input;
@@ -4660,7 +4660,7 @@ co_yieldを使用したコルーチンと同じ機能を持つクラスのco_yie
     /// @brief 値を2倍に変換する
     /// @param input 変換対象の Generator
     /// @return 変換後の Generator
-    Generator<int> double_values(const Generator<int>& input)
+    Generator<int> double_values(Generator<int> const& input)
     {
         std::vector<int> doubled;
         auto             gen = input;
@@ -6419,7 +6419,7 @@ hidden-friend関数(隠れたフレンド関数)の目的は、
         Person(std::string name, uint32_t age) : name_{std::move(name)}, age_{age} {}
 
         // hidden-friend関数
-        friend std::ostream& operator<<(std::ostream& os, const Person& person)
+        friend std::ostream& operator<<(std::ostream& os, Person const& person)
         {
             os << "Name:" << person.name_ << ", Age:" << person.age_;
             return os;

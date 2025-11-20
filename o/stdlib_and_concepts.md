@@ -76,7 +76,7 @@ __この章の構成__
   
   
 
-[インデックス](practical_intro.md#SS_1_4)に戻る。  
+[インデックス](practical_intro.md#SS_1_3)に戻る。  
 
 ___
 
@@ -1366,7 +1366,7 @@ std::pmr::memory_resourceから派生した具象クラスの実装を以下に�
             concat(curr, to_free);
         }
 
-        bool do_is_equal(const memory_resource& other) const noexcept override { return this == &other; }
+        bool do_is_equal(memory_resource const& other) const noexcept override { return this == &other; }
     };
 ```
 
@@ -1794,8 +1794,8 @@ std::rel_opsでは`operator==`と`operator<=` を基に他の比較演算子を�
         int get() const noexcept { return x_; }
 
         // メンバ関数の比較演算子
-        bool operator==(const Integer& other) const noexcept { return x_ == other.x_; }
-        bool operator<(const Integer& other) const noexcept { return x_ < other.x_; }
+        bool operator==(Integer const& other) const noexcept { return x_ == other.x_; }
+        bool operator<(Integer const& other) const noexcept { return x_ < other.x_; }
 
     private:
         int x_;
@@ -1838,9 +1838,9 @@ std::rel_opsでは`operator==`と`operator<=` を基に他の比較演算子を�
         int x;
         int y;
 
-        bool operator==(const Point& other) const noexcept { return std::tie(x, y) == std::tie(other.x, other.y); }
+        bool operator==(Point const& other) const noexcept { return std::tie(x, y) == std::tie(other.x, other.y); }
 
-        bool operator<(const Point& other) const noexcept { return std::tie(x, y) < std::tie(other.x, other.y); }
+        bool operator<(Point const& other) const noexcept { return std::tie(x, y) < std::tie(other.x, other.y); }
     };
 ```
 ```cpp
