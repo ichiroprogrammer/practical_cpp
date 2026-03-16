@@ -604,7 +604,7 @@ ___
   従って、unionの定義を外部パッケージに公開(「[パッケージの実装と公開](programming_convention.md#SS_2_7_1)」参照)しない。
 
 * 上記以外でunionのような機能が必要な場合、
-  [std::variant](stdlib_and_concepts.md#SS_10_9)(「[std::variantとジェネリックラムダ](template_meta_programming.md#SS_8_7_2_2)」参照)を使用する
+  [std::variant](stdlib_and_concepts.md#SS_10_10)(「[std::variantとジェネリックラムダ](template_meta_programming.md#SS_8_7_2_2)」参照)を使用する
   (std::anyはunionの代替えにはならないので、このような場合には使用しない)。
 
 ### 配列 <a id="SS_2_1_7"></a>
@@ -633,7 +633,7 @@ ___
     #endif
 ```
 
-* 配列の全要素にアクセスするような繰り返し処理には[範囲for文](core_lang_spec.md#SS_9_9_3)を使用する。
+* 配列の全要素にアクセスするような繰り返し処理には[範囲for文](core_lang_spec.md#SS_9_9_2)を使用する。
 
 
 ### 型エイリアス <a id="SS_2_1_8"></a>
@@ -679,7 +679,7 @@ ___
 
 ### const/constexprインスタンス <a id="SS_2_1_9"></a>
 * インスタンス、インスタンスへのポインタ、インスタンスへのリファレンス等に対して、
-    * [constexpr定数](core_lang_spec.md#SS_9_5_2)をパラメータにした場合、コンパイル時に定数として評価できる関数は、
+    * [constexpr変数](core_lang_spec.md#SS_9_5_2)をパラメータにした場合、コンパイル時に定数として評価できる関数は、
       [constexpr関数](core_lang_spec.md#SS_9_5_3)として宣言する。
     * コンパイル時に必ず定数として評価したい[constexpr関数](core_lang_spec.md#SS_9_5_3)には、
       [consteval](core_lang_spec.md#SS_9_5_7)を使用する。
@@ -1216,7 +1216,7 @@ ___
 #### 凝集性 <a id="SS_2_2_2_3"></a>
 * 単なるデータホルダー(アプリケーションの設定データを保持するようなクラス等)や、
   ほとんどの振る舞いを他のクラスに委譲するようなクラスを除き、
-  [凝集性](cpp_idioms.md#SS_11_12_10)が高くなるように設計する。
+  [凝集性](cpp_idioms.md#SS_11_12_13)が高くなるように設計する。
 * [クラス凝集性のクライテリア](cpp_idioms.md#SS_11_7_3)に従い、凝集性を判断し、凝集性が著しく低いクラスを作らないようにする。
 
 
@@ -1406,7 +1406,7 @@ ___
     };
 ```
 
-* 非静的メンバの[ハンドル](cpp_idioms.md#SS_11_12_7)を返すメンバ関数を持つオブジェクトが
+* 非静的メンバの[ハンドル](cpp_idioms.md#SS_11_12_8)を返すメンバ関数を持つオブジェクトが
   [rvalue](core_lang_spec.md#SS_9_7_1_2)である場合、
   そのオブジェクトからその関数を呼び出した戻り値(メンバへのハンドル)を変数で保持しない
   (そのハンドルは[danglingリファレンス](cpp_idioms.md#SS_11_11_2)/[danglingポインタ](cpp_idioms.md#SS_11_11_3)になっている)。
@@ -2086,7 +2086,7 @@ ___
   (「[オブジェクトの所有権](cpp_idioms.md#SS_11_4)」参照)を持つオブジェクトもしくは関数は、
   オブジェクトaの解放責務を持つ。
 * オブジェクトaの所有権を持たないオブジェクトは、
-  オブジェクトaの[ハンドル](cpp_idioms.md#SS_11_12_7)をメンバ変数で保持することを出来る限り避ける
+  オブジェクトaの[ハンドル](cpp_idioms.md#SS_11_12_8)をメンバ変数で保持することを出来る限り避ける
   ([Observer](design_pattern.md#SS_7_2_4)パターン等、このルール順守が困難な場合は多い)。
 * クラスAのオブジェクトaが、オブジェクトbにダイナミックに生成されたとすると、  
     * オブジェクトaのポインタは`std::unique_ptr<A>`(「[RAII(scoped guard)](cpp_idioms.md#SS_11_1_2)」参照)で保持する。
@@ -2102,7 +2102,7 @@ ___
     * オブジェクトbが`std::shared_ptr<A>`でオブジェクトaを、
       オブジェクトaが`std::shared_ptr<B>`でオブジェクトbを所有する場合、
       [オブジェクトの循環所有](cpp_idioms.md#SS_11_4_3)よるメモリリークが発生するため、
-      [std::weak_ptr](stdlib_and_concepts.md#SS_10_5_3)を適切に使用する。
+      [std::weak_ptr](stdlib_and_concepts.md#SS_10_6_3)を適切に使用する。
 
 
 #### オブジェクトのライフタイム <a id="SS_2_2_7_3"></a>
@@ -2414,7 +2414,7 @@ ___
 * 比較演算子のオーバーロードする場合、
     * C++20であれば、[<=>演算子](core_lang_spec.md#SS_9_6_4_1)を定義する。
     * C++17以下であれば、`operator==`と`operator<`の2つの演算子がを定義し、
-      [std::rel_ops](stdlib_and_concepts.md#SS_10_10_1)を使用する。
+      [std::rel_ops](stdlib_and_concepts.md#SS_10_11_1)を使用する。
 
 * [ユーザ定義リテラル演算子](core_lang_spec.md#SS_9_2_6_1)のサフィックスには、
   アンダーバーから始まる3文字以上の文字列を使用する。
@@ -2863,7 +2863,7 @@ ___
 
 * 戻り値型は「[関数の引数と戻り値の型](cpp_idioms.md#SS_11_6_1)」に従う。
 
-* 関数が複数の値を返す場合、[std::optional](stdlib_and_concepts.md#SS_10_8)、std::pair、std::tupple、
+* 関数が複数の値を返す場合、[std::optional](stdlib_and_concepts.md#SS_10_9)、std::pair、std::tupple、
   構造体オブジェクトを戻り値にして返す。パフォーマンスに著しい悪影響がない限り、
   リファレンス引数で戻り値を返さない(「[関数の戻り値オブジェクト](programming_convention.md#SS_2_9_3)」参照)。
 
@@ -2934,7 +2934,7 @@ ___
 
 * 処理の成否をbool等で通知し、成功時の戻り値をリファレンス引数で戻す関数や、
   処理の成功時の値と、失敗時の外れ値を戻り値で返す関数を作らない。
-  代わりにC++17で導入された[std::optional](stdlib_and_concepts.md#SS_10_8)を使用する。
+  代わりにC++17で導入された[std::optional](stdlib_and_concepts.md#SS_10_9)を使用する。
 
 ```cpp
     //  example/programming_convention/func_return_ut.cpp 108
@@ -3031,7 +3031,7 @@ ___
 
 
 ### スレッドセーフ性 <a id="SS_2_3_8"></a>
-* 関数、メンバ関数はなるべく[スレッドセーフ](cpp_idioms.md#SS_11_12_2)に実装する。
+* 関数、メンバ関数はなるべく[スレッドセーフ](cpp_idioms.md#SS_11_12_3)に実装する。
 * 複数のスレッドから呼び出される関数は必ずスレッドセーフにする。
 
 ```cpp
@@ -3051,18 +3051,18 @@ ___
 ```
 
 ### エクセプション処理 <a id="SS_2_3_9"></a>
-* 関数はそれが不可避でない限り、[no-fail保証](core_lang_spec.md#SS_9_13_1)をする。
-  [no-fail保証](core_lang_spec.md#SS_9_13_1)関数は[noexcept](core_lang_spec.md#SS_9_13_4)を使用してそのことを明示する。
-* throwをせざるを得ない場合、最低でも[基本的な安全性の保証](core_lang_spec.md#SS_9_13_3)をする。
+* 関数はそれが不可避でない限り、[no-fail保証](core_lang_spec.md#SS_9_13_7_1)をする。
+  [no-fail保証](core_lang_spec.md#SS_9_13_7_1)関数は[noexcept](core_lang_spec.md#SS_9_13_6)を使用してそのことを明示する。
+* throwをせざるを得ない場合、最低でも[基本的な安全性の保証](core_lang_spec.md#SS_9_13_7_3)をする。
 * 標準ライブラリのコンテナ(std::string, std::vector等)が発生させるエクセプションはtry-catchせず
   (catchしてデバッグ情報を保存するような場合を除く)、
   プログラムをクラッシュさせる。try-catchしてもできることはない。
-* 特別な理由がない限り、コンストラクタ呼び出しは[noexcept](core_lang_spec.md#SS_9_13_4)と宣言する。
+* 特別な理由がない限り、コンストラクタ呼び出しは[noexcept](core_lang_spec.md#SS_9_13_6)と宣言する。
   ネットワーク接続等、簡単にエラーすることをコンストラクタ内で行わない。
 * [オープン・クローズドの原則(OCP)](solid.md#SS_6_2)、[リスコフの置換原則(LSP)](solid.md#SS_6_3)に違反する場合が多いため、
   「throwキーワードによるエクセプション仕様」を使用しない(C++17で廃止)。
-* エクセプションをthrowしないことが確定している関数は、[noexcept](core_lang_spec.md#SS_9_13_4)と宣言する。
-  move代入演算子を[noexcept](core_lang_spec.md#SS_9_13_4)と宣言することは特に重要である。
+* エクセプションをthrowしないことが確定している関数は、[noexcept](core_lang_spec.md#SS_9_13_6)と宣言する。
+  move代入演算子を[noexcept](core_lang_spec.md#SS_9_13_6)と宣言することは特に重要である。
 
 ```cpp
     //  example/programming_convention/func_ut.cpp 446
@@ -3140,7 +3140,7 @@ ___
     }
 ```
 
-* [exception-unfriendly](core_lang_spec.md#SS_9_13_5)な関数はエクセプションを発生させないようにする。
+* [exception-unfriendly](core_lang_spec.md#SS_9_13_8)な関数はエクセプションを発生させないようにする。
 * エクセプションをthrowする場合、独自定義したオブジェクトを使用しない。
   代わりにstd::exceptionか、これから派生したクラスを使用する。
   また、throwされたオブジェクトのwhat()から、throwされたファイル位置が特定できるようにする
@@ -3198,7 +3198,7 @@ ___
 
 
 ### ビジーループ <a id="SS_2_3_10"></a>
-* ビジーループを使わない。[std::condition_variable](stdlib_and_concepts.md#SS_10_3_4)を使用してイベントドリブンにする。
+* ビジーループを使わない。[std::condition_variable](stdlib_and_concepts.md#SS_10_4_4)を使用してイベントドリブンにする。
 
 ```cpp
     //  example/programming_convention/func_ut.cpp 591
@@ -3314,7 +3314,7 @@ ___
 ```
 
 * switch文のオペランド変数を生成する場合、
-  できるだけ[初期化付きswitch文](core_lang_spec.md#SS_9_9_5_4)を使用し、その変数のスコープを最小に留める。
+  できるだけ[初期化付きswitch文](core_lang_spec.md#SS_9_9_4_4)を使用し、その変数のスコープを最小に留める。
 
 ### if文 <a id="SS_2_4_3"></a>
 * if-else-ifと連続する場合は、else文で終了させる。
@@ -3362,17 +3362,17 @@ ___
 * ifの条件式が、コンパイル時に定まるのであれば、[constexpr if文](core_lang_spec.md#SS_9_11_12)を使用する。
 
 * if文のオペランド変数を生成する場合、
-  できるだけ[初期化付きif文](core_lang_spec.md#SS_9_9_5_3)を使用し、その変数のスコープを最小に留める。
+  できるだけ[初期化付きif文](core_lang_spec.md#SS_9_9_4_3)を使用し、その変数のスコープを最小に留める。
 
 ### while文 <a id="SS_2_4_4"></a>
-* while文には、[初期化付きif文](core_lang_spec.md#SS_9_9_5_3)/[初期化付きswitch文](core_lang_spec.md#SS_9_9_5_4)のような構文は存在しないが、
+* while文には、[初期化付きif文](core_lang_spec.md#SS_9_9_4_3)/[初期化付きswitch文](core_lang_spec.md#SS_9_9_4_4)のような構文は存在しないが、
   while文のオペランド変数を生成するする場合、
-  [初期化付きfor文(従来のfor文)](core_lang_spec.md#SS_9_9_5_1)を使用し、その変数のスコープを最小に留める。
+  [初期化付きfor文(従来のfor文)](core_lang_spec.md#SS_9_9_4_1)を使用し、その変数のスコープを最小に留める。
 
 ### 範囲for文 <a id="SS_2_4_5"></a>
 * 配列やコンテナの全要素にアクセスするような繰り返し処理には、
   [off-by-oneエラー](https://ja.wikipedia.org/wiki/Off-by-one%E3%82%A8%E3%83%A9%E3%83%BC)
-  が避けられ、従来よりもシンプルに記述できる[範囲for文](core_lang_spec.md#SS_9_9_3)を使用する。
+  が避けられ、従来よりもシンプルに記述できる[範囲for文](core_lang_spec.md#SS_9_9_2)を使用する。
 
 ```cpp
     //  example/programming_convention/syntax_ut.cpp 155
@@ -3403,7 +3403,7 @@ ___
 ```
 
 * 独自のコンテナクラスを定義する場合、標準ライブラリのコンテナと同様の要件を満たすbegin()、end()や、
-  cbegin()、cend()も定義し、そのコンテナに[範囲for文](core_lang_spec.md#SS_9_9_3)を適用できるようにする。
+  cbegin()、cend()も定義し、そのコンテナに[範囲for文](core_lang_spec.md#SS_9_9_2)を適用できるようにする。
 
 
 ### 制御文のネスト <a id="SS_2_4_6"></a>
@@ -3726,7 +3726,7 @@ ___
   特別な理由がない限り、 可読性と安全性を優先して、ビット演算にはstd::bitsetや[BitmaskType](cpp_idioms.md#SS_11_2_3)を使用する。
 
 ### 論理演算 <a id="SS_2_5_4"></a>
-* &&や||の論理演算子の右オペランドで[副作用](cpp_idioms.md#SS_11_12_13)のある処理をしない。
+* &&や||の論理演算子の右オペランドで[副作用](cpp_idioms.md#SS_11_12_16)のある処理をしない。
 
 ```cpp
     //  example/programming_convention/operator_ut.cpp 138
@@ -3772,10 +3772,10 @@ ___
 ### メモリアロケーション <a id="SS_2_5_6"></a>
 #### new <a id="SS_2_5_6_1"></a>
 * オブジェクトのダイナミックな生成には、特別な理由がない限りnewを使用せず、
-  [std::make_unique](stdlib_and_concepts.md#SS_10_5_1_1)や[std::make_shared](stdlib_and_concepts.md#SS_10_5_2_1)を使用する。
-  また、特別な理由でnewした場合、そのポインタは[スマートポインタ](stdlib_and_concepts.md#SS_10_5)で管理する。
-* [std::shared_ptr](stdlib_and_concepts.md#SS_10_5_2)でダイナミックに生成したオブジェクトを管理する場合、
-  [オブジェクトの循環所有](cpp_idioms.md#SS_11_4_3)が発生しないように気を付ける(適切に[std::weak_ptr](stdlib_and_concepts.md#SS_10_5_3)を使う)。
+  [std::make_unique](stdlib_and_concepts.md#SS_10_6_1_1)や[std::make_shared](stdlib_and_concepts.md#SS_10_6_2_1)を使用する。
+  また、特別な理由でnewした場合、そのポインタは[スマートポインタ](stdlib_and_concepts.md#SS_10_6)で管理する。
+* [std::shared_ptr](stdlib_and_concepts.md#SS_10_6_2)でダイナミックに生成したオブジェクトを管理する場合、
+  [オブジェクトの循環所有](cpp_idioms.md#SS_11_4_3)が発生しないように気を付ける(適切に[std::weak_ptr](stdlib_and_concepts.md#SS_10_6_3)を使う)。
 * [プレースメントnew](core_lang_spec.md#SS_9_6_9)を使用しない。
 * `new T[N]`を使用しない。代わりにstd::arrayをダイナミックに生成するか、std::vectorを使用する。
 * [new (std::nothrow)](core_lang_spec.md#SS_9_6_10)を使わない限り、
@@ -3863,7 +3863,7 @@ ___
     auto s_2 = sizeof(*b);       // OK *bのサイズをs_2に代入したい場合
 ```
 
-* 上記例を除き、sizeof演算子のオペランドは一見[副作用](cpp_idioms.md#SS_11_12_13)を持っているような式を含んではならない。
+* 上記例を除き、sizeof演算子のオペランドは一見[副作用](cpp_idioms.md#SS_11_12_16)を持っているような式を含んではならない。
 
 ```cpp
     //  example/programming_convention/operator_ut.cpp 284
@@ -5422,7 +5422,7 @@ ___
 ```
     asctime(), ctime(), getgrgid(), getgrnam(), getlogin(), getpwuid(), getpwnam(), gmtime(),
     localtime(), ttyname(), 
-    ctermid(), tmpnam() (引数がNULLのとき、非[リエントラント](cpp_idioms.md#SS_11_12_3)になる)
+    ctermid(), tmpnam() (引数がNULLのとき、非[リエントラント](cpp_idioms.md#SS_11_12_4)になる)
 ```
 
 ##### 標準外関数等 <a id="SS_2_10_2_2_6"></a>
@@ -5430,7 +5430,7 @@ ___
 
 ##### 扱いが難しい関数 <a id="SS_2_10_2_2_7"></a>
 * signalの扱いは極めて難しく、安定動作をさせるのは困難である。
-  「シグナルの[リエントラント](cpp_idioms.md#SS_11_12_3)問題を解決でき、使用できる関数に制限がない」という利点があるため、
+  「シグナルの[リエントラント](cpp_idioms.md#SS_11_12_4)問題を解決でき、使用できる関数に制限がない」という利点があるため、
    signal()の代わりに、 signalfd() を使用する。 
 * 排他的にファイルをオープンできないため、tmpfile()を使用しない。代わりにmkstemp()を使用する。
 
@@ -5492,7 +5492,7 @@ ___
 * 論理的にありえない状態(特に論理的に到達しないはずの条件文への到達)を検出するために、
   assert()を使用する(「[switch文](programming_convention.md#SS_2_4_2)」、「[if文](programming_convention.md#SS_2_4_3)」参照)。
 * assert()はコンパイルオプションにより無効化されることがあるため、
-  assert()の引数に[副作用](cpp_idioms.md#SS_11_12_13)のある式を入れない。
+  assert()の引数に[副作用](cpp_idioms.md#SS_11_12_16)のある式を入れない。
 * ランタイムでなく、コンパイル時に判断できる論理矛盾や使用制限には、static\_assertを使用する。
 
 ```cpp
@@ -5601,7 +5601,7 @@ ___
     * if, else, for, while, do後には{}を使う([複合文](programming_convention.md#SS_2_4_1))。
     * switchでのフォールスルーをしない([switch文](programming_convention.md#SS_2_4_2))。
     * switchにはdefaultラベルを入れる([switch文](programming_convention.md#SS_2_4_2))。
-    * 範囲for文を積極的に使う([範囲for文](core_lang_spec.md#SS_9_9_3))。
+    * 範囲for文を積極的に使う([範囲for文](core_lang_spec.md#SS_9_9_2))。
     * gotoを使用しない([goto文](programming_convention.md#SS_2_4_8))。
 * オブジェクトのダイナミックな生成には`std::make_unique<>`や`std::make_shared<>`を使用する
   ([メモリアロケーション](programming_convention.md#SS_2_5_6))。
