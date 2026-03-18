@@ -7,6 +7,7 @@
     * 「標準ライブラリとプログラミングの概念」に「std::enable_shared_from_this」の説明追加
     * このドキュメントのSOLIDとデザインパターンの章をdeep_cppへ移動
     * C++慣用語句に「Modern CMake project layout」を追加
+    * プログラミング規約の依存関係(前方宣言)のルール見直し
 
 
 ## ドキュメントの諸注意
