@@ -32,7 +32,7 @@ __コード例について__
 * 「`// ...`」のような行は、ソースコードの省略を表す。
 * 特定の規則、法則、慣習等を説明するためのソースコードは、シンプルさを優先するため、
   その他の規則、法則、慣習に従っていない場合があるが、
-  [Trailing Underscore(末尾アンダースコア)](cpp_idioms.md#SS_11_9_4)には従っている。
+  [Trailing Underscore(末尾アンダースコア)](cpp_idioms.md#SS_12_9_4)には従っている。
   また、一般に標準ライブラリのコンテナクラスをnewする必要はないが、
   コードの動作を示すためにあえてそのようにする場合がある。
 * ソースコード内に動作説明のような本来不要なコメントがあるのは、
@@ -61,17 +61,18 @@ __google test_のアサーションの簡単な説明__
 ## インデックス <a id="SS_1_3"></a>
 ___
 
-- [プログラミング規約](programming_convention.md#SS_2)
-- [コーディングスタイル](coding_style.md#SS_3)
-- [命名規則](naming_practice.md#SS_4)
-- [コメント](comment.md#SS_5)
-- [SOLID](solid.md#SS_6)
-- [デザインパターン](design_pattern.md#SS_7)
-- [テンプレートメタプログラミング](template_meta_programming.md#SS_8)
-- [C++コア言語仕様](core_lang_spec.md#SS_9)
-- [標準ライブラリとプログラミングの概念](stdlib_and_concepts.md#SS_10)
-- [C++慣用語句](cpp_idioms.md#SS_11)
-- [参考文献](bibliography.md#SS_12)
-- [Sample Code](sample_code.md#SS_13)
+- [ソフトウェアプラクティス](software_practice.md#SS_2)
+- [プログラミング規約](programming_convention.md#SS_3)
+- [コーディングスタイル](coding_style.md#SS_4)
+- [命名規則](naming_practice.md#SS_5)
+- [コメント](comment.md#SS_6)
+- [SOLID](solid.md#SS_7)
+- [デザインパターン](design_pattern.md#SS_8)
+- [テンプレートメタプログラミング](template_meta_programming.md#SS_9)
+- [C++コア言語仕様](core_lang_spec.md#SS_10)
+- [標準ライブラリとプログラミングの概念](stdlib_and_concepts.md#SS_11)
+- [C++慣用語句](cpp_idioms.md#SS_12)
+- [参考文献](bibliography.md#SS_13)
+- [Sample Code](sample_code.md#SS_15)
 
 

@@ -1,5 +1,5 @@
 <!-- ./md/programming_convention.md -->
-# プログラミング規約 <a id="SS_2"></a>
+# プログラミング規約 <a id="SS_3"></a>
 組織に秩序を与える法、道徳、慣習等をここではルールと呼ぶことにする。
 当然ながら、秩序ある組織には良いルールがあり、混沌とした組織には悪いルールがあるか、
 ルールはあっても守られていないか、そもそもルールが存在しない。
@@ -8,9 +8,9 @@
 
 * 可読性が高い。
     * 簡潔に記述されている。
-    * 記述スタイルが統一されている(「[コーディングスタイル](coding_style.md#SS_3)」参照)。
-    * ファイルや識別子の名前に規則性があり、適切に命名されている(「[命名規則](naming_practice.md#SS_4)」参照)。 
-    * コメントの記法が統一されており、内容が適切である(「[コメント](comment.md#SS_5)」参照)。 
+    * 記述スタイルが統一されている(「[コーディングスタイル](coding_style.md#SS_4)」参照)。
+    * ファイルや識別子の名前に規則性があり、適切に命名されている(「[命名規則](naming_practice.md#SS_5)」参照)。 
+    * コメントの記法が統一されており、内容が適切である(「[コメント](comment.md#SS_6)」参照)。 
 * 保守、テスト、移植等が容易である。
 * 型安全性が配慮されている。
 * コンパイル警告レベルが高く、かつ指摘がない。
@@ -28,149 +28,149 @@ ___
 
 __この章の構成__
 
-&emsp;&emsp; [型とインスタンス](programming_convention.md#SS_2_1)  
-&emsp;&emsp;&emsp; [算術型](programming_convention.md#SS_2_1_1)  
-&emsp;&emsp;&emsp;&emsp; [整数型](programming_convention.md#SS_2_1_1_1)  
-&emsp;&emsp;&emsp;&emsp; [char型](programming_convention.md#SS_2_1_1_2)  
-&emsp;&emsp;&emsp;&emsp; [std::byte型](programming_convention.md#SS_2_1_1_3)  
-&emsp;&emsp;&emsp;&emsp; [bool型](programming_convention.md#SS_2_1_1_4)  
-&emsp;&emsp;&emsp;&emsp; [浮動小数点型](programming_convention.md#SS_2_1_1_5)  
+&emsp;&emsp; [型とインスタンス](programming_convention.md#SS_3_1)  
+&emsp;&emsp;&emsp; [算術型](programming_convention.md#SS_3_1_1)  
+&emsp;&emsp;&emsp;&emsp; [整数型](programming_convention.md#SS_3_1_1_1)  
+&emsp;&emsp;&emsp;&emsp; [char型](programming_convention.md#SS_3_1_1_2)  
+&emsp;&emsp;&emsp;&emsp; [std::byte型](programming_convention.md#SS_3_1_1_3)  
+&emsp;&emsp;&emsp;&emsp; [bool型](programming_convention.md#SS_3_1_1_4)  
+&emsp;&emsp;&emsp;&emsp; [浮動小数点型](programming_convention.md#SS_3_1_1_5)  
 
-&emsp;&emsp;&emsp; [enum](programming_convention.md#SS_2_1_2)  
-&emsp;&emsp;&emsp; [bit field](programming_convention.md#SS_2_1_3)  
-&emsp;&emsp;&emsp; [class](programming_convention.md#SS_2_1_4)  
-&emsp;&emsp;&emsp; [struct](programming_convention.md#SS_2_1_5)  
-&emsp;&emsp;&emsp; [union](programming_convention.md#SS_2_1_6)  
-&emsp;&emsp;&emsp; [配列](programming_convention.md#SS_2_1_7)  
-&emsp;&emsp;&emsp; [型エイリアス](programming_convention.md#SS_2_1_8)  
-&emsp;&emsp;&emsp; [const/constexprインスタンス](programming_convention.md#SS_2_1_9)  
-&emsp;&emsp;&emsp; [リテラル](programming_convention.md#SS_2_1_10)  
-&emsp;&emsp;&emsp;&emsp; [生文字列リテラル](programming_convention.md#SS_2_1_10_1)  
+&emsp;&emsp;&emsp; [enum](programming_convention.md#SS_3_1_2)  
+&emsp;&emsp;&emsp; [bit field](programming_convention.md#SS_3_1_3)  
+&emsp;&emsp;&emsp; [class](programming_convention.md#SS_3_1_4)  
+&emsp;&emsp;&emsp; [struct](programming_convention.md#SS_3_1_5)  
+&emsp;&emsp;&emsp; [union](programming_convention.md#SS_3_1_6)  
+&emsp;&emsp;&emsp; [配列](programming_convention.md#SS_3_1_7)  
+&emsp;&emsp;&emsp; [型エイリアス](programming_convention.md#SS_3_1_8)  
+&emsp;&emsp;&emsp; [const/constexprインスタンス](programming_convention.md#SS_3_1_9)  
+&emsp;&emsp;&emsp; [リテラル](programming_convention.md#SS_3_1_10)  
+&emsp;&emsp;&emsp;&emsp; [生文字列リテラル](programming_convention.md#SS_3_1_10_1)  
 
-&emsp;&emsp;&emsp; [型推論](programming_convention.md#SS_2_1_11)  
-&emsp;&emsp;&emsp;&emsp; [auto](programming_convention.md#SS_2_1_11_1)  
+&emsp;&emsp;&emsp; [型推論](programming_convention.md#SS_3_1_11)  
+&emsp;&emsp;&emsp;&emsp; [auto](programming_convention.md#SS_3_1_11_1)  
 
-&emsp;&emsp;&emsp; [インスタンスの初期化](programming_convention.md#SS_2_1_12)  
-&emsp;&emsp;&emsp; [rvalue](programming_convention.md#SS_2_1_13)  
+&emsp;&emsp;&emsp; [インスタンスの初期化](programming_convention.md#SS_3_1_12)  
+&emsp;&emsp;&emsp; [rvalue](programming_convention.md#SS_3_1_13)  
 
-&emsp;&emsp; [クラスとオブジェクト](programming_convention.md#SS_2_2)  
-&emsp;&emsp;&emsp; [ファイルの使用方法](programming_convention.md#SS_2_2_1)  
-&emsp;&emsp;&emsp; [クラスの規模](programming_convention.md#SS_2_2_2)  
-&emsp;&emsp;&emsp;&emsp; [行数](programming_convention.md#SS_2_2_2_1)  
-&emsp;&emsp;&emsp;&emsp; [メンバの数](programming_convention.md#SS_2_2_2_2)  
-&emsp;&emsp;&emsp;&emsp; [凝集性](programming_convention.md#SS_2_2_2_3)  
+&emsp;&emsp; [クラスとオブジェクト](programming_convention.md#SS_3_2)  
+&emsp;&emsp;&emsp; [ファイルの使用方法](programming_convention.md#SS_3_2_1)  
+&emsp;&emsp;&emsp; [クラスの規模](programming_convention.md#SS_3_2_2)  
+&emsp;&emsp;&emsp;&emsp; [行数](programming_convention.md#SS_3_2_2_1)  
+&emsp;&emsp;&emsp;&emsp; [メンバの数](programming_convention.md#SS_3_2_2_2)  
+&emsp;&emsp;&emsp;&emsp; [凝集性](programming_convention.md#SS_3_2_2_3)  
 
-&emsp;&emsp;&emsp; [アクセスレベルと隠蔽化](programming_convention.md#SS_2_2_3)  
-&emsp;&emsp;&emsp; [メンバ関数](programming_convention.md#SS_2_2_4)  
-&emsp;&emsp;&emsp;&emsp; [特殊メンバ関数](programming_convention.md#SS_2_2_4_1)  
-&emsp;&emsp;&emsp;&emsp; [コンストラクタ](programming_convention.md#SS_2_2_4_2)  
-&emsp;&emsp;&emsp;&emsp; [copyコンストラクタ、copy代入演算子](programming_convention.md#SS_2_2_4_3)  
-&emsp;&emsp;&emsp;&emsp; [moveコンストラクタ、move代入演算子](programming_convention.md#SS_2_2_4_4)  
-&emsp;&emsp;&emsp;&emsp; [初期化子リストコンストラクタ](programming_convention.md#SS_2_2_4_5)  
-&emsp;&emsp;&emsp;&emsp; [デストラクタ](programming_convention.md#SS_2_2_4_6)  
-&emsp;&emsp;&emsp;&emsp; [オーバーライド](programming_convention.md#SS_2_2_4_7)  
+&emsp;&emsp;&emsp; [アクセスレベルと隠蔽化](programming_convention.md#SS_3_2_3)  
+&emsp;&emsp;&emsp; [メンバ関数](programming_convention.md#SS_3_2_4)  
+&emsp;&emsp;&emsp;&emsp; [特殊メンバ関数](programming_convention.md#SS_3_2_4_1)  
+&emsp;&emsp;&emsp;&emsp; [コンストラクタ](programming_convention.md#SS_3_2_4_2)  
+&emsp;&emsp;&emsp;&emsp; [copyコンストラクタ、copy代入演算子](programming_convention.md#SS_3_2_4_3)  
+&emsp;&emsp;&emsp;&emsp; [moveコンストラクタ、move代入演算子](programming_convention.md#SS_3_2_4_4)  
+&emsp;&emsp;&emsp;&emsp; [初期化子リストコンストラクタ](programming_convention.md#SS_3_2_4_5)  
+&emsp;&emsp;&emsp;&emsp; [デストラクタ](programming_convention.md#SS_3_2_4_6)  
+&emsp;&emsp;&emsp;&emsp; [オーバーライド](programming_convention.md#SS_3_2_4_7)  
 
-&emsp;&emsp;&emsp; [メンバ変数](programming_convention.md#SS_2_2_5)  
-&emsp;&emsp;&emsp;&emsp; [メンバ変数の数 ](programming_convention.md#SS_2_2_5_1)  
-&emsp;&emsp;&emsp;&emsp; [非静的なメンバ変数](programming_convention.md#SS_2_2_5_2)  
-&emsp;&emsp;&emsp;&emsp; [静的なメンバ変数/定数の初期化](programming_convention.md#SS_2_2_5_3)  
-&emsp;&emsp;&emsp;&emsp; [mutableなメンバ変数](programming_convention.md#SS_2_2_5_4)  
+&emsp;&emsp;&emsp; [メンバ変数](programming_convention.md#SS_3_2_5)  
+&emsp;&emsp;&emsp;&emsp; [メンバ変数の数 ](programming_convention.md#SS_3_2_5_1)  
+&emsp;&emsp;&emsp;&emsp; [非静的なメンバ変数](programming_convention.md#SS_3_2_5_2)  
+&emsp;&emsp;&emsp;&emsp; [静的なメンバ変数/定数の初期化](programming_convention.md#SS_3_2_5_3)  
+&emsp;&emsp;&emsp;&emsp; [mutableなメンバ変数](programming_convention.md#SS_3_2_5_4)  
 
-&emsp;&emsp;&emsp; [継承/派生](programming_convention.md#SS_2_2_6)  
-&emsp;&emsp;&emsp;&emsp; [インターフェースの継承](programming_convention.md#SS_2_2_6_1)  
-&emsp;&emsp;&emsp;&emsp; [多重継承](programming_convention.md#SS_2_2_6_2)  
+&emsp;&emsp;&emsp; [継承/派生](programming_convention.md#SS_3_2_6)  
+&emsp;&emsp;&emsp;&emsp; [インターフェースの継承](programming_convention.md#SS_3_2_6_1)  
+&emsp;&emsp;&emsp;&emsp; [多重継承](programming_convention.md#SS_3_2_6_2)  
 
-&emsp;&emsp;&emsp; [オブジェクト](programming_convention.md#SS_2_2_7)  
-&emsp;&emsp;&emsp;&emsp; [スライシング](programming_convention.md#SS_2_2_7_1)  
-&emsp;&emsp;&emsp;&emsp; [オブジェクトの所有権](programming_convention.md#SS_2_2_7_2)  
-&emsp;&emsp;&emsp;&emsp; [オブジェクトのライフタイム](programming_convention.md#SS_2_2_7_3)  
+&emsp;&emsp;&emsp; [オブジェクト](programming_convention.md#SS_3_2_7)  
+&emsp;&emsp;&emsp;&emsp; [スライシング](programming_convention.md#SS_3_2_7_1)  
+&emsp;&emsp;&emsp;&emsp; [オブジェクトの所有権](programming_convention.md#SS_3_2_7_2)  
+&emsp;&emsp;&emsp;&emsp; [オブジェクトのライフタイム](programming_convention.md#SS_3_2_7_3)  
 
-&emsp;&emsp; [関数](programming_convention.md#SS_2_3)  
-&emsp;&emsp;&emsp; [関数構造のクライテリア](programming_convention.md#SS_2_3_1)  
-&emsp;&emsp;&emsp; [オーバーロード](programming_convention.md#SS_2_3_2)  
-&emsp;&emsp;&emsp; [演算子オーバーロード](programming_convention.md#SS_2_3_3)  
-&emsp;&emsp;&emsp; [実引数/仮引数](programming_convention.md#SS_2_3_4)  
-&emsp;&emsp;&emsp; [自動変数](programming_convention.md#SS_2_3_5)  
-&emsp;&emsp;&emsp; [戻り値型](programming_convention.md#SS_2_3_6)  
-&emsp;&emsp;&emsp; [constexpr関数](programming_convention.md#SS_2_3_7)  
-&emsp;&emsp;&emsp; [スレッドセーフ性](programming_convention.md#SS_2_3_8)  
-&emsp;&emsp;&emsp; [エクセプション処理](programming_convention.md#SS_2_3_9)  
-&emsp;&emsp;&emsp; [ビジーループ](programming_convention.md#SS_2_3_10)  
-&emsp;&emsp;&emsp; [非メンバ関数](programming_convention.md#SS_2_3_11)  
+&emsp;&emsp; [関数](programming_convention.md#SS_3_3)  
+&emsp;&emsp;&emsp; [関数構造のクライテリア](programming_convention.md#SS_3_3_1)  
+&emsp;&emsp;&emsp; [オーバーロード](programming_convention.md#SS_3_3_2)  
+&emsp;&emsp;&emsp; [演算子オーバーロード](programming_convention.md#SS_3_3_3)  
+&emsp;&emsp;&emsp; [実引数/仮引数](programming_convention.md#SS_3_3_4)  
+&emsp;&emsp;&emsp; [自動変数](programming_convention.md#SS_3_3_5)  
+&emsp;&emsp;&emsp; [戻り値型](programming_convention.md#SS_3_3_6)  
+&emsp;&emsp;&emsp; [constexpr関数](programming_convention.md#SS_3_3_7)  
+&emsp;&emsp;&emsp; [スレッドセーフ性](programming_convention.md#SS_3_3_8)  
+&emsp;&emsp;&emsp; [エクセプション処理](programming_convention.md#SS_3_3_9)  
+&emsp;&emsp;&emsp; [ビジーループ](programming_convention.md#SS_3_3_10)  
+&emsp;&emsp;&emsp; [非メンバ関数](programming_convention.md#SS_3_3_11)  
 
-&emsp;&emsp; [構文](programming_convention.md#SS_2_4)  
-&emsp;&emsp;&emsp; [複合文](programming_convention.md#SS_2_4_1)  
-&emsp;&emsp;&emsp; [switch文](programming_convention.md#SS_2_4_2)  
-&emsp;&emsp;&emsp; [if文](programming_convention.md#SS_2_4_3)  
-&emsp;&emsp;&emsp; [while文](programming_convention.md#SS_2_4_4)  
-&emsp;&emsp;&emsp; [範囲for文](programming_convention.md#SS_2_4_5)  
-&emsp;&emsp;&emsp; [制御文のネスト](programming_convention.md#SS_2_4_6)  
-&emsp;&emsp;&emsp; [return文](programming_convention.md#SS_2_4_7)  
-&emsp;&emsp;&emsp; [goto文](programming_convention.md#SS_2_4_8)  
-&emsp;&emsp;&emsp; [ラムダ式](programming_convention.md#SS_2_4_9)  
-&emsp;&emsp;&emsp; [マクロの中の文](programming_convention.md#SS_2_4_10)  
+&emsp;&emsp; [構文](programming_convention.md#SS_3_4)  
+&emsp;&emsp;&emsp; [複合文](programming_convention.md#SS_3_4_1)  
+&emsp;&emsp;&emsp; [switch文](programming_convention.md#SS_3_4_2)  
+&emsp;&emsp;&emsp; [if文](programming_convention.md#SS_3_4_3)  
+&emsp;&emsp;&emsp; [while文](programming_convention.md#SS_3_4_4)  
+&emsp;&emsp;&emsp; [範囲for文](programming_convention.md#SS_3_4_5)  
+&emsp;&emsp;&emsp; [制御文のネスト](programming_convention.md#SS_3_4_6)  
+&emsp;&emsp;&emsp; [return文](programming_convention.md#SS_3_4_7)  
+&emsp;&emsp;&emsp; [goto文](programming_convention.md#SS_3_4_8)  
+&emsp;&emsp;&emsp; [ラムダ式](programming_convention.md#SS_3_4_9)  
+&emsp;&emsp;&emsp; [マクロの中の文](programming_convention.md#SS_3_4_10)  
 
-&emsp;&emsp; [演算子](programming_convention.md#SS_2_5)  
-&emsp;&emsp;&emsp; [優先順位](programming_convention.md#SS_2_5_1)  
-&emsp;&emsp;&emsp; [代入演算](programming_convention.md#SS_2_5_2)  
-&emsp;&emsp;&emsp; [ビット演算](programming_convention.md#SS_2_5_3)  
-&emsp;&emsp;&emsp; [論理演算](programming_convention.md#SS_2_5_4)  
-&emsp;&emsp;&emsp; [条件演算子](programming_convention.md#SS_2_5_5)  
-&emsp;&emsp;&emsp; [メモリアロケーション](programming_convention.md#SS_2_5_6)  
-&emsp;&emsp;&emsp;&emsp; [new](programming_convention.md#SS_2_5_6_1)  
-&emsp;&emsp;&emsp;&emsp; [delete](programming_convention.md#SS_2_5_6_2)  
+&emsp;&emsp; [演算子](programming_convention.md#SS_3_5)  
+&emsp;&emsp;&emsp; [優先順位](programming_convention.md#SS_3_5_1)  
+&emsp;&emsp;&emsp; [代入演算](programming_convention.md#SS_3_5_2)  
+&emsp;&emsp;&emsp; [ビット演算](programming_convention.md#SS_3_5_3)  
+&emsp;&emsp;&emsp; [論理演算](programming_convention.md#SS_3_5_4)  
+&emsp;&emsp;&emsp; [条件演算子](programming_convention.md#SS_3_5_5)  
+&emsp;&emsp;&emsp; [メモリアロケーション](programming_convention.md#SS_3_5_6)  
+&emsp;&emsp;&emsp;&emsp; [new](programming_convention.md#SS_3_5_6_1)  
+&emsp;&emsp;&emsp;&emsp; [delete](programming_convention.md#SS_3_5_6_2)  
 
-&emsp;&emsp;&emsp; [sizeof](programming_convention.md#SS_2_5_7)  
-&emsp;&emsp;&emsp; [ポインタ間の演算](programming_convention.md#SS_2_5_8)  
-&emsp;&emsp;&emsp; [RTTI](programming_convention.md#SS_2_5_9)  
-&emsp;&emsp;&emsp; [キャスト、暗黙の型変換](programming_convention.md#SS_2_5_10)  
+&emsp;&emsp;&emsp; [sizeof](programming_convention.md#SS_3_5_7)  
+&emsp;&emsp;&emsp; [ポインタ間の演算](programming_convention.md#SS_3_5_8)  
+&emsp;&emsp;&emsp; [RTTI](programming_convention.md#SS_3_5_9)  
+&emsp;&emsp;&emsp; [キャスト、暗黙の型変換](programming_convention.md#SS_3_5_10)  
 
-&emsp;&emsp; [プリプロセッサ命令](programming_convention.md#SS_2_6)  
-&emsp;&emsp;&emsp; [関数型マクロ](programming_convention.md#SS_2_6_1)  
-&emsp;&emsp;&emsp; [マクロ定数](programming_convention.md#SS_2_6_2)  
+&emsp;&emsp; [プリプロセッサ命令](programming_convention.md#SS_3_6)  
+&emsp;&emsp;&emsp; [関数型マクロ](programming_convention.md#SS_3_6_1)  
+&emsp;&emsp;&emsp; [マクロ定数](programming_convention.md#SS_3_6_2)  
 
-&emsp;&emsp; [パッケージとその構成ファイル](programming_convention.md#SS_2_7)  
-&emsp;&emsp;&emsp; [パッケージの実装と公開](programming_convention.md#SS_2_7_1)  
-&emsp;&emsp;&emsp; [識別子の宣言、定義](programming_convention.md#SS_2_7_2)  
-&emsp;&emsp;&emsp; [依存関係](programming_convention.md#SS_2_7_3)  
-&emsp;&emsp;&emsp; [二重読み込みの防御](programming_convention.md#SS_2_7_4)  
-&emsp;&emsp;&emsp; [ヘッダファイル内の#include](programming_convention.md#SS_2_7_5)  
-&emsp;&emsp;&emsp; [#includeするファイルの順番](programming_convention.md#SS_2_7_6)  
-&emsp;&emsp;&emsp; [#includeで指定するパス名](programming_convention.md#SS_2_7_7)  
+&emsp;&emsp; [パッケージとその構成ファイル](programming_convention.md#SS_3_7)  
+&emsp;&emsp;&emsp; [パッケージの実装と公開](programming_convention.md#SS_3_7_1)  
+&emsp;&emsp;&emsp; [識別子の宣言、定義](programming_convention.md#SS_3_7_2)  
+&emsp;&emsp;&emsp; [依存関係](programming_convention.md#SS_3_7_3)  
+&emsp;&emsp;&emsp; [二重読み込みの防御](programming_convention.md#SS_3_7_4)  
+&emsp;&emsp;&emsp; [ヘッダファイル内の#include](programming_convention.md#SS_3_7_5)  
+&emsp;&emsp;&emsp; [#includeするファイルの順番](programming_convention.md#SS_3_7_6)  
+&emsp;&emsp;&emsp; [#includeで指定するパス名](programming_convention.md#SS_3_7_7)  
 
-&emsp;&emsp; [スコープ](programming_convention.md#SS_2_8)  
-&emsp;&emsp;&emsp; [スコープの定義と原則](programming_convention.md#SS_2_8_1)  
-&emsp;&emsp;&emsp; [名前空間](programming_convention.md#SS_2_8_2)  
-&emsp;&emsp;&emsp; [using宣言/usingディレクティブ](programming_convention.md#SS_2_8_3)  
-&emsp;&emsp;&emsp; [ADLと名前空間による修飾の省略](programming_convention.md#SS_2_8_4)  
-&emsp;&emsp;&emsp; [名前空間のエイリアス](programming_convention.md#SS_2_8_5)  
+&emsp;&emsp; [スコープ](programming_convention.md#SS_3_8)  
+&emsp;&emsp;&emsp; [スコープの定義と原則](programming_convention.md#SS_3_8_1)  
+&emsp;&emsp;&emsp; [名前空間](programming_convention.md#SS_3_8_2)  
+&emsp;&emsp;&emsp; [using宣言/usingディレクティブ](programming_convention.md#SS_3_8_3)  
+&emsp;&emsp;&emsp; [ADLと名前空間による修飾の省略](programming_convention.md#SS_3_8_4)  
+&emsp;&emsp;&emsp; [名前空間のエイリアス](programming_convention.md#SS_3_8_5)  
 
-&emsp;&emsp; [ランタイムの効率](programming_convention.md#SS_2_9)  
-&emsp;&emsp;&emsp; [前置/後置演算子の選択](programming_convention.md#SS_2_9_1)  
-&emsp;&emsp;&emsp; [operator X、operator x=の選択](programming_convention.md#SS_2_9_2)  
-&emsp;&emsp;&emsp; [関数の戻り値オブジェクト](programming_convention.md#SS_2_9_3)  
-&emsp;&emsp;&emsp; [move処理](programming_convention.md#SS_2_9_4)  
-&emsp;&emsp;&emsp; [std::string vs std::string const& vs std::string_view](programming_convention.md#SS_2_9_5)  
-&emsp;&emsp;&emsp; [extern template](programming_convention.md#SS_2_9_6)  
+&emsp;&emsp; [ランタイムの効率](programming_convention.md#SS_3_9)  
+&emsp;&emsp;&emsp; [前置/後置演算子の選択](programming_convention.md#SS_3_9_1)  
+&emsp;&emsp;&emsp; [operator X、operator x=の選択](programming_convention.md#SS_3_9_2)  
+&emsp;&emsp;&emsp; [関数の戻り値オブジェクト](programming_convention.md#SS_3_9_3)  
+&emsp;&emsp;&emsp; [move処理](programming_convention.md#SS_3_9_4)  
+&emsp;&emsp;&emsp; [std::string vs std::string const& vs std::string_view](programming_convention.md#SS_3_9_5)  
+&emsp;&emsp;&emsp; [extern template](programming_convention.md#SS_3_9_6)  
 
-&emsp;&emsp; [標準クラス、関数の使用制限](programming_convention.md#SS_2_10)  
-&emsp;&emsp;&emsp; [標準ライブラリ](programming_convention.md#SS_2_10_1)  
-&emsp;&emsp;&emsp;&emsp; [スマートポインタの使用制限](programming_convention.md#SS_2_10_1_1)  
-&emsp;&emsp;&emsp;&emsp; [配列系コンテナクラスの使用制限](programming_convention.md#SS_2_10_1_2)  
-&emsp;&emsp;&emsp;&emsp; [std::stringの使用制限](programming_convention.md#SS_2_10_1_3)  
-&emsp;&emsp;&emsp;&emsp; [std::string_viewの使用制限](programming_convention.md#SS_2_10_1_4)  
+&emsp;&emsp; [標準クラス、関数の使用制限](programming_convention.md#SS_3_10)  
+&emsp;&emsp;&emsp; [標準ライブラリ](programming_convention.md#SS_3_10_1)  
+&emsp;&emsp;&emsp;&emsp; [スマートポインタの使用制限](programming_convention.md#SS_3_10_1_1)  
+&emsp;&emsp;&emsp;&emsp; [配列系コンテナクラスの使用制限](programming_convention.md#SS_3_10_1_2)  
+&emsp;&emsp;&emsp;&emsp; [std::stringの使用制限](programming_convention.md#SS_3_10_1_3)  
+&emsp;&emsp;&emsp;&emsp; [std::string_viewの使用制限](programming_convention.md#SS_3_10_1_4)  
 
-&emsp;&emsp;&emsp; [POSIX系関数](programming_convention.md#SS_2_10_2)  
-&emsp;&emsp;&emsp;&emsp; [使用禁止関数一覧](programming_convention.md#SS_2_10_2_1)  
-&emsp;&emsp;&emsp;&emsp; [使用禁止関数の理由や注意点](programming_convention.md#SS_2_10_2_2)  
-&emsp;&emsp;&emsp;&emsp; [典型的な注意点](programming_convention.md#SS_2_10_2_3)  
+&emsp;&emsp;&emsp; [POSIX系関数](programming_convention.md#SS_3_10_2)  
+&emsp;&emsp;&emsp;&emsp; [使用禁止関数一覧](programming_convention.md#SS_3_10_2_1)  
+&emsp;&emsp;&emsp;&emsp; [使用禁止関数の理由や注意点](programming_convention.md#SS_3_10_2_2)  
+&emsp;&emsp;&emsp;&emsp; [典型的な注意点](programming_convention.md#SS_3_10_2_3)  
 
-&emsp;&emsp; [その他](programming_convention.md#SS_2_11)  
-&emsp;&emsp;&emsp; [assertion](programming_convention.md#SS_2_11_1)  
-&emsp;&emsp;&emsp; [アセンブラ](programming_convention.md#SS_2_11_2)  
-&emsp;&emsp;&emsp; [言語拡張機能](programming_convention.md#SS_2_11_3)  
+&emsp;&emsp; [その他](programming_convention.md#SS_3_11)  
+&emsp;&emsp;&emsp; [assertion](programming_convention.md#SS_3_11_1)  
+&emsp;&emsp;&emsp; [アセンブラ](programming_convention.md#SS_3_11_2)  
+&emsp;&emsp;&emsp; [言語拡張機能](programming_convention.md#SS_3_11_3)  
 
-&emsp;&emsp; [特に重要なプログラミング規約](programming_convention.md#SS_2_12)  
+&emsp;&emsp; [特に重要なプログラミング規約](programming_convention.md#SS_3_12)  
   
   
 
@@ -178,12 +178,12 @@ __この章の構成__
 
 ___
 
-## 型とインスタンス <a id="SS_2_1"></a>
+## 型とインスタンス <a id="SS_3_1"></a>
 
-### 算術型 <a id="SS_2_1_1"></a>
+### 算術型 <a id="SS_3_1_1"></a>
 
-#### 整数型 <a id="SS_2_1_1_1"></a>
-* [整数型](core_lang_spec.md#SS_9_1_5)には、整数の基本型(intやlong等)を直接使わずに、
+#### 整数型 <a id="SS_3_1_1_1"></a>
+* [整数型](core_lang_spec.md#SS_10_1_5)には、整数の基本型(intやlong等)を直接使わずに、
   [cstdint](https://cpprefjp.github.io/reference/cstdint.html)
   で定義されている型エイリアスを使用する。
     * 標準ライブラリやPOSIX等の標準クラスや関数のインターフェースが基本型を直接使用している場合は、
@@ -229,20 +229,20 @@ ___
 ```
 
 
-#### char型 <a id="SS_2_1_1_2"></a>
+#### char型 <a id="SS_3_1_1_2"></a>
 * charはascii文字の保持のみに使用する。
 * char\*をvoid\*の代わりに使わない。
-* charがsingedかunsignedかは処理系に依存するため、char型を[汎整数型](core_lang_spec.md#SS_9_1_4)として扱わない。
+* charがsingedかunsignedかは処理系に依存するため、char型を[汎整数型](core_lang_spec.md#SS_10_1_4)として扱わない。
   8ビット整数には、int8\_tまたは、uint8\_tを使用する。
     * バイトストリームを表現する場合、int8_t\*、int8_t[]、uint8_t\*、uint8_t[]のいずれかを使う。
 
 
-#### std::byte型 <a id="SS_2_1_1_3"></a>
-* intよりもビット幅の小さい組み込み型の演算の結果は[汎整数型拡張](core_lang_spec.md#SS_9_1_8)によりint型になるため、
+#### std::byte型 <a id="SS_3_1_1_3"></a>
+* intよりもビット幅の小さい組み込み型の演算の結果は[汎整数型拡張](core_lang_spec.md#SS_10_1_8)によりint型になるため、
   uint8_tのビット演算の型もintとなる。
   intへの拡張が意図したものかどうかの判別は困難であるため、
   uint8_tインスタンスにビット演算が必要な場合、
-  uint8_tの代わりに下記のようにstd::byte(「[BitmaskType](cpp_idioms.md#SS_11_2_3)」参照)を用いる。
+  uint8_tの代わりに下記のようにstd::byte(「[BitmaskType](cpp_idioms.md#SS_12_2_3)」参照)を用いる。
 
 ```cpp
     //  example/programming_convention/type_ut.cpp 49
@@ -282,9 +282,9 @@ ___
     // std::byte b3 = 0b1000'0001;                       // NG コンパイルエラー
 ```
 
-#### bool型 <a id="SS_2_1_1_4"></a>
+#### bool型 <a id="SS_3_1_1_4"></a>
 * bool型は、bool型リテラル(true/false)やbool型オブジェクトの保持のみに使用する。
-* bool型を[汎整数型](core_lang_spec.md#SS_9_1_4)として扱わない。bool型に++を使用しない(--はコンパイルできない)。
+* bool型を[汎整数型](core_lang_spec.md#SS_10_1_4)として扱わない。bool型に++を使用しない(--はコンパイルできない)。
 
 ```cpp
     //  example/programming_convention/type_ut.cpp 94
@@ -319,16 +319,16 @@ ___
     }
 ```
 
-#### 浮動小数点型 <a id="SS_2_1_1_5"></a>
-* 小数演算に安易に[浮動小数点型](core_lang_spec.md#SS_9_1_12)を使用せず、
-  [浮動小数点型のダイナミックレンジ](core_lang_spec.md#SS_9_1_12_1)が必要な場合のみにこれらの型を使用する。
+#### 浮動小数点型 <a id="SS_3_1_1_5"></a>
+* 小数演算に安易に[浮動小数点型](core_lang_spec.md#SS_10_1_12)を使用せず、
+  [浮動小数点型のダイナミックレンジ](core_lang_spec.md#SS_10_1_12_1)が必要な場合のみにこれらの型を使用する。
   ちなみに銀河系の直径は1e+21メートル程度、プランク長は1.616229e-35メートルであるため、
   銀河から素粒子までのサイズを一つの基本型で表す場合においても、
   floatのダイナミックレンジに収まる。
   従って、floatやdoubleが必要になる場合は極めて限られる。
 
-* [浮動小数点の誤差](core_lang_spec.md#SS_9_1_12_2)は避けられないため、浮動小数点型のインスタンスを==、!=で比較しない。
-  代わりに[浮動小数点の比較](template_meta_programming.md#SS_8_5_1)で定義した関数テンプレートを使用する。
+* [浮動小数点の誤差](core_lang_spec.md#SS_10_1_12_2)は避けられないため、浮動小数点型のインスタンスを==、!=で比較しない。
+  代わりに[浮動小数点の比較](template_meta_programming.md#SS_9_5_1)で定義した関数テンプレートを使用する。
 
 ```cpp
     //  example/programming_convention/float_ut.cpp 11
@@ -358,7 +358,7 @@ ___
 ```
 
 * 一つの式にfloatとdoubleを混在してしまうと、
-  [イプシロン](core_lang_spec.md#SS_9_1_12_3)を使用した比較の定義ができなくなるので、
+  [イプシロン](core_lang_spec.md#SS_10_1_12_3)を使用した比較の定義ができなくなるので、
   一つの式に複数の浮動小数型のインスタンスを混在させない。
 
 ```cpp
@@ -410,20 +410,20 @@ ___
     ASSERT_TRUE(is_equal(0.05F, a + b));  // OK リテラルに型を指定して、引数の型を統一
 ```
 
-* INFや、NANを演算で使用しない(「[浮動小数点の演算エラー](core_lang_spec.md#SS_9_1_12_4)」参照)。
-* [汎整数型](core_lang_spec.md#SS_9_1_4)の演算とは違い、0除算等の[浮動小数点の演算エラー](core_lang_spec.md#SS_9_1_12_4)は、
+* INFや、NANを演算で使用しない(「[浮動小数点の演算エラー](core_lang_spec.md#SS_10_1_12_4)」参照)。
+* [汎整数型](core_lang_spec.md#SS_10_1_4)の演算とは違い、0除算等の[浮動小数点の演算エラー](core_lang_spec.md#SS_10_1_12_4)は、
   通常、プログラム終了シグナルを発生させないため、
   浮動小数点演算のエラーを捕捉する必要がある場合(ほとんどの場合、そうなる)は、
   `std::fetestexcept()`、`std::isnan()`、`std::isinf()`等を使用してエラーを捕捉する。
 
 * 扱うダイナミックレンジに収まる限り、安易に浮動小数点を使わず、
-  代わりに[固定小数点クラス](template_meta_programming.md#SS_8_5_2)や[有理数クラス](template_meta_programming.md#SS_8_5_4)を使用する。
+  代わりに[固定小数点クラス](template_meta_programming.md#SS_9_5_2)や[有理数クラス](template_meta_programming.md#SS_9_5_4)を使用する。
 
 
-### enum <a id="SS_2_1_2"></a>
+### enum <a id="SS_3_1_2"></a>
 * C++の強力な型システムや、コンパイラの静的解析機能(switchでのcase抜け)を効果的に使用するために、
   一連の定数の列挙にはenumを使用する。
-* 使用範囲や方法が明示しづらく、且つ整数型への[算術変換](core_lang_spec.md#SS_9_1_6)が行われてしまう旧来のenum
+* 使用範囲や方法が明示しづらく、且つ整数型への[算術変換](core_lang_spec.md#SS_10_1_6)が行われてしまう旧来のenum
   (非スコープドenum)は、一部の例外を除き定義しない。
   代わりに、より型安全なスコープドenumを使用する。
 
@@ -518,30 +518,30 @@ ___
 ```
 
 * アプリケーションの設定ファイルに保存された情報を復元させるような場合や、
-  「[BitmaskType](cpp_idioms.md#SS_11_2_3)」を使用する場合を除き、enumへのキャストをしない。
+  「[BitmaskType](cpp_idioms.md#SS_12_2_3)」を使用する場合を除き、enumへのキャストをしない。
 * クラスのstatic constの整数定数の代わりにenumを使うことは、
   C++言語仕様やコンパイラの機能が不十分だった頃のテクニックであり、もはや不要である。
-  代わりにstatic constexprインスタンス(「[constexpr関数](core_lang_spec.md#SS_9_5_3)」参照)を使用する。
+  代わりにstatic constexprインスタンス(「[constexpr関数](core_lang_spec.md#SS_10_5_3)」参照)を使用する。
   こうすることで定数の型を明示できる。
 
 
-### bit field <a id="SS_2_1_3"></a>
+### bit field <a id="SS_3_1_3"></a>
 * ハードウエアレジスタにアクセスをする目的でのみ使用する。
 * bit fieldの型は、unsigned intにする。
 
-### class <a id="SS_2_1_4"></a>
-* 「[クラスとオブジェクト](programming_convention.md#SS_2_2)」を参照せよ。
+### class <a id="SS_3_1_4"></a>
+* 「[クラスとオブジェクト](programming_convention.md#SS_3_2)」を参照せよ。
 
-### struct <a id="SS_2_1_5"></a>
-* メンバ変数を持つ構造体は、[POD](core_lang_spec.md#SS_9_4_5)としてのみ使用する。
+### struct <a id="SS_3_1_5"></a>
+* メンバ変数を持つ構造体は、[POD](core_lang_spec.md#SS_10_4_5)としてのみ使用する。
 * メンバ変数を持つ構造体を基底クラスとした継承をしない。
   従ってそのような構造体は常にfinalであるが、finalの明示はしない。
 * メンバ変数(static constやstatic constexprメンバは定数とする)を持たない構造体は、
   templateや非スコープドenumのスコーピング
-  (「[enum](programming_convention.md#SS_2_1_2)」や「[enum](core_lang_spec.md#SS_9_3_1)」参照)等に使用しても良い。
+  (「[enum](programming_convention.md#SS_3_1_2)」や「[enum](core_lang_spec.md#SS_10_3_1)」参照)等に使用しても良い。
 * コンストラクタ以外のメンバ関数を定義しない。
-    * [ディープコピー](cpp_idioms.md#SS_11_10_2)(「[コンストラクタ](programming_convention.md#SS_2_2_4_2)」参照)が必要な型は、structでなくclassで表す。
-    * デフォルトコンストラクタを除く[特殊メンバ関数](core_lang_spec.md#SS_9_6_1)に対して、
+    * [ディープコピー](cpp_idioms.md#SS_12_10_2)(「[コンストラクタ](programming_convention.md#SS_3_2_4_2)」参照)が必要な型は、structでなくclassで表す。
+    * デフォルトコンストラクタを除く[特殊メンバ関数](core_lang_spec.md#SS_10_6_1)に対して、
       = defaultの明示をしない。
 
 ```cpp
@@ -579,7 +579,7 @@ ___
     };
 ```
 
-### union <a id="SS_2_1_6"></a>
+### union <a id="SS_3_1_6"></a>
 * ハードウエアレジスタにアクセスをする目的以外で使用しない(以下のような使い方のみ認められる)。
 
 ```cpp
@@ -601,25 +601,25 @@ ___
 ```
 
 * 上記のようなunionはランタイム依存性が強いため、それへの依存を最小にする。
-  従って、unionの定義を外部パッケージに公開(「[パッケージの実装と公開](programming_convention.md#SS_2_7_1)」参照)しない。
+  従って、unionの定義を外部パッケージに公開(「[パッケージの実装と公開](programming_convention.md#SS_3_7_1)」参照)しない。
 
 * 上記以外でunionのような機能が必要な場合、
-  [std::variant](stdlib_and_concepts.md#SS_10_10)(「[std::variantとジェネリックラムダ](template_meta_programming.md#SS_8_7_2_2)」参照)を使用する
+  [std::variant](stdlib_and_concepts.md#SS_11_10)(「[std::variantとジェネリックラムダ](template_meta_programming.md#SS_9_7_2_2)」参照)を使用する
   (std::anyはunionの代替えにはならないので、このような場合には使用しない)。
 
-### 配列 <a id="SS_2_1_7"></a>
+### 配列 <a id="SS_3_1_7"></a>
 * 列型オブジェクトは以下で述べるような問題や、
-  [AAAスタイル](cpp_idioms.md#SS_11_9_1)で生成できない等の様々な問題を起こしやすいため、
+  [AAAスタイル](cpp_idioms.md#SS_12_9_1)で生成できない等の様々な問題を起こしやすいため、
   使用を可避できない場合を除き使用しない。代わりに`std::array`を使う。
 * new[]を使用しない。new[]で生成した配列オブジェクトはdelete[]で解放しなければならない。
   これは発見困難なバグの発生源になりやすい。
-  可変長配列が必要な場合は、std::vectorを使用する(「[new](programming_convention.md#SS_2_5_6_1)」参照)。
+  可変長配列が必要な場合は、std::vectorを使用する(「[new](programming_convention.md#SS_3_5_6_1)」参照)。
   固定長配列を動的に確保する場合は、std::arrayをnewする。
-* 配列からポインタへの暗黙の型変換をしない(「[キャスト、暗黙の型変換](programming_convention.md#SS_2_5_10)」参照)。
+* 配列からポインタへの暗黙の型変換をしない(「[キャスト、暗黙の型変換](programming_convention.md#SS_3_5_10)」参照)。
   特に、オブジェクトの配列をそのオブジェクトの基底クラスへのポインタに代入しないことは重要である
-  (「[スライシング](programming_convention.md#SS_2_2_7_1)」参照)。
+  (「[スライシング](programming_convention.md#SS_3_2_7_1)」参照)。
 * 関数の仮引数を一見、配列に見える型にしない
-  (「[実引数/仮引数](programming_convention.md#SS_2_3_4)」参照)。
+  (「[実引数/仮引数](programming_convention.md#SS_3_3_4)」参照)。
 * char型の配列を文字列リテラルで初期化する場合、配列の長さを指定しない。
 
 ```cpp
@@ -633,10 +633,10 @@ ___
     #endif
 ```
 
-* 配列の全要素にアクセスするような繰り返し処理には[範囲for文](core_lang_spec.md#SS_9_9_2)を使用する。
+* 配列の全要素にアクセスするような繰り返し処理には[範囲for文](core_lang_spec.md#SS_10_9_2)を使用する。
 
 
-### 型エイリアス <a id="SS_2_1_8"></a>
+### 型エイリアス <a id="SS_3_1_8"></a>
 * Cとシェアされる型エイリアスを除き、typedefではなくusingを使用する。
 
 ```cpp
@@ -677,15 +677,15 @@ ___
 ```
 
 
-### const/constexprインスタンス <a id="SS_2_1_9"></a>
+### const/constexprインスタンス <a id="SS_3_1_9"></a>
 * インスタンス、インスタンスへのポインタ、インスタンスへのリファレンス等に対して、
-    * [constexpr変数](core_lang_spec.md#SS_9_5_2)をパラメータにした場合、コンパイル時に定数として評価できる関数は、
-      [constexpr関数](core_lang_spec.md#SS_9_5_3)として宣言する。
-    * コンパイル時に必ず定数として評価したい[constexpr関数](core_lang_spec.md#SS_9_5_3)には、
-      [consteval](core_lang_spec.md#SS_9_5_7)を使用する。
-    * constexprにはできないが、const(「[constインスタンス](core_lang_spec.md#SS_9_4_12)」にはできるインスタンスは、
+    * [constexpr変数](core_lang_spec.md#SS_10_5_2)をパラメータにした場合、コンパイル時に定数として評価できる関数は、
+      [constexpr関数](core_lang_spec.md#SS_10_5_3)として宣言する。
+    * コンパイル時に必ず定数として評価したい[constexpr関数](core_lang_spec.md#SS_10_5_3)には、
+      [consteval](core_lang_spec.md#SS_10_5_7)を使用する。
+    * constexprにはできないが、const(「[constインスタンス](core_lang_spec.md#SS_10_4_12)」にはできるインスタンスは、
       constとして定義する。関数の仮引数になっているリファレンスやポインタをconstにすることは特に重要である
-    * 文字列リテラルのアドレスを非constポインタ型変数に代入しない(「[リテラル](core_lang_spec.md#SS_9_2)」参照)。
+    * 文字列リテラルのアドレスを非constポインタ型変数に代入しない(「[リテラル](core_lang_spec.md#SS_10_2)」参照)。
     * イテレータにおいても、可能な場合は、イテレータをconstするか、const_iteratorを使う。
 
 ```cpp
@@ -726,7 +726,7 @@ ___
     }
 ```
 
-* constは[west-const](cpp_idioms.md#SS_11_9_3)に従って記述する。
+* constは[west-const](cpp_idioms.md#SS_12_9_3)に従って記述する。
 
 ```cpp
     //  example/programming_convention/type_const_ut.cpp 52
@@ -750,7 +750,7 @@ ___
 ```
 
 
-### リテラル <a id="SS_2_1_10"></a>
+### リテラル <a id="SS_3_1_10"></a>
 * ヌルポインタを表すポインタリテラルとして、nullptrを使用する(0やNULLを使用しない)。
 
 ```cpp
@@ -775,8 +775,8 @@ ___
 ```
 
 * 文字列リテラル("xxx")はconstオブジェクトとして扱う
-  (「[const/constexprインスタンス](programming_convention.md#SS_2_1_9)」、「[std::string型リテラル](core_lang_spec.md#SS_9_2_6_2)」参照)。
-* 長い[汎整数型](core_lang_spec.md#SS_9_1_4)リテラルを使用する場合は、適切に区切りを入れる(C++14)。
+  (「[const/constexprインスタンス](programming_convention.md#SS_3_1_9)」、「[std::string型リテラル](core_lang_spec.md#SS_10_2_6_2)」参照)。
+* 長い[汎整数型](core_lang_spec.md#SS_10_1_4)リテラルを使用する場合は、適切に区切りを入れる(C++14)。
 * ビットマスク等2進数を使用した方が直感的な場合には2進数リテラルを使用する(C++14)。
 
 ```cpp
@@ -809,9 +809,9 @@ ___
     auto b = 432L;  // OK
 ```
 
-#### 生文字列リテラル <a id="SS_2_1_10_1"></a>
+#### 生文字列リテラル <a id="SS_3_1_10_1"></a>
 * 正規表現を表す文字列リテラルを使用する場合、文字列内のエスケープシーケンスをエスケープするのでなく、
-  には[生文字列リテラル](core_lang_spec.md#SS_9_2_1)を使用する。これにより正規表現の可読性が向上する。
+  には[生文字列リテラル](core_lang_spec.md#SS_10_2_1)を使用する。これにより正規表現の可読性が向上する。
 
 ```cpp
     //  example/programming_convention/raw_literal_ut.cpp 9
@@ -845,9 +845,9 @@ ___
 ```
 
 
-### 型推論 <a id="SS_2_1_11"></a>
-#### auto <a id="SS_2_1_11_1"></a>
-* [AAAスタイル](cpp_idioms.md#SS_11_9_1)に従い適切にautoを使用する。
+### 型推論 <a id="SS_3_1_11"></a>
+#### auto <a id="SS_3_1_11_1"></a>
+* [AAAスタイル](cpp_idioms.md#SS_12_9_1)に従い適切にautoを使用する。
 
 ```cpp
     //  example/programming_convention/type_ut.cpp 419
@@ -905,7 +905,7 @@ ___
 ```
 
 * autoと= {}を使用した変数の宣言には以下のような紛らわしさがあるため、
-  そのような記述を行わない(「[インスタンスの初期化](programming_convention.md#SS_2_1_12)」参照)。
+  そのような記述を行わない(「[インスタンスの初期化](programming_convention.md#SS_3_1_12)」参照)。
 
 ```cpp
     //  example/programming_convention/type_ut.cpp 490
@@ -925,7 +925,7 @@ ___
     static_assert(std::is_same_v<decltype(f), std::initializer_list<int>>, "type not same");
 ```
 
-* auto、[decltype](core_lang_spec.md#SS_9_11_15), decltype(auto)の微妙な違いに気を付ける。
+* auto、[decltype](core_lang_spec.md#SS_10_11_15), decltype(auto)の微妙な違いに気を付ける。
 
 ```cpp
     //  example/programming_convention/type_ut.cpp 512
@@ -970,14 +970,14 @@ ___
     }
 ```
 
-* 通常の関数の定義に「[autoパラメータによる関数テンプレートの簡易定義](core_lang_spec.md#SS_9_11_13)」の使用を避ける。
-  [autoパラメータによる関数テンプレートの簡易定義](core_lang_spec.md#SS_9_11_13)を使ったインライン関数は柔軟すぎる。
+* 通常の関数の定義に「[autoパラメータによる関数テンプレートの簡易定義](core_lang_spec.md#SS_10_11_13)」の使用を避ける。
+  [autoパラメータによる関数テンプレートの簡易定義](core_lang_spec.md#SS_10_11_13)を使ったインライン関数は柔軟すぎる。
 
 
-### インスタンスの初期化 <a id="SS_2_1_12"></a>
-* 関数内のオブジェクトは、出来る限り[AAAスタイル](cpp_idioms.md#SS_11_9_1)を用いて宣言し、同時に初期化する。
-* [算術型](core_lang_spec.md#SS_9_1_3)の宣言に[AAAスタイル](cpp_idioms.md#SS_11_9_1)が使えない場合、
-  「代入演算子を伴わない[一様初期化](core_lang_spec.md#SS_9_6_6)」を使用する。
+### インスタンスの初期化 <a id="SS_3_1_12"></a>
+* 関数内のオブジェクトは、出来る限り[AAAスタイル](cpp_idioms.md#SS_12_9_1)を用いて宣言し、同時に初期化する。
+* [算術型](core_lang_spec.md#SS_10_1_3)の宣言に[AAAスタイル](cpp_idioms.md#SS_12_9_1)が使えない場合、
+  「代入演算子を伴わない[一様初期化](core_lang_spec.md#SS_10_6_6)」を使用する。
   「代入演算子を伴う一様初期化」、「()、=による初期化」を使用しない。
 
 ```cpp
@@ -991,8 +991,8 @@ ___
     auto    a5 = int32_t{0};  // OK AAA且つ一様初期
 ```
 
-* リファレンスやポインタの宣言に[AAAスタイル](cpp_idioms.md#SS_11_9_1)が使えない場合、
-  「代入演算子を伴わない[一様初期化](core_lang_spec.md#SS_9_6_6)」か「=による初期化」を使用する。
+* リファレンスやポインタの宣言に[AAAスタイル](cpp_idioms.md#SS_12_9_1)が使えない場合、
+  「代入演算子を伴わない[一様初期化](core_lang_spec.md#SS_10_6_6)」か「=による初期化」を使用する。
   「代入演算子を伴う一様初期化」、「()による初期化」を使用しない。
 
 ```cpp
@@ -1012,8 +1012,8 @@ ___
     auto*    p5 = &a0;    // OK AAAの場合は一様初期を使わなくても問題ない
 ```
 
-* 構造体やクラス型オブジェクトの宣言に[AAAスタイル](cpp_idioms.md#SS_11_9_1)が使えない場合、
-    * 「代入演算子を伴わない[一様初期化](core_lang_spec.md#SS_9_6_6)」を使用する。
+* 構造体やクラス型オブジェクトの宣言に[AAAスタイル](cpp_idioms.md#SS_12_9_1)が使えない場合、
+    * 「代入演算子を伴わない[一様初期化](core_lang_spec.md#SS_10_6_6)」を使用する。
     * 上記では意図したコンストラクタが呼び出せない場合にのみ「()による初期化」を使用する。
   ただし、std::string、std::string_viewに関しては「 = "xxx"」を使用しても良い。
 
@@ -1075,7 +1075,7 @@ ___
     ASSERT_EQ(10, vec3_s.size());
 ```
 
-* decltypeによるオブジェクトの宣言は、[AAAスタイル](cpp_idioms.md#SS_11_9_1)と同様に行う。
+* decltypeによるオブジェクトの宣言は、[AAAスタイル](cpp_idioms.md#SS_12_9_1)と同様に行う。
 
 ```cpp
     //  example/programming_convention/type_ut.cpp 674
@@ -1094,7 +1094,7 @@ ___
     static_assert(std::is_same_v<decltype(f), int&>);
 ```
 
-* 配列の宣言には、「代入演算子を伴わない[一様初期化](core_lang_spec.md#SS_9_6_6)」を使用する。
+* 配列の宣言には、「代入演算子を伴わない[一様初期化](core_lang_spec.md#SS_10_6_6)」を使用する。
   char[]に関しては、「代入演算子を伴わない一様初期化」か「 = "xxx"」を使用する。
 
 ```cpp
@@ -1112,7 +1112,7 @@ ___
     char c_str4[] = "12";              // OK
 ```
 
-* 宣言時にポインタ変数の初期値が決まらない場合、nullptrで初期化する(「[リテラル](core_lang_spec.md#SS_9_2)」参照)。
+* 宣言時にポインタ変数の初期値が決まらない場合、nullptrで初期化する(「[リテラル](core_lang_spec.md#SS_10_2)」参照)。
 
 ```cpp
     //  example/programming_convention/type_ut.cpp 720
@@ -1127,9 +1127,9 @@ ___
 * 初期化順序が不定になるため、
   別のコンパイル単位で定義された静的なオブジェクトに依存した静的オブジェクトの初期化を行わない
   (同じファイルの上方にある静的なオブジェクトや、
-  [Singleton](design_pattern.md#SS_7_1_1)に依存した初期化を行うことには問題はない)。
+  [Singleton](design_pattern.md#SS_8_1_1)に依存した初期化を行うことには問題はない)。
 * コンパイル時に値が確定する「基本型」や「コンストラクタがconstexprであるクラス」のインスタンスは、
-  constexpr(「[const/constexprインスタンス](programming_convention.md#SS_2_1_9)」参照)と宣言する。
+  constexpr(「[const/constexprインスタンス](programming_convention.md#SS_3_1_9)」参照)と宣言する。
 
 ```cpp
     //  example/programming_convention/type_ut.cpp 732
@@ -1167,10 +1167,10 @@ ___
 
 
 
-### rvalue <a id="SS_2_1_13"></a>
-* 関数の仮引数以外のリファレンスで[rvalue](core_lang_spec.md#SS_9_7_1_2)をバインドしない
-  (「[オブジェクトのライフタイム](programming_convention.md#SS_2_2_7_3)」参照)。
-* rvalueの内部ハンドルを使用しない(「[std::string_viewの使用制限](programming_convention.md#SS_2_10_1_4)」参照)。
+### rvalue <a id="SS_3_1_13"></a>
+* 関数の仮引数以外のリファレンスで[rvalue](core_lang_spec.md#SS_10_7_1_2)をバインドしない
+  (「[オブジェクトのライフタイム](programming_convention.md#SS_3_2_7_3)」参照)。
+* rvalueの内部ハンドルを使用しない(「[std::string_viewの使用制限](programming_convention.md#SS_3_10_1_4)」参照)。
 
 ```cpp
     //  example/programming_convention/type_ut.cpp 787
@@ -1184,44 +1184,44 @@ ___
 * 非constなリファレンスでrvalueをバインドしない。
 
 
-## クラスとオブジェクト <a id="SS_2_2"></a>
-### ファイルの使用方法 <a id="SS_2_2_1"></a>
+## クラスとオブジェクト <a id="SS_3_2"></a>
+### ファイルの使用方法 <a id="SS_3_2_1"></a>
 * 下記の例外を除き、一つのクラスはそれを宣言、定義する1つのヘッダファイルと、
   一つの.cppファイルによって構成する。
     * ファイル外部から使用されないクラスは、一つの.cppファイルの無名名前空間で宣言、定義する。
     * ファイル外部から使用されるインラインクラス(クラステンプレート等)は、
       一つのヘッダファイルで宣言、定義する。
     * 「一つのヘッダファイル(a.h)と、一つの.cpp(a.cpp)で構成されたクラスA」のみをサポートするクラス
-      (Aのインターフェースや実装専用に定義されたクラス(「[Pimpl](cpp_idioms.md#SS_11_2_1)」参照))は、
+      (Aのインターフェースや実装専用に定義されたクラス(「[Pimpl](cpp_idioms.md#SS_12_2_1)」参照))は、
       a.h、a.cppで宣言、定義する。
 
-### クラスの規模 <a id="SS_2_2_2"></a>
-#### 行数 <a id="SS_2_2_2_1"></a>
+### クラスの規模 <a id="SS_3_2_2"></a>
+#### 行数 <a id="SS_3_2_2_1"></a>
 * それ以外に方法がない場合を除き、ヘッダファイル内のクラスの定義、
   宣言はコメントを含め200行程度に収める。
 * クラス内定義関数が大きくなると下記のような問題が発生しやすくなるため、
   10行を超える関数はクラス内で定義しない。
     * 関数のインポートする外部シンボルが多くなり、
       このクラスを使用する別のクラスに不要な依存関係を作ってしまう
-      (「[インターフェース分離の原則(ISP)](solid.md#SS_6_4)」参照)。
+      (「[インターフェース分離の原則(ISP)](solid.md#SS_7_4)」参照)。
     * クラスの定義が間延びして、クラスの全体構造を把握することが困難になる。
 
-#### メンバの数 <a id="SS_2_2_2_2"></a>
+#### メンバの数 <a id="SS_3_2_2_2"></a>
 * それ以外に方法がない場合を除き、publicメンバ関数の数は、最大7個程度に収める
   (ただし、オーバーロードにより同じ名前を持つ関数群は、全部で1個とカウントする)。
 * オブジェクトの状態を保持するメンバ変数の数は、最大4個程度に留める。
   constやconstexprメンバ・インスタンスは定数(状態を保持するメンバ変数ではない)であるため、
   この数に含めない。
 
-#### 凝集性 <a id="SS_2_2_2_3"></a>
+#### 凝集性 <a id="SS_3_2_2_3"></a>
 * 単なるデータホルダー(アプリケーションの設定データを保持するようなクラス等)や、
   ほとんどの振る舞いを他のクラスに委譲するようなクラスを除き、
-  [凝集性](cpp_idioms.md#SS_11_12_14)が高くなるように設計する。
-* [クラス凝集性のクライテリア](cpp_idioms.md#SS_11_7_3)に従い、凝集性を判断し、凝集性が著しく低いクラスを作らないようにする。
+  [凝集性](cpp_idioms.md#SS_12_12_14)が高くなるように設計する。
+* [クラス凝集性のクライテリア](cpp_idioms.md#SS_12_7_3)に従い、凝集性を判断し、凝集性が著しく低いクラスを作らないようにする。
 
 
 
-### アクセスレベルと隠蔽化 <a id="SS_2_2_3"></a>
+### アクセスレベルと隠蔽化 <a id="SS_3_2_3"></a>
 * アクセスレベルは、特別な理由がない限り、上からpublic、protected、privateの順番で明示する。
 
 ```cpp
@@ -1240,7 +1240,7 @@ ___
 
 * 全てのメンバ変数はprivateにする。
     * メンバ変数にアクセスしたい場合は、Accessorメンバ関数を経由させる
-      (「[Accessor](cpp_idioms.md#SS_11_1_5)」参照)。その場合でもsetterは控えめに使用する。
+      (「[Accessor](cpp_idioms.md#SS_12_1_5)」参照)。その場合でもsetterは控えめに使用する。
     * 派生クラスから基底クラスの変数の値が必要になる場合は、protectedなAccessorを定義する。
     * 単体テスト用クラスでは、protectedメンバ変数を定義してよい。
 * アクセスレベルによるカプセル化が破壊されるため、
@@ -1309,7 +1309,7 @@ ___
     bool operator!=(Integer lhs, Integer rhs) noexcept { return !(lhs == rhs); }
 ```
 
-* [NVI(non virtual interface)](cpp_idioms.md#SS_11_1_7)に従う。従って、
+* [NVI(non virtual interface)](cpp_idioms.md#SS_12_1_7)に従う。従って、
   virtualな関数はprivateかprotectedと宣言し、それをpublicな非仮想メンバ関数から呼び出す。
 
 ```cpp
@@ -1336,9 +1336,9 @@ ___
     };
 ```
 
-### メンバ関数 <a id="SS_2_2_4"></a>
+### メンバ関数 <a id="SS_3_2_4"></a>
 * 可能な場合(メンバに直接アクセスしない場合)、メンバ関数をstaticにする。
-* コンパイル時に戻り値が確定するメンバ関数は[constexpr関数](core_lang_spec.md#SS_9_5_3)と宣言する。
+* コンパイル時に戻り値が確定するメンバ関数は[constexpr関数](core_lang_spec.md#SS_10_5_3)と宣言する。
 * オブジェクトの状態を変えないメンバ関数は、constと宣言する。
     * getter(下記の例ではGetString)はconstと宣言する。
     * 下記のSetPtrのような関数はconstにしない。
@@ -1406,11 +1406,11 @@ ___
     };
 ```
 
-* 非静的メンバの[ハンドル](cpp_idioms.md#SS_11_12_8)を返すメンバ関数を持つオブジェクトが
-  [rvalue](core_lang_spec.md#SS_9_7_1_2)である場合、
+* 非静的メンバの[ハンドル](cpp_idioms.md#SS_12_12_8)を返すメンバ関数を持つオブジェクトが
+  [rvalue](core_lang_spec.md#SS_10_7_1_2)である場合、
   そのオブジェクトからその関数を呼び出した戻り値(メンバへのハンドル)を変数で保持しない
-  (そのハンドルは[danglingリファレンス](cpp_idioms.md#SS_11_11_2)/[danglingポインタ](cpp_idioms.md#SS_11_11_3)になっている)。
-  そういった使用方法が必要ならばlvalue修飾、[rvalue修飾](core_lang_spec.md#SS_9_8_7_1)を用いたオーバーロード関数を定義する。
+  (そのハンドルは[danglingリファレンス](cpp_idioms.md#SS_12_11_2)/[danglingポインタ](cpp_idioms.md#SS_12_11_3)になっている)。
+  そういった使用方法が必要ならばlvalue修飾、[rvalue修飾](core_lang_spec.md#SS_10_8_7_1)を用いたオーバーロード関数を定義する。
 
 ```cpp
     //  example/programming_convention/member_func_ut.cpp 84
@@ -1421,8 +1421,8 @@ ___
 ```
 
 
-#### 特殊メンバ関数 <a id="SS_2_2_4_1"></a>
-* [特殊メンバ関数](core_lang_spec.md#SS_9_6_1)
+#### 特殊メンバ関数 <a id="SS_3_2_4_1"></a>
+* [特殊メンバ関数](core_lang_spec.md#SS_10_6_1)
     * デフォルトコンストラクタ
     * copyコンストラクタ
     * copy代入演算子(operator =)
@@ -1462,16 +1462,16 @@ ___
   プログラマがそのクラスのデストラクタを定義する。
   この場合、コンパイラが生成するcopyコンストラクタ、copy代入演算子、moveコンストラクタ、
   move代入演算子では機能が不十分であることが予測されるため、
-  これらを使用しない(「[Copy-And-Swap](cpp_idioms.md#SS_11_1_3)」参照)。
+  これらを使用しない(「[Copy-And-Swap](cpp_idioms.md#SS_12_1_3)」参照)。
 
 
-#### コンストラクタ <a id="SS_2_2_4_2"></a>
+#### コンストラクタ <a id="SS_3_2_4_2"></a>
 * クラスが複数の初期化方法を提供する場合でも、
   デフォルト引数を使用し、できる限りコンストラクタを一つに集約する。
-* 一つのコンストラクタに集約できない場合、[委譲コンストラクタ](core_lang_spec.md#SS_9_6_1_3)等により処理の重複を防ぐ。
-  [非静的なメンバ変数](programming_convention.md#SS_2_2_5_2)処理の重複を避けることは特に重要である。
+* 一つのコンストラクタに集約できない場合、[委譲コンストラクタ](core_lang_spec.md#SS_10_6_1_3)等により処理の重複を防ぐ。
+  [非静的なメンバ変数](programming_convention.md#SS_3_2_5_2)処理の重複を避けることは特に重要である。
 * オブジェクトの初期化が完了するまでは派生クラスの仮想関数呼び出し等の
-  [RTTI](programming_convention.md#SS_2_5_9)機能を使うことはできないため(「[ポリモーフィックなクラス](core_lang_spec.md#SS_9_4_8)」参照)、
+  [RTTI](programming_convention.md#SS_3_5_9)機能を使うことはできないため(「[ポリモーフィックなクラス](core_lang_spec.md#SS_10_4_8)」参照)、
   コンストラクタの中でRTTI機能を使わない(デストラクタでも同様)。
   以下のコードはコンストラクタ内で仮想関数呼び出しを行ったため、想定通りの動作にならない例である。
 
@@ -1516,23 +1516,23 @@ ___
     // * Base::~Base()でのName()の呼び出しは、Derived::Name()ではなくBase::Name()が呼ばれる。
 ```
 
-* コンストラクタからのエクセプションを発生をできるだけ避ける([エクセプション処理](programming_convention.md#SS_2_3_9))。
+* コンストラクタからのエクセプションを発生をできるだけ避ける([エクセプション処理](programming_convention.md#SS_3_3_9))。
 * コンストラクタのボディの使用してのメンバ変数の初期化はバグにつながりやすいため、
-  この方法を避ける(「[非静的なメンバ変数](programming_convention.md#SS_2_2_5_2)」参照)。
+  この方法を避ける(「[非静的なメンバ変数](programming_convention.md#SS_3_2_5_2)」参照)。
 * クラスが解放責務を持つポインタ型メンバ変数を持つならば、copyコンストラクタ、
-  copy代入演算子に対して以下のいずれかを行い、[シャローコピー](cpp_idioms.md#SS_11_10_1)が行われないようにする
+  copy代入演算子に対して以下のいずれかを行い、[シャローコピー](cpp_idioms.md#SS_12_10_1)が行われないようにする
   (このルールはファイルディスクリプタ等のリソース管理をするクラス全般に当てはまる)。
-    * [ディープコピー](cpp_idioms.md#SS_11_10_2)をさせる。
-    * = deleteする(「[特殊メンバ関数](core_lang_spec.md#SS_9_6_1)」参照)。
+    * [ディープコピー](cpp_idioms.md#SS_12_10_2)をさせる。
+    * = deleteする(「[特殊メンバ関数](core_lang_spec.md#SS_10_6_1)」参照)。
 
-  またこの場合、moveコンストラクタ、move代入演算子の定義を検討する(「[Copy-And-Swap](cpp_idioms.md#SS_11_1_3)」参照)。
+  またこの場合、moveコンストラクタ、move代入演算子の定義を検討する(「[Copy-And-Swap](cpp_idioms.md#SS_12_1_3)」参照)。
 
-* 非explicitなコンストラクタによる[暗黙の型変換](core_lang_spec.md#SS_9_6_2_2)
+* 非explicitなコンストラクタによる[暗黙の型変換](core_lang_spec.md#SS_10_6_2_2)
   が不要なクラスのコンストラクタに関しては、下記の目的のためにexplicitと宣言する。
 
-    * 仮引数一つのコンストラクタに関しては、[暗黙の型変換抑止](core_lang_spec.md#SS_9_6_2_3)する。
+    * 仮引数一つのコンストラクタに関しては、[暗黙の型変換抑止](core_lang_spec.md#SS_10_6_2_3)する。
     * 仮引数二つ以上のコンストラクタに関しては、
-      代入演算子での[一様初期化](core_lang_spec.md#SS_9_6_6)ができないようにする。  
+      代入演算子での[一様初期化](core_lang_spec.md#SS_10_6_6)ができないようにする。  
 
 ```cpp
     //  example/programming_convention/member_func_ut.cpp 147
@@ -1597,19 +1597,19 @@ ___
 ```
 
 * 派生クラスが基底クラスの全コンストラクタを必要とする場合、
-  [継承コンストラクタ](core_lang_spec.md#SS_9_6_1_2)を使用する。
+  [継承コンストラクタ](core_lang_spec.md#SS_10_6_1_2)を使用する。
 
 * デフォルト引数はインターフェース関数の呼び出しを簡略化する目的で使用するべきであるため、
   private関数にデフォルト引数を持たせない。
 
 
-#### copyコンストラクタ、copy代入演算子 <a id="SS_2_2_4_3"></a>
-* copyコンストラクタ、copy代入演算子は[copyセマンティクス](cpp_idioms.md#SS_11_5_2)に従わせる。
+#### copyコンストラクタ、copy代入演算子 <a id="SS_3_2_4_3"></a>
+* copyコンストラクタ、copy代入演算子は[copyセマンティクス](cpp_idioms.md#SS_12_5_2)に従わせる。
 * copyコンストラクタ、copy代入演算子の引数はconstリファレンスにする。
-* [RVO(Return Value Optimization)](core_lang_spec.md#SS_9_15_1)により、
+* [RVO(Return Value Optimization)](core_lang_spec.md#SS_10_15_1)により、
   copyコンストラクタの呼び出しは省略されることがあるため、
   copyコンストラクタ、copy代入演算子はコピー以外のことをしない。
-* copy代入演算子は[lvalue修飾](core_lang_spec.md#SS_9_8_7_2)をする。
+* copy代入演算子は[lvalue修飾](core_lang_spec.md#SS_10_8_7_2)をする。
 
 ```cpp
     //  example/programming_convention/member_func_ut.cpp 233
@@ -1672,26 +1672,26 @@ ___
 ```
 
 
-#### moveコンストラクタ、move代入演算子 <a id="SS_2_2_4_4"></a>
-* moveコンストラクタ、move代入演算子は[moveセマンティクス](cpp_idioms.md#SS_11_5_3)に従わせる。
+#### moveコンストラクタ、move代入演算子 <a id="SS_3_2_4_4"></a>
+* moveコンストラクタ、move代入演算子は[moveセマンティクス](cpp_idioms.md#SS_12_5_3)に従わせる。
 * moveコンストラクタ、move代入演算子はnoexceptをつけて宣言し、エクセプションを発生させない。
   noexceptでないmoveコンストラクタ、
   move代入演算子を持つクラスを標準ライブラリのコンテナのtemplate引数として使用した場合、
   moveの代わりにcopyが使用され、パフォーマンス問題を引き起こす場合がある。
-* move代入演算子はlvalue修飾(「[copyコンストラクタ、copy代入演算子](programming_convention.md#SS_2_2_4_3)」参照)をする。
+* move代入演算子はlvalue修飾(「[copyコンストラクタ、copy代入演算子](programming_convention.md#SS_3_2_4_3)」参照)をする。
 
 
 
-#### 初期化子リストコンストラクタ <a id="SS_2_2_4_5"></a>
-* [初期化子リストコンストラクタ](core_lang_spec.md#SS_9_6_1_1)は、コンテナクラスの初期化のためのみに定義する。
+#### 初期化子リストコンストラクタ <a id="SS_3_2_4_5"></a>
+* [初期化子リストコンストラクタ](core_lang_spec.md#SS_10_6_1_1)は、コンテナクラスの初期化のためのみに定義する。
 * 初期化子リストコンストラクタと同じ仮引数を取り得るコンストラクタを定義しない。
 
-#### デストラクタ <a id="SS_2_2_4_6"></a>
-* デストラクタの中で[RTTI](programming_convention.md#SS_2_5_9)機能を使わない(「[コンストラクタ](programming_convention.md#SS_2_2_4_2)」参照)。
+#### デストラクタ <a id="SS_3_2_4_6"></a>
+* デストラクタの中で[RTTI](programming_convention.md#SS_3_5_9)機能を使わない(「[コンストラクタ](programming_convention.md#SS_3_2_4_2)」参照)。
 * デストラクタはnoexceptであり、throwするとプログラムが終了するため、デストラクタでthrowしない。
 
-#### オーバーライド <a id="SS_2_2_4_7"></a>
-* [オーバーライドとオーバーロードの違い](cpp_idioms.md#SS_11_11_1)に注意する。
+#### オーバーライド <a id="SS_3_2_4_7"></a>
+* [オーバーライドとオーバーロードの違い](cpp_idioms.md#SS_12_11_1)に注意する。
 * オーバーライドしたメンバ関数には、オーバーライドされたメンバ関数の機能の意味を踏襲させる。
 * オーバーライドする/される一連の仮想関数(デストラクタを含む)について、
     * 全ての宣言にはvirtualを付ける。
@@ -1771,32 +1771,32 @@ ___
 ```
 
 * privateやprotectedなオーバーライド関数にはデフォルト引数を持たさない
-  (「[実引数/仮引数](programming_convention.md#SS_2_3_4)」参照)。
-  さらに[NVI(non virtual interface)](cpp_idioms.md#SS_11_1_7)にも従うことにより、
+  (「[実引数/仮引数](programming_convention.md#SS_3_3_4)」参照)。
+  さらに[NVI(non virtual interface)](cpp_idioms.md#SS_12_1_7)にも従うことにより、
   上の条項の示した一連のオーバーライド関数のデフォルト引数の一致について考慮の必要がなくなり、
   且つこのクラスのユーザはデフォルト引数が使用できるようになる。
 
 
 
-### メンバ変数 <a id="SS_2_2_5"></a>
-#### メンバ変数の数  <a id="SS_2_2_5_1"></a>
+### メンバ変数 <a id="SS_3_2_5"></a>
+#### メンバ変数の数  <a id="SS_3_2_5_1"></a>
 * constexprでなく、publicやprotectedなメンバ変数を宣言しない。
-* クラスの可変な状態を表すメンバ変数(non-const, non-static)は4個以内に留める(「[クラス凝集性のクライテリア](cpp_idioms.md#SS_11_7_3)」参考)。
+* クラスの可変な状態を表すメンバ変数(non-const, non-static)は4個以内に留める(「[クラス凝集性のクライテリア](cpp_idioms.md#SS_12_7_3)」参考)。
 
-#### 非静的なメンバ変数 <a id="SS_2_2_5_2"></a>
+#### 非静的なメンバ変数 <a id="SS_3_2_5_2"></a>
 * すべての非静的なメンバ変数は、コンストラクタ終了時までに明示的に初期化する。
 * 多くのコンパイラや静的解析ツールはインスペクタは、
-  [NSDMI](core_lang_spec.md#SS_9_6_7_1)、[初期化子リストでの初期化](core_lang_spec.md#SS_9_6_7_2)による初期化の漏れについては容易に発見、
+  [NSDMI](core_lang_spec.md#SS_10_6_7_1)、[初期化子リストでの初期化](core_lang_spec.md#SS_10_6_7_2)による初期化の漏れについては容易に発見、
   指摘できることが多い。
-* constメンバ変数は、[NSDMI](core_lang_spec.md#SS_9_6_7_1)、
-  [初期化子リストでの初期化](core_lang_spec.md#SS_9_6_7_2)でなければ初期化できないため、それ以外に方法がない場合を除き、
-  [コンストラクタ内での非静的なメンバ変数の初期値の代入](core_lang_spec.md#SS_9_6_7_3)の使用を避ける。
+* constメンバ変数は、[NSDMI](core_lang_spec.md#SS_10_6_7_1)、
+  [初期化子リストでの初期化](core_lang_spec.md#SS_10_6_7_2)でなければ初期化できないため、それ以外に方法がない場合を除き、
+  [コンストラクタ内での非静的なメンバ変数の初期値の代入](core_lang_spec.md#SS_10_6_7_3)の使用を避ける。
 * 非静的なメンバ変数はクラス内で定義された順序に従い初期化されるため、
-  [初期化子リストでの初期化](core_lang_spec.md#SS_9_6_7_2)の順序を定義順序と同じにすることで可読性を向上させる。
+  [初期化子リストでの初期化](core_lang_spec.md#SS_10_6_7_2)の順序を定義順序と同じにすることで可読性を向上させる。
 * クラスがただ一つのコンストラクタを持つ場合、
-  [NSDMI](core_lang_spec.md#SS_9_6_7_1)と[初期化子リストでの初期化](core_lang_spec.md#SS_9_6_7_2)を混在させない。
-  従って、[初期化子リストでの初期化](core_lang_spec.md#SS_9_6_7_2)を必要とするメンバ変数が一つでもある場合は、
-  すべての変数の初期化を[初期化子リストでの初期化](core_lang_spec.md#SS_9_6_7_2)で行う。
+  [NSDMI](core_lang_spec.md#SS_10_6_7_1)と[初期化子リストでの初期化](core_lang_spec.md#SS_10_6_7_2)を混在させない。
+  従って、[初期化子リストでの初期化](core_lang_spec.md#SS_10_6_7_2)を必要とするメンバ変数が一つでもある場合は、
+  すべての変数の初期化を[初期化子リストでの初期化](core_lang_spec.md#SS_10_6_7_2)で行う。
 
 ```cpp
     //  example/programming_convention/class_ut.cpp 259
@@ -1840,9 +1840,9 @@ ___
 ```
 
 * クラスが複数のコンストラクタを持つ場合、
-  すべてのメンバ変数に対して[NSDMI](core_lang_spec.md#SS_9_6_7_1)を行い(デフォルト値の設定)、
+  すべてのメンバ変数に対して[NSDMI](core_lang_spec.md#SS_10_6_7_1)を行い(デフォルト値の設定)、
   デフォルト値とは異なる初期値を持つ変数に対してのみ、
-  コンストラクタ毎に[初期化子リストでの初期化](core_lang_spec.md#SS_9_6_7_2)を行う。
+  コンストラクタ毎に[初期化子リストでの初期化](core_lang_spec.md#SS_10_6_7_2)を行う。
 
 ```cpp
     //  example/programming_convention/class_ut.cpp 299
@@ -1862,7 +1862,7 @@ ___
 ```
 
 
-#### 静的なメンバ変数/定数の初期化 <a id="SS_2_2_5_3"></a>
+#### 静的なメンバ変数/定数の初期化 <a id="SS_3_2_5_3"></a>
 * 静的な(且つconstexprでない)メンバ変数は、ヘッダファイルで宣言し、.cppで定義、初期化する。
 * クラス宣言内で初期化される基本型のstatic constメンバ定数を定義しない。
   代わりに、static constexprメンバ定数として定義、初期化する
@@ -1902,7 +1902,7 @@ ___
     uint32_t StaticConstexprVar::MultiplyBy4(uint32_t a) noexcept { return static_constexpr_var_4 * a; }
 ```
 
-#### mutableなメンバ変数 <a id="SS_2_2_5_4"></a>
+#### mutableなメンバ変数 <a id="SS_3_2_5_4"></a>
 * 排他制御用(std::mutex等)や計算データのキャッシュ用等のメンバ変数を除き、
   メンバ変数をmutableと宣言しない。
 
@@ -1933,12 +1933,12 @@ ___
     };
 ```
 
-### 継承/派生 <a id="SS_2_2_6"></a>
+### 継承/派生 <a id="SS_3_2_6"></a>
 * 派生は最大2回程度までに留める。やむを得ず階層が深くなる場合、
-  コードの静的解析等を使用し派生関係を明確にする(「[ポリモーフィックなクラス](core_lang_spec.md#SS_9_4_8)」参照)。
+  コードの静的解析等を使用し派生関係を明確にする(「[ポリモーフィックなクラス](core_lang_spec.md#SS_10_4_8)」参照)。
 * 実装の継承よりも、包含、委譲を優先的に使用する。やむを得ず実装の継承を行う場合は、
   private継承を使用する。 実装の継承をしたクラスがfinalでないならば、protected継承を使用する
-  ([CRTP(curiously recurring template pattern)](cpp_idioms.md#SS_11_1_4)等は例外的に認められる)。
+  ([CRTP(curiously recurring template pattern)](cpp_idioms.md#SS_12_1_4)等は例外的に認められる)。
 
 ```cpp
     //  example/programming_convention/class_ut.cpp 124
@@ -2049,64 +2049,64 @@ ___
     ASSERT_TRUE(a_destructed);  // OK A::~A()が呼ばれたため問題ない
 ```
 
-#### インターフェースの継承 <a id="SS_2_2_6_1"></a>
+#### インターフェースの継承 <a id="SS_3_2_6_1"></a>
 * クラス間に「Is-a」の関係が成り立つときに限りpublic継承を行う。
-    * public継承を行う場合、[リスコフの置換原則(LSP)](solid.md#SS_6_3)を守る。
+    * public継承を行う場合、[リスコフの置換原則(LSP)](solid.md#SS_7_3)を守る。
     * インターフェースを継承しない場合、public継承をしない。
 * C#やJavaのinterfaceが必要ならば(インタフェースと実装の完全分離をしたい場合等)、
   pure-virtualなメンバ関数のみを宣言したクラス
-  (もしくはそのクラスに[NVI(non virtual interface)](cpp_idioms.md#SS_11_1_7)を適用したクラス)
+  (もしくはそのクラスに[NVI(non virtual interface)](cpp_idioms.md#SS_12_1_7)を適用したクラス)
   を定義する。
 
-#### 多重継承 <a id="SS_2_2_6_2"></a>
+#### 多重継承 <a id="SS_3_2_6_2"></a>
 * 多重継承が不可避でない限り、多重継承は使用しない。
     * 多重継承が必要な場合、その継承の基底クラスは1つを除き、
-      他の基底クラスは[インターフェースクラス](core_lang_spec.md#SS_9_4_11)にしなければならない。
+      他の基底クラスは[インターフェースクラス](core_lang_spec.md#SS_10_4_11)にしなければならない。
 * 多重継承を使用する場合、複数個の基底クラスのうち、一つを除きメンバ変数を持ってはならない。
 * 多重継承を使用する場合、継承階層内に同じ基底クラスが複数回出てきてはならない
-  ([ダイヤモンド継承](core_lang_spec.md#SS_9_12_10)をしない)。
+  ([ダイヤモンド継承](core_lang_spec.md#SS_10_12_10)をしない)。
 * やむを得ずダイヤモンド継承をせざるを得ない場合、
   継承階層内に複数回出現する基底クラスにはvirtual継承を行う。
 * virtual継承を行ったクラスのコンストラクタからは、
   virtual基底クラスのコンストラクタを呼び出すようにする
   (こうしないとvirtual基底クラスは初期化されない)。
 
-### オブジェクト <a id="SS_2_2_7"></a>
-#### スライシング <a id="SS_2_2_7_1"></a>
-* オブジェクトの[スライシング](cpp_idioms.md#SS_11_10_3)には以下のいずれかで対処する。
-    * [Clone(仮想コンストラクタ)](design_pattern.md#SS_7_1_3)を使用する。
+### オブジェクト <a id="SS_3_2_7"></a>
+#### スライシング <a id="SS_3_2_7_1"></a>
+* オブジェクトの[スライシング](cpp_idioms.md#SS_12_10_3)には以下のいずれかで対処する。
+    * [Clone(仮想コンストラクタ)](design_pattern.md#SS_8_1_3)を使用する。
     * copy代入演算子を= deleteする。
 
-* [スライシング](cpp_idioms.md#SS_11_10_3)と類似の問題が起こるため、
+* [スライシング](cpp_idioms.md#SS_12_10_3)と類似の問題が起こるため、
   オブジェクトの配列をそのオブジェクトの基底クラスへのポインタに代入しない。
 
 
-#### オブジェクトの所有権 <a id="SS_2_2_7_2"></a>
+#### オブジェクトの所有権 <a id="SS_3_2_7_2"></a>
 * オブジェクトaの所有権
-  (「[オブジェクトの所有権](cpp_idioms.md#SS_11_4)」参照)を持つオブジェクトもしくは関数は、
+  (「[オブジェクトの所有権](cpp_idioms.md#SS_12_4)」参照)を持つオブジェクトもしくは関数は、
   オブジェクトaの解放責務を持つ。
 * オブジェクトaの所有権を持たないオブジェクトは、
-  オブジェクトaの[ハンドル](cpp_idioms.md#SS_11_12_8)をメンバ変数で保持することを出来る限り避ける
-  ([Observer](design_pattern.md#SS_7_2_4)パターン等、このルール順守が困難な場合は多い)。
+  オブジェクトaの[ハンドル](cpp_idioms.md#SS_12_12_8)をメンバ変数で保持することを出来る限り避ける
+  ([Observer](design_pattern.md#SS_8_2_4)パターン等、このルール順守が困難な場合は多い)。
 * クラスAのオブジェクトaが、オブジェクトbにダイナミックに生成されたとすると、  
-    * オブジェクトaのポインタは`std::unique_ptr<A>`(「[RAII(scoped guard)](cpp_idioms.md#SS_11_1_2)」参照)で保持する。
+    * オブジェクトaのポインタは`std::unique_ptr<A>`(「[RAII(scoped guard)](cpp_idioms.md#SS_12_1_2)」参照)で保持する。
     * オブジェクトa(正確にはオブジェクトaを管理する`std::unique_ptr<A>`オブジェクト)の所有権は、
       オブジェクトbが保持する。
     * オブジェクトbはオブジェクトaの解放責務を持つ(`std::unique_ptr<A>`による自動解放)。
     * オブジェクトaの所有権を保持していないオブジェクトは、オブジェクトaを解放してはならない。
     * オブジェクトaの所有権を別のオブジェクトxへ移動させる場合、
-      `std::unique_ptr<A>`とstd::move()を使用する(「[オブジェクトの排他所有](cpp_idioms.md#SS_11_4_1)」参照)。
+      `std::unique_ptr<A>`とstd::move()を使用する(「[オブジェクトの排他所有](cpp_idioms.md#SS_12_4_1)」参照)。
     * このようなaに複数の所有者b0、b1が存在する場合、`std::shared_ptr<A>`を使用してaを管理する。
       従って、b0、
-      b1は`std::shared_ptr<A>`型のメンバを持つことになる(「[オブジェクトの共有所有](cpp_idioms.md#SS_11_4_2)」参照)。
+      b1は`std::shared_ptr<A>`型のメンバを持つことになる(「[オブジェクトの共有所有](cpp_idioms.md#SS_12_4_2)」参照)。
     * オブジェクトbが`std::shared_ptr<A>`でオブジェクトaを、
       オブジェクトaが`std::shared_ptr<B>`でオブジェクトbを所有する場合、
-      [オブジェクトの循環所有](cpp_idioms.md#SS_11_4_3)よるメモリリークが発生するため、
-      [std::weak_ptr](stdlib_and_concepts.md#SS_10_6_3)を適切に使用する。
+      [オブジェクトの循環所有](cpp_idioms.md#SS_12_4_3)よるメモリリークが発生するため、
+      [std::weak_ptr](stdlib_and_concepts.md#SS_11_6_3)を適切に使用する。
 
 
-#### オブジェクトのライフタイム <a id="SS_2_2_7_3"></a>
-* [オブジェクトのライフタイム](core_lang_spec.md#SS_9_6_8)開始前、
+#### オブジェクトのライフタイム <a id="SS_3_2_7_3"></a>
+* [オブジェクトのライフタイム](core_lang_spec.md#SS_10_6_8)開始前、
   もしくは終了後のオブジェクトにアクセスしない。
 
 ```cpp
@@ -2144,11 +2144,11 @@ ___
 * スタック上のオブジェクトのハンドルをその関数外部へ開示しない
   (そのハンドルは、ライフタイムが終了したオブジェクトを指している)。
 * thread_localオブジェクトは、ログやデバッグ用途のみで使用する。
-* [rvalue](core_lang_spec.md#SS_9_7_1_2)はライフタイム終了間際のオブジェクトであるため、
+* [rvalue](core_lang_spec.md#SS_10_7_1_2)はライフタイム終了間際のオブジェクトであるため、
   関数の仮引数以外のリファレンスでrvalueをバインドしない
   (特にリファレンス型のメンバ変数でrvalueをバインドしないことは重要である)。
   rvalueをリファレンス型の引数で受け取る場合はconstリファレンス、
-  もしくはrvalueリファレンス(T&&)を使用する(「[rvalue](programming_convention.md#SS_2_1_13)」参照)。
+  もしくはrvalueリファレンス(T&&)を使用する(「[rvalue](programming_convention.md#SS_3_1_13)」参照)。
 
 ```cpp
     //  example/programming_convention/class_ut.cpp 436
@@ -2165,26 +2165,26 @@ ___
     E&&      e1 = E{"5"};  // NG rvalueを引数以外のrvalueリファレンスに代入
 ```
 
-* [danglingリファレンス](cpp_idioms.md#SS_11_11_2)、 [danglingポインタ](cpp_idioms.md#SS_11_11_3)に気を付ける。
+* [danglingリファレンス](cpp_idioms.md#SS_12_11_2)、 [danglingポインタ](cpp_idioms.md#SS_12_11_3)に気を付ける。
 
 
-## 関数 <a id="SS_2_3"></a>
-### 関数構造のクライテリア <a id="SS_2_3_1"></a>
+## 関数 <a id="SS_3_3"></a>
+### 関数構造のクライテリア <a id="SS_3_3_1"></a>
 * 関数の規模・複雑度に関しては、
-    * [サイクロマティック複雑度のクライテリア](cpp_idioms.md#SS_11_6_2)に従う。
-* [関数の行数のクライテリア](cpp_idioms.md#SS_11_6_3)に従い、
+    * [サイクロマティック複雑度のクライテリア](cpp_idioms.md#SS_12_6_2)に従う。
+* [関数の行数のクライテリア](cpp_idioms.md#SS_12_6_3)に従い、
     * 7 行程度を理想とする。
     * 40行以下に留める。
 
 
 
-### オーバーロード <a id="SS_2_3_2"></a>
-* [オーバーライドとオーバーロードの違い](cpp_idioms.md#SS_11_11_1)に注意する。
+### オーバーロード <a id="SS_3_3_2"></a>
+* [オーバーライドとオーバーロードの違い](cpp_idioms.md#SS_12_11_1)に注意する。
 * オーバーロードされた関数は実行目的を同じにする。
   異なる目的のためには異なる名前の関数を用意する。
-* [オーバーライド](programming_convention.md#SS_2_2_4_7)を除き、基底クラスのメンバ関数と同じ名前を持つメンバ関数を派生クラスで宣言、
+* [オーバーライド](programming_convention.md#SS_3_2_4_7)を除き、基底クラスのメンバ関数と同じ名前を持つメンバ関数を派生クラスで宣言、
   定義しない。
-  これに反すると[name-hiding](core_lang_spec.md#SS_9_12_9)のため、基底クラスのメンバ関数の可視範囲を縮小させてしまう。
+  これに反すると[name-hiding](core_lang_spec.md#SS_10_12_9)のため、基底クラスのメンバ関数の可視範囲を縮小させてしまう。
 
 ```cpp
     //  example/programming_convention/func_ut.cpp 17
@@ -2322,7 +2322,7 @@ ___
 ```
 
 
-### 演算子オーバーロード <a id="SS_2_3_3"></a>
+### 演算子オーバーロード <a id="SS_3_3_3"></a>
 * 演算子をオーバーロードする場合、
     * 単項演算子はメンバ関数で定義する。
     * 二項演算子は非メンバ関数で定義する。
@@ -2373,7 +2373,7 @@ ___
     * operator == を定義するならば、operator != も定義する（<, >等のその他の例も同様）。
     * operator+ を定義するならば、operator += も定義する(+以外も同様)。
     * copy(またはmove)代入演算子を定義する場合、copy(またはmove)コンストラクタも定義する
-      (その際、コードクローンを作りがちなので注意する(「[Copy-And-Swap](cpp_idioms.md#SS_11_1_3)」参照))。
+      (その際、コードクローンを作りがちなので注意する(「[Copy-And-Swap](cpp_idioms.md#SS_12_1_3)」参照))。
 
 ```cpp
     //  example/programming_convention/func_ut.cpp 206
@@ -2412,11 +2412,11 @@ ___
 ```
 
 * 比較演算子のオーバーロードする場合、
-    * C++20であれば、[<=>演算子](core_lang_spec.md#SS_9_6_4_1)を定義する。
+    * C++20であれば、[<=>演算子](core_lang_spec.md#SS_10_6_4_1)を定義する。
     * C++17以下であれば、`operator==`と`operator<`の2つの演算子がを定義し、
-      [std::rel_ops](stdlib_and_concepts.md#SS_10_11_1)を使用する。
+      [std::rel_ops](stdlib_and_concepts.md#SS_11_11_1)を使用する。
 
-* [ユーザ定義リテラル演算子](core_lang_spec.md#SS_9_2_6_1)のサフィックスには、
+* [ユーザ定義リテラル演算子](core_lang_spec.md#SS_10_2_6_1)のサフィックスには、
   アンダーバーから始まる3文字以上の文字列を使用する。
 
 ```cpp
@@ -2454,21 +2454,21 @@ ___
     ASSERT_EQ(m, km);
 ```
 
-### 実引数/仮引数 <a id="SS_2_3_4"></a>
-* 仮引数(「[実引数/仮引数](core_lang_spec.md#SS_9_14_7)」参照)の数は、4個程度を上限とする。
+### 実引数/仮引数 <a id="SS_3_3_4"></a>
+* 仮引数(「[実引数/仮引数](core_lang_spec.md#SS_10_14_7)」参照)の数は、4個程度を上限とする。
   引数が多くなりすぎる場合、その関数の引数用の構造体を定義し、それを使用して関数を呼び出す。
-  この場合、[指示付き初期化](core_lang_spec.md#SS_9_10_4)を使用する。
+  この場合、[指示付き初期化](core_lang_spec.md#SS_10_10_4)を使用する。
 
-* 「[関数設計のガイドライン](cpp_idioms.md#SS_11_6)」の「[関数の引数と戻り値の型](cpp_idioms.md#SS_11_6_1)」に従う。
+* 「[関数設計のガイドライン](cpp_idioms.md#SS_12_6)」の「[関数の引数と戻り値の型](cpp_idioms.md#SS_12_6_1)」に従う。
 
 * 仮引数を関数の戻り値として利用する場合、
     * 「関数が、仮引数がnullptrである場合の処理を行う」場合、ポインタ渡しにする。
     * 「関数が、仮引数がnullptrでないことを前提している」場合、リファレンス渡しにする。
 
-* [forwardingリファレンス](core_lang_spec.md#SS_9_8_3)を仮引数とする関数テンプレートでは、仮引数は非constにする。
+* [forwardingリファレンス](core_lang_spec.md#SS_10_8_3)を仮引数とする関数テンプレートでは、仮引数は非constにする。
 
 * 継承の都合等で、使用しないにもかかわらず定義しなければならない仮引数には名前を付けない。
-  仮引数が使用されていない警告の抑止のために[属性構文](core_lang_spec.md#SS_9_9_1)を使わない。
+  仮引数が使用されていない警告の抑止のために[属性構文](core_lang_spec.md#SS_10_9_1)を使わない。
   
 * 関数f()の仮引数が2つ以上であり、f()に渡す引数をそれぞれに生成する関数があった場合、
   引数を生成する関数の戻り値を直接f()に渡さない。
@@ -2500,7 +2500,7 @@ ___
 ```
 
 * copyコンストラクタ、copy代入演算子、moveコンストラクタ、
-  move代入演算子の仮引数名はrhs(「[略語リスト](naming_practice.md#SS_4_1_1)」参照)にする。
+  move代入演算子の仮引数名はrhs(「[略語リスト](naming_practice.md#SS_5_1_1)」参照)にする。
 * 二項演算子の仮引数名は、左側をlhs、右側をrhsにする。
 
 ```cpp
@@ -2540,7 +2540,7 @@ ___
 
 * 実引数として使用される配列がポインタ型へ暗黙に変換されることを前提に、
   仮引数をポインタ型にしない。また、仮引数を一見、配列に見えるポインタ型にしない
-  (「[スライシング](cpp_idioms.md#SS_11_10_3)」で述べたように、
+  (「[スライシング](cpp_idioms.md#SS_12_10_3)」で述べたように、
   特に基底クラスを配列にすることは危険である)。
   代わりに配列へのリファレンスもしくはstd::arrayを使用する。 
 
@@ -2691,7 +2691,7 @@ ___
 ```
 
 * デフォルト引数は関数のプロトタイプ宣言もしくはクラス宣言内のメンバ関数宣言のみに記述する
-  (「[オーバーライド](programming_convention.md#SS_2_2_4_7)」参照)。
+  (「[オーバーライド](programming_convention.md#SS_3_2_4_7)」参照)。
 * メンバ関数のデフォルト引数は、
   そのクラス外部からのメンバ関数呼び出しを簡潔に記述するための記法であるため、
   非publicなメンバ関数にデフォルト引数を持たさない。
@@ -2757,7 +2757,7 @@ ___
 ```
 
 
-### 自動変数 <a id="SS_2_3_5"></a>
+### 自動変数 <a id="SS_3_3_5"></a>
 * 一つの文で複数の変数の宣言をしない。
 * 自動変数は、それを使う直前に定義することでスコープを最小化する。
 * 自動変数は、定義と同時に初期化する。
@@ -2839,12 +2839,12 @@ ___
     }
 ```
 
-### 戻り値型 <a id="SS_2_3_6"></a>
+### 戻り値型 <a id="SS_3_3_6"></a>
 * メモリアロケータ以外の関数の戻り値をvoid\*にしない。
 * 避けがたい理由なしに以下のシンタックスを使用しない。
-    * [戻り値型を後置する関数宣言](core_lang_spec.md#SS_9_11_17)
-    * [関数の戻り値型auto](core_lang_spec.md#SS_9_11_18)
-    * [後置戻り値型auto](core_lang_spec.md#SS_9_11_19)
+    * [戻り値型を後置する関数宣言](core_lang_spec.md#SS_10_11_17)
+    * [関数の戻り値型auto](core_lang_spec.md#SS_10_11_18)
+    * [後置戻り値型auto](core_lang_spec.md#SS_10_11_19)
 
 ```cpp
     //  example/programming_convention/func_return_ut.cpp 22
@@ -2861,11 +2861,11 @@ ___
     }
 ```
 
-* 戻り値型は「[関数の引数と戻り値の型](cpp_idioms.md#SS_11_6_1)」に従う。
+* 戻り値型は「[関数の引数と戻り値の型](cpp_idioms.md#SS_12_6_1)」に従う。
 
-* 関数が複数の値を返す場合、[std::optional](stdlib_and_concepts.md#SS_10_9)、std::pair、std::tupple、
+* 関数が複数の値を返す場合、[std::optional](stdlib_and_concepts.md#SS_11_9)、std::pair、std::tupple、
   構造体オブジェクトを戻り値にして返す。パフォーマンスに著しい悪影響がない限り、
-  リファレンス引数で戻り値を返さない(「[関数の戻り値オブジェクト](programming_convention.md#SS_2_9_3)」参照)。
+  リファレンス引数で戻り値を返さない(「[関数の戻り値オブジェクト](programming_convention.md#SS_3_9_3)」参照)。
 
 ```cpp
     //  example/programming_convention/func_return_ut.cpp 38
@@ -2934,7 +2934,7 @@ ___
 
 * 処理の成否をbool等で通知し、成功時の戻り値をリファレンス引数で戻す関数や、
   処理の成功時の値と、失敗時の外れ値を戻り値で返す関数を作らない。
-  代わりにC++17で導入された[std::optional](stdlib_and_concepts.md#SS_10_9)を使用する。
+  代わりにC++17で導入された[std::optional](stdlib_and_concepts.md#SS_11_9)を使用する。
 
 ```cpp
     //  example/programming_convention/func_return_ut.cpp 108
@@ -3023,15 +3023,15 @@ ___
 ```
 
 
-### constexpr関数 <a id="SS_2_3_7"></a>
-* 引数が[constexpr](core_lang_spec.md#SS_9_5_1)の場合、コンパイル時に評価が確定する関数テンプレートもしくはinline関数は、
-  [constexpr関数](core_lang_spec.md#SS_9_5_3)として宣言する。
-* [constexpr関数](core_lang_spec.md#SS_9_5_3)がコンパイル時に評価される必要がある場合、
-  [constexpr](core_lang_spec.md#SS_9_5_1)の代わりに[consteval](core_lang_spec.md#SS_9_5_7)を使用する。
+### constexpr関数 <a id="SS_3_3_7"></a>
+* 引数が[constexpr](core_lang_spec.md#SS_10_5_1)の場合、コンパイル時に評価が確定する関数テンプレートもしくはinline関数は、
+  [constexpr関数](core_lang_spec.md#SS_10_5_3)として宣言する。
+* [constexpr関数](core_lang_spec.md#SS_10_5_3)がコンパイル時に評価される必要がある場合、
+  [constexpr](core_lang_spec.md#SS_10_5_1)の代わりに[consteval](core_lang_spec.md#SS_10_5_7)を使用する。
 
 
-### スレッドセーフ性 <a id="SS_2_3_8"></a>
-* 関数、メンバ関数はなるべく[スレッドセーフ](cpp_idioms.md#SS_11_12_3)に実装する。
+### スレッドセーフ性 <a id="SS_3_3_8"></a>
+* 関数、メンバ関数はなるべく[スレッドセーフ](cpp_idioms.md#SS_12_12_3)に実装する。
 * 複数のスレッドから呼び出される関数は必ずスレッドセーフにする。
 
 ```cpp
@@ -3050,19 +3050,19 @@ ___
     }
 ```
 
-### エクセプション処理 <a id="SS_2_3_9"></a>
-* 関数はそれが不可避でない限り、[no-fail保証](core_lang_spec.md#SS_9_13_7_1)をする。
-  [no-fail保証](core_lang_spec.md#SS_9_13_7_1)関数は[noexcept](core_lang_spec.md#SS_9_13_6)を使用してそのことを明示する。
-* throwをせざるを得ない場合、最低でも[基本的な安全性の保証](core_lang_spec.md#SS_9_13_7_3)をする。
+### エクセプション処理 <a id="SS_3_3_9"></a>
+* 関数はそれが不可避でない限り、[no-fail保証](core_lang_spec.md#SS_10_13_7_1)をする。
+  [no-fail保証](core_lang_spec.md#SS_10_13_7_1)関数は[noexcept](core_lang_spec.md#SS_10_13_6)を使用してそのことを明示する。
+* throwをせざるを得ない場合、最低でも[基本的な安全性の保証](core_lang_spec.md#SS_10_13_7_3)をする。
 * 標準ライブラリのコンテナ(std::string, std::vector等)が発生させるエクセプションはtry-catchせず
   (catchしてデバッグ情報を保存するような場合を除く)、
   プログラムをクラッシュさせる。try-catchしてもできることはない。
-* 特別な理由がない限り、コンストラクタ呼び出しは[noexcept](core_lang_spec.md#SS_9_13_6)と宣言する。
+* 特別な理由がない限り、コンストラクタ呼び出しは[noexcept](core_lang_spec.md#SS_10_13_6)と宣言する。
   ネットワーク接続等、簡単にエラーすることをコンストラクタ内で行わない。
-* [オープン・クローズドの原則(OCP)](solid.md#SS_6_2)、[リスコフの置換原則(LSP)](solid.md#SS_6_3)に違反する場合が多いため、
+* [オープン・クローズドの原則(OCP)](solid.md#SS_7_2)、[リスコフの置換原則(LSP)](solid.md#SS_7_3)に違反する場合が多いため、
   「throwキーワードによるエクセプション仕様」を使用しない(C++17で廃止)。
-* エクセプションをthrowしないことが確定している関数は、[noexcept](core_lang_spec.md#SS_9_13_6)と宣言する。
-  move代入演算子を[noexcept](core_lang_spec.md#SS_9_13_6)と宣言することは特に重要である。
+* エクセプションをthrowしないことが確定している関数は、[noexcept](core_lang_spec.md#SS_10_13_6)と宣言する。
+  move代入演算子を[noexcept](core_lang_spec.md#SS_10_13_6)と宣言することは特に重要である。
 
 ```cpp
     //  example/programming_convention/func_ut.cpp 446
@@ -3081,10 +3081,10 @@ ___
 ```
 
 * try-catchが不可避である場合、以下の理由によりconstリファレンスで受け取る。
-    * 実態で受け取るとオブジェクトの[スライシング](cpp_idioms.md#SS_11_10_3)が起こる場合がある。
+    * 実態で受け取るとオブジェクトの[スライシング](cpp_idioms.md#SS_12_10_3)が起こる場合がある。
     * 受け取ったエクセプションオブジェクトを書き換えるべきではない。
 
-* エクセプションによるリソースリークを避けるため[RAII(scoped guard)](cpp_idioms.md#SS_11_1_2)でリソースを管理する。
+* エクセプションによるリソースリークを避けるため[RAII(scoped guard)](cpp_idioms.md#SS_12_1_2)でリソースを管理する。
 * 一連のcatch節では、catchするエクセプションの型の最もマッチ率の高いcatch節で処理されるのではなく、
   マッチした最上位のcatch節で処理されるため、
   catchするエクセプションの型に継承関係があるのであれば、継承順位が低い順番にcatchする。
@@ -3140,15 +3140,15 @@ ___
     }
 ```
 
-* [exception-unfriendly](core_lang_spec.md#SS_9_13_8)な関数はエクセプションを発生させないようにする。
+* [exception-unfriendly](core_lang_spec.md#SS_10_13_8)な関数はエクセプションを発生させないようにする。
 * エクセプションをthrowする場合、独自定義したオブジェクトを使用しない。
   代わりにstd::exceptionか、これから派生したクラスを使用する。
   また、throwされたオブジェクトのwhat()から、throwされたファイル位置が特定できるようにする
-  (「[ファイル位置を静的に保持したエクセプションクラスの開発](template_meta_programming.md#SS_8_7_6_4)」参照)。
+  (「[ファイル位置を静的に保持したエクセプションクラスの開発](template_meta_programming.md#SS_9_7_6_4)」参照)。
 
 
 * noexceptと宣言された関数へのポインタへ、noexceptでない関数のポインタを代入しない
-  (C++17では[ill-formed](core_lang_spec.md#SS_9_14_1)になる)。
+  (C++17では[ill-formed](core_lang_spec.md#SS_10_14_1)になる)。
 
 ```cpp
     //  example/programming_convention/func_ut.cpp 529
@@ -3197,8 +3197,8 @@ ___
 ```
 
 
-### ビジーループ <a id="SS_2_3_10"></a>
-* ビジーループを使わない。[std::condition_variable](stdlib_and_concepts.md#SS_10_4_4)を使用してイベントドリブンにする。
+### ビジーループ <a id="SS_3_3_10"></a>
+* ビジーループを使わない。[std::condition_variable](stdlib_and_concepts.md#SS_11_4_4)を使用してイベントドリブンにする。
 
 ```cpp
     //  example/programming_convention/func_ut.cpp 591
@@ -3216,7 +3216,7 @@ ___
     }
 ```
 
-### 非メンバ関数 <a id="SS_2_3_11"></a>
+### 非メンバ関数 <a id="SS_3_3_11"></a>
 * 下記のような関数を除き、グローバル名前空間に非メンバ関数を定義しない。
     * C言語から呼び出される関数
     * アセンブラ関数
@@ -3224,12 +3224,12 @@ ___
 * .cppファイルから、そのファイルの外部で定義された関数を呼び出す場合、その.cppファイル内での局所的な関数宣言をしない。
   つまり、.cppファイルローカルなetern関数宣言を行ってはならない
   (関数が宣言、定義されているヘッダファイルをインクルードする)。
-* コンパイル時に戻り値が確定する関数は[constexpr関数](core_lang_spec.md#SS_9_5_3)として宣言する。
+* コンパイル時に戻り値が確定する関数は[constexpr関数](core_lang_spec.md#SS_10_5_3)として宣言する。
 
 
-## 構文 <a id="SS_2_4"></a>
+## 構文 <a id="SS_3_4"></a>
 
-### 複合文 <a id="SS_2_4_1"></a>
+### 複合文 <a id="SS_3_4_1"></a>
 * if, else, for, while, do後には複合文を使う。
 
 ```cpp
@@ -3273,10 +3273,10 @@ ___
         ;  // NG whileの文が複合文でない
 ```
 
-### switch文 <a id="SS_2_4_2"></a>
+### switch文 <a id="SS_3_4_2"></a>
 * caseラベル、defaultラベルに関連付けられた一連の文はできだけフォールスルーさせない。
   実装がシンプルになる等の理由からフォールスルーさせる場合、
-  [属性構文](core_lang_spec.md#SS_9_9_1)を使用しそれが意図的であることを明示するため以下のような記述する。
+  [属性構文](core_lang_spec.md#SS_10_9_1)を使用しそれが意図的であることを明示するため以下のような記述する。
 
 ```cpp
     // fallthrough          // C++14以前
@@ -3288,7 +3288,7 @@ ___
     * defaultラベルに関連付けられた処理がない場合は、breakのみを記述する。
     * 論理的にdefaultラベルに到達しないのであれば、
       defaultラベルに続いてassert(false)を実行することで、
-      そこを通過してはならないことを明示する(「[assertion](programming_convention.md#SS_2_11_1)」参照)。
+      そこを通過してはならないことを明示する(「[assertion](programming_convention.md#SS_3_11_1)」参照)。
 
 ```cpp
     //  example/programming_convention/syntax_ut.cpp 79
@@ -3314,9 +3314,9 @@ ___
 ```
 
 * switch文のオペランド変数を生成する場合、
-  できるだけ[初期化付きswitch文](core_lang_spec.md#SS_9_9_4_4)を使用し、その変数のスコープを最小に留める。
+  できるだけ[初期化付きswitch文](core_lang_spec.md#SS_10_9_4_4)を使用し、その変数のスコープを最小に留める。
 
-### if文 <a id="SS_2_4_3"></a>
+### if文 <a id="SS_3_4_3"></a>
 * if-else-ifと連続する場合は、else文で終了させる。
   最後のelseのブロックでやるべき処理がないのであれば、そのブロックに;のみを記述する。
 
@@ -3342,7 +3342,7 @@ ___
 ```
 
 * if-else-ifの最後のelseのブロックに論理的に到達しないのであれば、
-  そのブロックでassert(false)を実行する(「[assertion](programming_convention.md#SS_2_11_1)」参照)。
+  そのブロックでassert(false)を実行する(「[assertion](programming_convention.md#SS_3_11_1)」参照)。
 
 ```cpp
     //  example/programming_convention/syntax_ut.cpp 134
@@ -3359,20 +3359,20 @@ ___
 ```
 
 * 条件が2つ以上且つ、switchで表現できる条件文には、ifではなくswitchを使用する。
-* ifの条件式が、コンパイル時に定まるのであれば、[constexpr if文](core_lang_spec.md#SS_9_11_12)を使用する。
+* ifの条件式が、コンパイル時に定まるのであれば、[constexpr if文](core_lang_spec.md#SS_10_11_12)を使用する。
 
 * if文のオペランド変数を生成する場合、
-  できるだけ[初期化付きif文](core_lang_spec.md#SS_9_9_4_3)を使用し、その変数のスコープを最小に留める。
+  できるだけ[初期化付きif文](core_lang_spec.md#SS_10_9_4_3)を使用し、その変数のスコープを最小に留める。
 
-### while文 <a id="SS_2_4_4"></a>
-* while文には、[初期化付きif文](core_lang_spec.md#SS_9_9_4_3)/[初期化付きswitch文](core_lang_spec.md#SS_9_9_4_4)のような構文は存在しないが、
+### while文 <a id="SS_3_4_4"></a>
+* while文には、[初期化付きif文](core_lang_spec.md#SS_10_9_4_3)/[初期化付きswitch文](core_lang_spec.md#SS_10_9_4_4)のような構文は存在しないが、
   while文のオペランド変数を生成するする場合、
-  [初期化付きfor文(従来のfor文)](core_lang_spec.md#SS_9_9_4_1)を使用し、その変数のスコープを最小に留める。
+  [初期化付きfor文(従来のfor文)](core_lang_spec.md#SS_10_9_4_1)を使用し、その変数のスコープを最小に留める。
 
-### 範囲for文 <a id="SS_2_4_5"></a>
+### 範囲for文 <a id="SS_3_4_5"></a>
 * 配列やコンテナの全要素にアクセスするような繰り返し処理には、
   [off-by-oneエラー](https://ja.wikipedia.org/wiki/Off-by-one%E3%82%A8%E3%83%A9%E3%83%BC)
-  が避けられ、従来よりもシンプルに記述できる[範囲for文](core_lang_spec.md#SS_9_9_2)を使用する。
+  が避けられ、従来よりもシンプルに記述できる[範囲for文](core_lang_spec.md#SS_10_9_2)を使用する。
 
 ```cpp
     //  example/programming_convention/syntax_ut.cpp 155
@@ -3403,14 +3403,14 @@ ___
 ```
 
 * 独自のコンテナクラスを定義する場合、標準ライブラリのコンテナと同様の要件を満たすbegin()、end()や、
-  cbegin()、cend()も定義し、そのコンテナに[範囲for文](core_lang_spec.md#SS_9_9_2)を適用できるようにする。
+  cbegin()、cend()も定義し、そのコンテナに[範囲for文](core_lang_spec.md#SS_10_9_2)を適用できるようにする。
 
 
-### 制御文のネスト <a id="SS_2_4_6"></a>
+### 制御文のネスト <a id="SS_3_4_6"></a>
 * breakとの関係がわかりづらい、ブロックが巨大になる等の問題があるため、
   if, for, while, do-while, switch文に付随するブロックの中にswitch文を書かない。
 
-### return文 <a id="SS_2_4_7"></a>
+### return文 <a id="SS_3_4_7"></a>
 * returnの後に括弧をつけない。
 
 ```cpp
@@ -3446,12 +3446,12 @@ ___
     }
 ```
 
-### goto文 <a id="SS_2_4_8"></a>
+### goto文 <a id="SS_3_4_8"></a>
 * 二重以上のループを抜ける目的以外でgotoを使用しない。
 * 二重以上のループを抜ける目的でgotoを使用する場合、gotoのジャンプ先ラベルはそのループの直後に置く。
 
-### ラムダ式 <a id="SS_2_4_9"></a>
-* [ラムダ式](core_lang_spec.md#SS_9_10_3)を複雑にしない。
+### ラムダ式 <a id="SS_3_4_9"></a>
+* [ラムダ式](core_lang_spec.md#SS_10_10_3)を複雑にしない。
     * できるだけワンライナーにする。
     * 必ず10行以下にする。
 
@@ -3562,7 +3562,7 @@ ___
 ```
 
 * C++17以降では、 コンパイル時に戻り値が確定するラムダ式の呼び出し式は定数にできるため、
-  そのようなラムダ式は[constexprラムダ](core_lang_spec.md#SS_9_5_9)として宣言する。
+  そのようなラムダ式は[constexprラムダ](core_lang_spec.md#SS_10_5_9)として宣言する。
 
 ```cpp
     //  example/programming_convention/syntax_ut.cpp 368
@@ -3607,8 +3607,8 @@ ___
 ```
 
 
-### マクロの中の文 <a id="SS_2_4_10"></a>
-* マクロの中に文がある場合、do-while(0)イデオムを使用する(「[関数型マクロ](programming_convention.md#SS_2_6_1)」参照)。
+### マクロの中の文 <a id="SS_3_4_10"></a>
+* マクロの中に文がある場合、do-while(0)イデオムを使用する(「[関数型マクロ](programming_convention.md#SS_3_6_1)」参照)。
 
 ```cpp
     //  example/programming_convention/syntax_ut.cpp 417
@@ -3628,10 +3628,10 @@ ___
     }
 ```
 
-## 演算子 <a id="SS_2_5"></a>
+## 演算子 <a id="SS_3_5"></a>
 
-### 優先順位 <a id="SS_2_5_1"></a>
-* 規格上で[演算子のオペランドの評価順位](core_lang_spec.md#SS_9_14_12)が決まっていても、一見優先順位が分かりづらい式では、
+### 優先順位 <a id="SS_3_5_1"></a>
+* 規格上で[演算子のオペランドの評価順位](core_lang_spec.md#SS_10_14_12)が決まっていても、一見優先順位が分かりづらい式では、
   順序を明示するために丸括弧を使う。
 
 ```cpp
@@ -3681,8 +3681,8 @@ ___
     }
 ```
 
-### 代入演算 <a id="SS_2_5_2"></a>
-* [単純代入](core_lang_spec.md#SS_9_14_8)のみからなる文を除き、1つの文で複数の代入を行わない。
+### 代入演算 <a id="SS_3_5_2"></a>
+* [単純代入](core_lang_spec.md#SS_10_14_8)のみからなる文を除き、1つの文で複数の代入を行わない。
 
 ```cpp
     //  example/programming_convention/operator_ut.cpp 87
@@ -3721,12 +3721,12 @@ ___
     }
 ```
 
-### ビット演算 <a id="SS_2_5_3"></a>
-* 「[ビットシフトにおける未定義動作](core_lang_spec.md#SS_9_1_5_1)」を回避することは困難であるため、
-  特別な理由がない限り、 可読性と安全性を優先して、ビット演算にはstd::bitsetや[BitmaskType](cpp_idioms.md#SS_11_2_3)を使用する。
+### ビット演算 <a id="SS_3_5_3"></a>
+* 「[ビットシフトにおける未定義動作](core_lang_spec.md#SS_10_1_5_1)」を回避することは困難であるため、
+  特別な理由がない限り、 可読性と安全性を優先して、ビット演算にはstd::bitsetや[BitmaskType](cpp_idioms.md#SS_12_2_3)を使用する。
 
-### 論理演算 <a id="SS_2_5_4"></a>
-* &&や||の論理演算子の右オペランドで[副作用](cpp_idioms.md#SS_11_12_16)のある処理をしない。
+### 論理演算 <a id="SS_3_5_4"></a>
+* &&や||の論理演算子の右オペランドで[副作用](cpp_idioms.md#SS_12_12_16)のある処理をしない。
 
 ```cpp
     //  example/programming_convention/operator_ut.cpp 138
@@ -3749,7 +3749,7 @@ ___
     }
 ```
 
-### 条件演算子 <a id="SS_2_5_5"></a>
+### 条件演算子 <a id="SS_3_5_5"></a>
 * 単純なif文よりも、条件演算子を優先して使用する
   (const変数の条件付き初期化は条件演算子でのみ可能である)。
 
@@ -3769,23 +3769,23 @@ ___
 ```
 
 
-### メモリアロケーション <a id="SS_2_5_6"></a>
-#### new <a id="SS_2_5_6_1"></a>
+### メモリアロケーション <a id="SS_3_5_6"></a>
+#### new <a id="SS_3_5_6_1"></a>
 * オブジェクトのダイナミックな生成には、特別な理由がない限りnewを使用せず、
-  [std::make_unique](stdlib_and_concepts.md#SS_10_6_1_1)や[std::make_shared](stdlib_and_concepts.md#SS_10_6_2_1)を使用する。
-  また、特別な理由でnewした場合、そのポインタは[スマートポインタ](stdlib_and_concepts.md#SS_10_6)で管理する。
-* [std::shared_ptr](stdlib_and_concepts.md#SS_10_6_2)でダイナミックに生成したオブジェクトを管理する場合、
-  [オブジェクトの循環所有](cpp_idioms.md#SS_11_4_3)が発生しないように気を付ける(適切に[std::weak_ptr](stdlib_and_concepts.md#SS_10_6_3)を使う)。
-* [プレースメントnew](core_lang_spec.md#SS_9_6_9)を使用しない。
+  [std::make_unique](stdlib_and_concepts.md#SS_11_6_1_1)や[std::make_shared](stdlib_and_concepts.md#SS_11_6_2_1)を使用する。
+  また、特別な理由でnewした場合、そのポインタは[スマートポインタ](stdlib_and_concepts.md#SS_11_6)で管理する。
+* [std::shared_ptr](stdlib_and_concepts.md#SS_11_6_2)でダイナミックに生成したオブジェクトを管理する場合、
+  [オブジェクトの循環所有](cpp_idioms.md#SS_12_4_3)が発生しないように気を付ける(適切に[std::weak_ptr](stdlib_and_concepts.md#SS_11_6_3)を使う)。
+* [プレースメントnew](core_lang_spec.md#SS_10_6_9)を使用しない。
 * `new T[N]`を使用しない。代わりにstd::arrayをダイナミックに生成するか、std::vectorを使用する。
-* [new (std::nothrow)](core_lang_spec.md#SS_9_6_10)を使わない限り、
+* [new (std::nothrow)](core_lang_spec.md#SS_10_6_10)を使わない限り、
   newの戻り値がnullptrであることはないため、new演算子の返り値をnullptrと比較しない。
 * スタック上で生成しても差し支えないオブジェクトをダイナミックに生成しない。
 * newを禁止したいクラスには、privateなoperator new()を宣言する(定義は不要)か、= deleteする。
 
-#### delete <a id="SS_2_5_6_2"></a>
-* [不完全型](core_lang_spec.md#SS_9_4_6)のオブジェクトへのポインタをdeleteしない。
-  特に「[Pimpl](cpp_idioms.md#SS_11_2_1)」を使用する場合には注意が必要である。
+#### delete <a id="SS_3_5_6_2"></a>
+* [不完全型](core_lang_spec.md#SS_10_4_6)のオブジェクトへのポインタをdeleteしない。
+  特に「[Pimpl](cpp_idioms.md#SS_12_2_1)」を使用する場合には注意が必要である。
 
 ```cpp
     //  example/programming_convention/operator_ut.cpp 204
@@ -3846,7 +3846,7 @@ ___
 ```
 
 
-### sizeof <a id="SS_2_5_7"></a>
+### sizeof <a id="SS_3_5_7"></a>
 * sizeof(型名)とsizeof(インスタンス名)の両方が使える場合、sizeof(インスタンス名)を優先的に使用する。
 * ポインタ型変数に関して、それが指しているインスタンスのサイズを獲得する場合は、
   sizeof(\*ポインタ型変数名)を使用する
@@ -3863,7 +3863,7 @@ ___
     auto s_2 = sizeof(*b);       // OK *bのサイズをs_2に代入したい場合
 ```
 
-* 上記例を除き、sizeof演算子のオペランドは一見[副作用](cpp_idioms.md#SS_11_12_16)を持っているような式を含んではならない。
+* 上記例を除き、sizeof演算子のオペランドは一見[副作用](cpp_idioms.md#SS_12_12_16)を持っているような式を含んではならない。
 
 ```cpp
     //  example/programming_convention/operator_ut.cpp 284
@@ -3904,7 +3904,7 @@ ___
 ```
 
 * 一見、配列に見えるポインタをsizeofのオペランドにしない。
-  (「[実引数/仮引数](programming_convention.md#SS_2_3_4)」参照)。
+  (「[実引数/仮引数](programming_convention.md#SS_3_3_4)」参照)。
 
 ```cpp
     //  example/programming_convention/operator_ut.cpp 329
@@ -3927,7 +3927,7 @@ ___
 ```
 
 
-### ポインタ間の演算 <a id="SS_2_5_8"></a>
+### ポインタ間の演算 <a id="SS_3_5_8"></a>
 * 同一オブジェクト(配列等)の要素を指さないポインタ間の除算や比較をしない。
 
 ```cpp
@@ -3949,13 +3949,13 @@ ___
     }
 ```
 
-### RTTI <a id="SS_2_5_9"></a>
-* [Run-time Type Information](core_lang_spec.md#SS_9_4_10)を使用したラインタイム時の型による場合分けは、
+### RTTI <a id="SS_3_5_9"></a>
+* [Run-time Type Information](core_lang_spec.md#SS_10_4_10)を使用したラインタイム時の型による場合分けは、
   それ以外に解決方法がない場合や、実装が大幅にシンプルになる場合を除き行わない
-  (「[等価性のセマンティクス](cpp_idioms.md#SS_11_5_1)」参照)。
+  (「[等価性のセマンティクス](cpp_idioms.md#SS_12_5_1)」参照)。
     * 単体テストやロギングのでtypeidの使用は問題ない。
     * 派生クラスの型によって異なる動作にしたい場合には、仮想関数を使うか、
-      [Visitor](design_pattern.md#SS_7_2_5)パターン等により実現できる。
+      [Visitor](design_pattern.md#SS_8_2_5)パターン等により実現できる。
 
 ```cpp
     //  example/programming_convention/operator_ut.cpp 385
@@ -4037,10 +4037,10 @@ ___
 ```
 
 * コンストラクタやデストラクタ内でRTTIの機能を使わない
-  (「[コンストラクタ](programming_convention.md#SS_2_2_4_2)」、「[デストラクタ](programming_convention.md#SS_2_2_4_6)」参照)
+  (「[コンストラクタ](programming_convention.md#SS_3_2_4_2)」、「[デストラクタ](programming_convention.md#SS_3_2_4_6)」参照)
 
 
-### キャスト、暗黙の型変換 <a id="SS_2_5_10"></a>
+### キャスト、暗黙の型変換 <a id="SS_3_5_10"></a>
 * キャストが必要な式等は、設計レベルの問題を内包していることがほとんどであるため、設計を見直す。
 * Cタイプキャストは使用しない。
 * const_cast、 dynamic_castはそれ以外に解決方法がない場合や、
@@ -4110,11 +4110,11 @@ ___
 * strnlenや、memcpyのような例を除き、配列からポインタへの暗黙の型変換をしない。
   配列を関数の仮引数にしたい場合は、配列へのリファレンスを使う。
   これにより、その関数内でも配列の長さが使用できる
-  (「[実引数/仮引数](programming_convention.md#SS_2_3_4)」、
-  「[sizeof](programming_convention.md#SS_2_5_7)」、「[関数型マクロ](programming_convention.md#SS_2_6_1)」参照)。
+  (「[実引数/仮引数](programming_convention.md#SS_3_3_4)」、
+  「[sizeof](programming_convention.md#SS_3_5_7)」、「[関数型マクロ](programming_convention.md#SS_3_6_1)」参照)。
 
 
-## プリプロセッサ命令 <a id="SS_2_6"></a>
+## プリプロセッサ命令 <a id="SS_3_6"></a>
 * `#include`を除き、プリプロセッサ命令を使用しない。
   特に関数内、クラス宣言内での#if/#ifdef等の使用は可読性を著しく低下させるため、
   それ以外の解決方法がない場合を除く使用しない。
@@ -4158,7 +4158,7 @@ ___
 ```
 
 * ヘッダファイル内での#if/#ifdef/#ifndefに関しては、以下の用途以外では使わない。
-    * 二重インクルードガード(「[二重読み込みの防御](programming_convention.md#SS_2_7_4)」参照)
+    * 二重インクルードガード(「[二重読み込みの防御](programming_convention.md#SS_3_7_4)」参照)
     * Cとシェアするヘッダファイルでの下記例
 
 
@@ -4196,7 +4196,7 @@ ___
 * 出荷仕向け等の理由から、やむを得ずプリプロセッサ命令を使わざるを得ない場合、
   #if等で囲まれた区間をなるべく短くする。
   これによりより多くのコードがコンパイルされるようにできる
-  (「[using宣言/usingディレクティブ](programming_convention.md#SS_2_8_3)」参照)。
+  (「[using宣言/usingディレクティブ](programming_convention.md#SS_3_8_3)」参照)。
 
 ```cpp
     //  example/programming_convention/preprocessor_ut.cpp 72
@@ -4335,7 +4335,7 @@ ___
     ShippingData const& region_data = gen_shipping_data<shipping_region>();
 ```
 
-### 関数型マクロ <a id="SS_2_6_1"></a>
+### 関数型マクロ <a id="SS_3_6_1"></a>
 * 関数型マクロ以外に方法がない場合を除き、関数型マクロを定義しない。
   その代わりに関数テンプレートを定義する。こうすることで下記のような誤用を防ぐことができる。
 
@@ -4376,9 +4376,9 @@ ___
 ```
 
 * 関数型マクロの中に文がある場合、do-while(0)イデオムを使用する
-  (「[マクロの中の文](programming_convention.md#SS_2_4_10)」参照)。
+  (「[マクロの中の文](programming_convention.md#SS_3_4_10)」参照)。
 
-### マクロ定数 <a id="SS_2_6_2"></a>
+### マクロ定数 <a id="SS_3_6_2"></a>
 * マクロ定数以外に方法がない場合を除き、マクロ定数を定義しない。
   その代わりにconstexpr uint32\_t等や、enumを定義する。
 
@@ -4400,15 +4400,15 @@ ___
     };
 ```
 
-## パッケージとその構成ファイル <a id="SS_2_7"></a>
+## パッケージとその構成ファイル <a id="SS_3_7"></a>
 
-### パッケージの実装と公開 <a id="SS_2_7_1"></a>
+### パッケージの実装と公開 <a id="SS_3_7_1"></a>
 * パッケージに関して、以下の構造を持つようにソースコードを構成する
-  (「[Modern CMake project layoutのカスタマイズ](cpp_idioms.md#SS_11_8_1)」参照)。
+  (「[Modern CMake project layoutのカスタマイズ](cpp_idioms.md#SS_12_8_1)」参照)。
     * ソフトウェアはパッケージに分割される。
     * パッケージは、複数のヘッダファイルと複数の.cppファイルから作られる。
     * パッケージを構成するファイルは、このパッケージ専用ディレクトリに保存される。
-    * パッケージは他のパッケージとは排他的な[名前空間](programming_convention.md#SS_2_8_2)を持ち、
+    * パッケージは他のパッケージとは排他的な[名前空間](programming_convention.md#SS_3_8_2)を持ち、
       パッケージ内で宣言、定義され、外部パッケージに公開される識別子はその名前空間に包含される。
       外部パッケージに公開されない識別子は、そのパッケージでのみ使用される名前空間か、
       無名名前空間に包含されるようにする。
@@ -4454,7 +4454,7 @@ ___
     * 外部公開ヘッダファイルは、外部非公開ヘッダファイルをインクルードしない。
     * 外部非公開ヘッダファイルは、ビルド時に他のパッケージから参照できるディレクトリに配置しない。
 
-### 識別子の宣言、定義 <a id="SS_2_7_2"></a>
+### 識別子の宣言、定義 <a id="SS_3_7_2"></a>
 * [ODR](https://en.cppreference.com/w/cpp/language/definition)を守る。
   つまり、一つの識別子は全ソースコード内にただ一つの定義を持つようにする。
 * 一つの.cppファイル内のみで使用される識別子は、
@@ -4462,16 +4462,16 @@ ___
 * ヘッダファイルで宣言された識別子が.cppファイル内に定義をもつ場合、
   その.cppファイルにそのヘッダファイルをインクルードさせる。
   特に、非メンバ関数や変数の宣言と定義を矛盾させないために、このルールは特に重要である
-  (「[非メンバ関数](programming_convention.md#SS_2_3_11)」参照)。
+  (「[非メンバ関数](programming_convention.md#SS_3_3_11)」参照)。
 
-### 依存関係 <a id="SS_2_7_3"></a>
-* 不要/不適切な依存関係(「[インターフェース分離の原則(ISP)](solid.md#SS_6_4)」や
-  「[依存関係逆転の原則(DIP)](solid.md#SS_6_5)」への違反)を作らない。
+### 依存関係 <a id="SS_3_7_3"></a>
+* 不要/不適切な依存関係(「[インターフェース分離の原則(ISP)](solid.md#SS_7_4)」や
+  「[依存関係逆転の原則(DIP)](solid.md#SS_7_5)」への違反)を作らない。
 
     * SOLIDの原則やデザインパターン、イデオム等を適切に使用することにより、依存関係を適切に保つ。
-        * 依存関係の伝搬を回避したい場合、[Pimpl](cpp_idioms.md#SS_11_2_1)イデオムを使い実装の詳細を隠蔽する。
+        * 依存関係の伝搬を回避したい場合、[Pimpl](cpp_idioms.md#SS_12_2_1)イデオムを使い実装の詳細を隠蔽する。
         * 上位概念が下位概念に依存することを避ける場合、
-          「[依存関係逆転の原則(DIP)](solid.md#SS_6_5)」での例や[Observer](design_pattern.md#SS_7_2_4)等を適用する。
+          「[依存関係逆転の原則(DIP)](solid.md#SS_7_5)」での例や[Observer](design_pattern.md#SS_8_2_4)等を適用する。
     * パッケージ間の相互、循環依存関係を作らない。
 
 <!-- pu:plant_uml/package_ng.pu--><p><img src="data:image/png;base64,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" /></p>
@@ -4480,7 +4480,7 @@ ___
     * 標準ライブラリのクラス(class, struct, enum, enum class)の前方宣言をしない
       (例えば、「std::stringをクラス宣言することでstringヘッダファイルへの依存関係を作らない」
       といった方法は、std::stringはstd::basic_stringのエイリアスであり、その実装は規格で規定されていない。
-      このような前方宣言を行うと[ODR](core_lang_spec.md#SS_9_14_10)違反による[未定義動作](core_lang_spec.md#SS_9_14_3)につながる可能性がある)。
+      このような前方宣言を行うと[ODR](core_lang_spec.md#SS_10_14_10)違反による[未定義動作](core_lang_spec.md#SS_10_14_3)につながる可能性がある)。
       `<ios>`で宣言される型は`<iosfwd>`で前方宣言されている)。
     * 同一namespaceのクラス(class, struct, enum, enum class)の導入のための前方宣言は適切な使用である
       (以下のような前方宣言は適切)。
@@ -4502,7 +4502,7 @@ ___
 
     * 外部namespaceで宣言されたクラスの導入のための前方宣言行わない
       (ローカルで行った前方宣言と識別子の実際の宣言に矛盾がある場合、
-      [ODR](core_lang_spec.md#SS_9_14_10)違反による[未定義動作](core_lang_spec.md#SS_9_14_3)につながる可能性がある。
+      [ODR](core_lang_spec.md#SS_10_14_10)違反による[未定義動作](core_lang_spec.md#SS_10_14_3)につながる可能性がある。
       同一namespaceでも同様な問題が発生することはありあるが、
       同一namespace内ではそのような矛盾が発生する可能性は少ないと考えられる)。
     * 外部namespaceのクラスを導入のための前方宣言は`<iosfwd>`で使用されているプラクティスに従う。
@@ -4547,7 +4547,7 @@ ___
 
 
 
-### 二重読み込みの防御 <a id="SS_2_7_4"></a>
+### 二重読み込みの防御 <a id="SS_3_7_4"></a>
 * 二重インクルードを防ぐため、 ヘッダファイルには#includeガードを付ける。
   ガード用のマクロは、<パス名>\_<ファイル名>\_H\_とする。
 
@@ -4575,7 +4575,7 @@ ___
     #pragma once
 ```
 
-### ヘッダファイル内の#include <a id="SS_2_7_5"></a>
+### ヘッダファイル内の#include <a id="SS_3_7_5"></a>
 * 不要な依存関係を作らないようにするため、
   ヘッダファイルは、そのコンパイルに不要なヘッダファイルをインクルードしない。
 * ヘッダファイルが外部からインポートする型(class、struct、enum)
@@ -4604,12 +4604,12 @@ ___
     // forward_decl(nullptr);
 ```
 
-### #includeするファイルの順番 <a id="SS_2_7_6"></a>
+### #includeするファイルの順番 <a id="SS_3_7_6"></a>
 * ユーザ定義ヘッダファイルより、システムヘッダファイルの#includeを先に行う。
 * システムヘッダファイルは、アルファベット順に#includeを行う。
 * ユーザ定義ヘッダファイルは、アルファベット順に#includeを行う。
 
-### #includeで指定するパス名 <a id="SS_2_7_7"></a>
+### #includeで指定するパス名 <a id="SS_3_7_7"></a>
 * ユーザ定義のヘッダファイルは""で囲み、システムヘッダファイルは、`<>`で囲む。
 * 他のパッケージの外部非公開ヘッダファイルを読み込まないようにするために、
   #includeのパス指定に"../"(ディレクトリ上方向への移動)を使用しない。
@@ -4627,9 +4627,9 @@ ___
 
 * ヘッダファイル以外のファイル(.cppファイル等)をインクルードしない。
 
-## スコープ <a id="SS_2_8"></a>
-### スコープの定義と原則 <a id="SS_2_8_1"></a>
-この章で扱うスコープを下記のように定義する(「[パッケージの実装と公開](programming_convention.md#SS_2_7_1)」参照)。
+## スコープ <a id="SS_3_8"></a>
+### スコープの定義と原則 <a id="SS_3_8_1"></a>
+この章で扱うスコープを下記のように定義する(「[パッケージの実装と公開](programming_convention.md#SS_3_7_1)」参照)。
 
 1. グローバル
 2. パッケージ外部公開名前空間
@@ -4653,13 +4653,13 @@ ___
     * 単一関数のみで使用する変数は、その関数内で定義する。
     * 自動変数は、使用直前に定義する。
 
-* このドキュメント執筆時のコンパイラ/ビルダのC++20での[モジュール](core_lang_spec.md#SS_9_10_2)のサポート状況が
+* このドキュメント執筆時のコンパイラ/ビルダのC++20での[モジュール](core_lang_spec.md#SS_10_10_2)のサポート状況が
   万全ではないため、
     * モジュールを定義するためのmoduleを使用しない。
     * モジュール外に公開する識別子を定義するexport使用しない。
     * exportされた識別子を使用するためにimportを使用しない。
 
-* [name-hiding](core_lang_spec.md#SS_9_12_9)を起こすとコードの可読性が著しく低下するため、
+* [name-hiding](core_lang_spec.md#SS_10_12_9)を起こすとコードの可読性が著しく低下するため、
   スコープが重複する「名前のない名前空間内」(例えば、ブロックとそれを内包するブロック)
   にある「同一名を持つ識別子」を宣言、定義しない。
 
@@ -4689,13 +4689,13 @@ ___
     //  この問題は、このファイルからscope.hをインクルードすれば防げる。
 ```
 
-### 名前空間 <a id="SS_2_8_2"></a>
+### 名前空間 <a id="SS_3_8_2"></a>
 * グローバル名前空間には下記以外の識別子を定義、宣言しない。
     * main関数
     * グローバルnewのオーバーロード
     * Cとシェアする識別子
 * パッケージ毎に名前空間を定義する
-  (「[パッケージの実装と公開](programming_convention.md#SS_2_7_1)」、[名前空間名](naming_practice.md#SS_4_2_11)」参照)。
+  (「[パッケージの実装と公開](programming_convention.md#SS_3_7_1)」、[名前空間名](naming_practice.md#SS_5_2_11)」参照)。
 * 外部リンケージの不要な識別子は.cpp内の無名名前空間で宣言、定義する。
 * 名前空間Xxx内で定義されたテンプレートやinline関数から参照されるため、
   外部公開用ではないにもかかわらずヘッダファイル内に定義が必要な識別子は、
@@ -4736,9 +4736,9 @@ ___
     }
 ```
 
-### using宣言/usingディレクティブ <a id="SS_2_8_3"></a>
-* 識別子のインポートのための[using宣言](core_lang_spec.md#SS_9_12_14)は下記のような場合のみに使用する
-  (「[継承コンストラクタ](core_lang_spec.md#SS_9_6_1_2)」、「[オーバーライドとオーバーロードの違い](cpp_idioms.md#SS_11_11_1)」参照)。
+### using宣言/usingディレクティブ <a id="SS_3_8_3"></a>
+* 識別子のインポートのための[using宣言](core_lang_spec.md#SS_10_12_14)は下記のような場合のみに使用する
+  (「[継承コンストラクタ](core_lang_spec.md#SS_10_6_1_2)」、「[オーバーライドとオーバーロードの違い](cpp_idioms.md#SS_12_11_1)」参照)。
 
 ```cpp
     //  example/programming_convention/scope_ut.cpp 55
@@ -4767,7 +4767,7 @@ ___
     };
 ```
 
-* 下記のような場合を除き、[usingディレクティブ](core_lang_spec.md#SS_9_12_15)は使用しない。
+* 下記のような場合を除き、[usingディレクティブ](core_lang_spec.md#SS_10_12_15)は使用しない。
   使用する場合でもその効果をブロックスコープ内のみに留める。
 
 ```cpp
@@ -4786,7 +4786,7 @@ ___
     static_assert(std::is_same_v<std::string, decltype(s2)>);
 ```
 
-* 出荷仕向け等の理由を除き、inline namespaceを使用しない(「[プリプロセッサ命令](programming_convention.md#SS_2_6)」参照)。
+* 出荷仕向け等の理由を除き、inline namespaceを使用しない(「[プリプロセッサ命令](programming_convention.md#SS_3_6)」参照)。
 
 ```cpp
     //  example/programming_convention/scope_ut.cpp 106
@@ -4865,10 +4865,10 @@ ___
 ```
 
 
-### ADLと名前空間による修飾の省略 <a id="SS_2_8_4"></a>
+### ADLと名前空間による修飾の省略 <a id="SS_3_8_4"></a>
 * 名前空間の修飾を省略した識別子のアクセスには、
-  下記のような副作用があるため、[ADL](core_lang_spec.md#SS_9_12_5)を使用する目的以外で使用しない
-  (「[識別子の命名](naming_practice.md#SS_4_2)」を順守することで、識別子の偶然の一致を避けることも必要)。
+  下記のような副作用があるため、[ADL](core_lang_spec.md#SS_10_12_5)を使用する目的以外で使用しない
+  (「[識別子の命名](naming_practice.md#SS_5_2)」を順守することで、識別子の偶然の一致を避けることも必要)。
 
 ```cpp
     //  example/programming_convention/scope_ut.cpp 200
@@ -4906,10 +4906,10 @@ ___
     ASSERT_EQ("in NS_1", NS_1::f(NS_0::X(), 1));  // NS_1::fの呼び出しには名前修飾が必要
 ```
 
-### 名前空間のエイリアス <a id="SS_2_8_5"></a>
+### 名前空間のエイリアス <a id="SS_3_8_5"></a>
 * ネストされた長い名前空間を短く簡潔に書くための名前空間エイリアスは、
   その効果をブロックスコープ内のみに留める。
-* 名前空間のエイリアスを[using宣言/usingディレクティブ](programming_convention.md#SS_2_8_3)で使用しない。
+* 名前空間のエイリアスを[using宣言/usingディレクティブ](programming_convention.md#SS_3_8_3)で使用しない。
 
 ```cpp
     //  example/programming_convention/scope_ut.cpp 241
@@ -4940,13 +4940,13 @@ ___
     }
 ```
 
-## ランタイムの効率 <a id="SS_2_9"></a>
+## ランタイムの効率 <a id="SS_3_9"></a>
 * ランタイム効率と、可読性のトレードオフが発生する場合、可読性を優先させる。
 * やむを得ず可読性を落とすコードオプティマイゼーションを行う場合は、
   プロファイリング等を行い、ボトルネックを確定させ、必要最低限に留める。
   また、開発早期での可読性を落とすコードオプティマイゼーションは行わない。
 
-### 前置/後置演算子の選択 <a id="SS_2_9_1"></a>
+### 前置/後置演算子の選択 <a id="SS_3_9_1"></a>
 * 後置演算子の一般的な動作は、下記のようになるため前置演算子の実行に比べて処理が多い。
   どちらを使用してもよい場合は前置演算子を使う。
     1. 自分(オブジェクト)をコピーする。
@@ -5022,7 +5022,7 @@ ___
 
 * ソースコードの統一性のため、このオーバーヘッドがない基本型についても、同じルールを適用する。
 
-### operator X、operator x=の選択 <a id="SS_2_9_2"></a>
+### operator X、operator x=の選択 <a id="SS_3_9_2"></a>
 * 前置/後置演算子と同じような問題が発生するため、どちらを使っても問題ない場合は、
   operator Xではなく、operator X=を使う。
 
@@ -5063,15 +5063,15 @@ ___
 
 * ソースコードの統一性のため、このオーバーヘッドがない基本型についても、同じルー ルを適用する。
 
-### 関数の戻り値オブジェクト <a id="SS_2_9_3"></a>
-* 戻り値型は「[関数の引数と戻り値の型](cpp_idioms.md#SS_11_6_1)」に従う。
+### 関数の戻り値オブジェクト <a id="SS_3_9_3"></a>
+* 戻り値型は「[関数の引数と戻り値の型](cpp_idioms.md#SS_12_6_1)」に従う。
 
 
-### move処理 <a id="SS_2_9_4"></a>
-* [ディープコピー](cpp_idioms.md#SS_11_10_2)の実装を持つクラスへのcopy代入の多くがrvalueから行われるのであれば、
+### move処理 <a id="SS_3_9_4"></a>
+* [ディープコピー](cpp_idioms.md#SS_12_10_2)の実装を持つクラスへのcopy代入の多くがrvalueから行われるのであれば、
   moveコンストラクタや、move代入演算子も実装する。
 * 関数の戻り値にローカルオブジェクトを使用する場合、
-  [RVO(Return Value Optimization)](core_lang_spec.md#SS_9_15_1)の阻害になるため、そのオブジェクトをstd::moveしない。
+  [RVO(Return Value Optimization)](core_lang_spec.md#SS_10_15_1)の阻害になるため、そのオブジェクトをstd::moveしない。
 
 ```cpp
     //  example/programming_convention/runtime_ut.cpp 119
@@ -5101,7 +5101,7 @@ ___
     }
 ```
 
-### std::string vs std::string const& vs std::string_view <a id="SS_2_9_5"></a>
+### std::string vs std::string const& vs std::string_view <a id="SS_3_9_5"></a>
 * 文字列を受け取る関数の仮引数の型に関しては下記のような観点に気を付ける。
   以下に示す通り、このような仮引数の型をstd::string const&にすることが最適であるとは限らない。
 
@@ -5220,7 +5220,7 @@ ___
     // このような場合の引数の型は、std::stringを選択すべきだろう。
 ```
 
-### extern template <a id="SS_2_9_6"></a>
+### extern template <a id="SS_3_9_6"></a>
 * 何度もインスタンス化が行われ、
   それによりROMの肥大化やビルドの長時間化を引き起こすようなクラステンプレートに対しては、
   extern templateを使う。
@@ -5239,8 +5239,8 @@ ___
     template class std::vector<std::string>;
 ```
 
-## 標準クラス、関数の使用制限 <a id="SS_2_10"></a>
-### 標準ライブラリ <a id="SS_2_10_1"></a>
+## 標準クラス、関数の使用制限 <a id="SS_3_10"></a>
+### 標準ライブラリ <a id="SS_3_10_1"></a>
 * C++のバージョン毎に定められた非推奨の機能、関数、クラスを使わない。
   これらについては、[C++日本語リファレンス](https://cpprefjp.github.io/)の
   * [C++11の機能変更](https://cpprefjp.github.io/lang/cpp11.html)
@@ -5248,35 +5248,35 @@ ___
   * [C++17の機能変更](https://cpprefjp.github.io/lang/cpp17.html)
   に詳細が書かれている。
 
-* [g++](cpp_idioms.md#SS_11_13_1)/[clang++](cpp_idioms.md#SS_11_13_2)等の優れたコンパイラを適切なオプションで使用することで、
+* [g++](cpp_idioms.md#SS_12_13_1)/[clang++](cpp_idioms.md#SS_12_13_2)等の優れたコンパイラを適切なオプションで使用することで、
   非推奨の機能、関数、クラスの使用を防ぐ。
 
-#### スマートポインタの使用制限 <a id="SS_2_10_1_1"></a>
+#### スマートポインタの使用制限 <a id="SS_3_10_1_1"></a>
 * std::auto_ptrを使用しない(C++17で廃止)。
-* ダイナミックに生成した[オブジェクトの排他所有](cpp_idioms.md#SS_11_4_1)を行う場合、`std::unique_ptr<>`を使用する。
-* ダイナミックに生成した[オブジェクトの共有所有](cpp_idioms.md#SS_11_4_2)を行う場合、`std::shared_ptr<>`を使用する。
-* `std::shared_ptr<>`を使用する場合、[オブジェクトの循環所有](cpp_idioms.md#SS_11_4_3)が発生しないように気を付ける。
+* ダイナミックに生成した[オブジェクトの排他所有](cpp_idioms.md#SS_12_4_1)を行う場合、`std::unique_ptr<>`を使用する。
+* ダイナミックに生成した[オブジェクトの共有所有](cpp_idioms.md#SS_12_4_2)を行う場合、`std::shared_ptr<>`を使用する。
+* `std::shared_ptr<>`を使用する場合、[オブジェクトの循環所有](cpp_idioms.md#SS_12_4_3)が発生しないように気を付ける。
 
-#### 配列系コンテナクラスの使用制限 <a id="SS_2_10_1_2"></a>
+#### 配列系コンテナクラスの使用制限 <a id="SS_3_10_1_2"></a>
 * 配列系のコンテナを使用する場合、コンパイル時に要素数の上限が
     * 定まるのであれば、std::arrayを使用する。
     * 未定ならば、std::vectorを使用する。
 * `std::vector<bool>`は、std::vectorの特殊化であり、通常のstd::vectorと同じようには扱えない。
   `std::vector<bool>`を使用する場合、その要素へのハンドルがbool&やbool\*でないことに注意する。
 * std::arrayを除くコンテナクラスは、
-  それ自体でメモリリソースの[RAII(scoped guard)](cpp_idioms.md#SS_11_1_2)を実現しているため、newしない。
+  それ自体でメモリリソースの[RAII(scoped guard)](cpp_idioms.md#SS_12_1_2)を実現しているため、newしない。
 
-#### std::stringの使用制限 <a id="SS_2_10_1_3"></a>
+#### std::stringの使用制限 <a id="SS_3_10_1_3"></a>
 * std::stringは、
-  それ自体でメモリリソースの[RAII(scoped guard)](cpp_idioms.md#SS_11_1_2)を実現しているため、newしない。
+  それ自体でメモリリソースの[RAII(scoped guard)](cpp_idioms.md#SS_12_1_2)を実現しているため、newしない。
 * std::stringの添字演算子[]は領域外アクセスを通知しない
   ([std::out_of_range](https://cpprefjp.github.io/reference/stdexcept.html)
   エクセプションを発生させない)ため、std::string::at() を使用する
-  (「[安全な配列型コンテナ](template_meta_programming.md#SS_8_2_3)」参照)。
+  (「[安全な配列型コンテナ](template_meta_programming.md#SS_9_2_3)」参照)。
 * std::string.data()は、C++のバージョンによってはNULLターミネイトが保証されていないため、
   std::string.c_str() を使用する。
 
-#### std::string_viewの使用制限 <a id="SS_2_10_1_4"></a>
+#### std::string_viewの使用制限 <a id="SS_3_10_1_4"></a>
 * std::string_viewが保持するポインタが指す文字列の所有権は、他のオブジェクトが保持しているため、
   std::string_viewの初期化や、copy代入の右辺にrvalueを使用しない。
 
@@ -5350,8 +5350,8 @@ ___
 ```
 
 
-### POSIX系関数 <a id="SS_2_10_2"></a>
-#### 使用禁止関数一覧 <a id="SS_2_10_2_1"></a>
+### POSIX系関数 <a id="SS_3_10_2"></a>
+#### 使用禁止関数一覧 <a id="SS_3_10_2_1"></a>
 
 | 禁止関数                                      | 代替え                                        |
 |:----------------------------------------------|:----------------------------------------------|
@@ -5447,22 +5447,22 @@ ___
 | wcscat()                                      | wcsncat()                                     |
 | wcscpy()                                      | wcsncpy()                                     |
 
-#### 使用禁止関数の理由や注意点 <a id="SS_2_10_2_2"></a>
-##### バッファオーバーランを引き起こしやすい関数 <a id="SS_2_10_2_2_1"></a>
+#### 使用禁止関数の理由や注意点 <a id="SS_3_10_2_2"></a>
+##### バッファオーバーランを引き起こしやすい関数 <a id="SS_3_10_2_2_1"></a>
 * 以下の関数は、バッファオーバーフロー等のバグを引き起こしやすい。
 
 ```
     gets(), scanf(), strcpy(), strcat(), sprintf(), vsprintf(), wcscat(), wcscpy()
 ```
 
-##### コマンドインジェクション防止 <a id="SS_2_10_2_2_2"></a>
+##### コマンドインジェクション防止 <a id="SS_3_10_2_2_2"></a>
 * 以下の関数は、外部コマンドの実行時に環境変数に依存してしまう。
 
 ```
     execl(), execlp(), execv(), execvp(), popen(), system()
 ```
 
-##### obsolete関数 <a id="SS_2_10_2_2_3"></a>
+##### obsolete関数 <a id="SS_3_10_2_2_3"></a>
 * 以下の関数は、すでにメンテナンスがされなくなった(obsolete)。
 
 ```
@@ -5475,7 +5475,7 @@ ___
     strlen(), _tolower(), _toupper(), tempnam(), tmpnam(), toascii(), ulimit(), utime()
 ```
 
-##### LEGACY関数 <a id="SS_2_10_2_2_4"></a>
+##### LEGACY関数 <a id="SS_3_10_2_2_4"></a>
 * 以下の関数は、すでに役目を終えた。
 
 ```
@@ -5484,30 +5484,30 @@ ___
     brk(), sbrk(), rand()
 ```
 
-##### スレッドセーフでない関数 <a id="SS_2_10_2_2_5"></a>
+##### スレッドセーフでない関数 <a id="SS_3_10_2_2_5"></a>
 * 以下の関数は、スレッドセーフでない。
 
 ```
     asctime(), ctime(), getgrgid(), getgrnam(), getlogin(), getpwuid(), getpwnam(), gmtime(),
     localtime(), ttyname(), 
-    ctermid(), tmpnam() (引数がNULLのとき、非[リエントラント](cpp_idioms.md#SS_11_12_4)になる)
+    ctermid(), tmpnam() (引数がNULLのとき、非[リエントラント](cpp_idioms.md#SS_12_12_4)になる)
 ```
 
-##### 標準外関数等 <a id="SS_2_10_2_2_6"></a>
+##### 標準外関数等 <a id="SS_3_10_2_2_6"></a>
 * 可変長配列や、alloca()は、標準外である。
 
-##### 扱いが難しい関数 <a id="SS_2_10_2_2_7"></a>
+##### 扱いが難しい関数 <a id="SS_3_10_2_2_7"></a>
 * signalの扱いは極めて難しく、安定動作をさせるのは困難である。
-  「シグナルの[リエントラント](cpp_idioms.md#SS_11_12_4)問題を解決でき、使用できる関数に制限がない」という利点があるため、
+  「シグナルの[リエントラント](cpp_idioms.md#SS_12_12_4)問題を解決でき、使用できる関数に制限がない」という利点があるため、
    signal()の代わりに、 signalfd() を使用する。 
 * 排他的にファイルをオープンできないため、tmpfile()を使用しない。代わりにmkstemp()を使用する。
 
-#### 典型的な注意点 <a id="SS_2_10_2_3"></a>
-##### リソースリークを引き起こしやすい関数 <a id="SS_2_10_2_3_1"></a>
+#### 典型的な注意点 <a id="SS_3_10_2_3"></a>
+##### リソースリークを引き起こしやすい関数 <a id="SS_3_10_2_3_1"></a>
 * open()/close()、fopen()/fclose()はリソースリークを引き起こしやすい。
   「[RAII(scoped guard)](#8.9)」で例示したコードやstd::fstreamを使うことでその問題を回避する。
 
-##### シンボリックリンクの検査 <a id="SS_2_10_2_3_2"></a>
+##### シンボリックリンクの検査 <a id="SS_3_10_2_3_2"></a>
 * シンボリックリンクはlstat()のみで検査せず、以下のように検査する。
 
     1.	ファイル名をlstat()
@@ -5515,7 +5515,7 @@ ___
     3.	2で取得したファイル記述子に対してfstat()
     4.	1, 3の情報を照合して同一ファイルであることを確認
 
-##### strncpy(), strncat()の終端 <a id="SS_2_10_2_3_3"></a>
+##### strncpy(), strncat()の終端 <a id="SS_3_10_2_3_3"></a>
 * 下記のような問題を回避するために文字列操作にはstd::stringを使用する。
     * sizeof(dst) <= strlen(src) の場合、strncpy(dst, src, sizeof(dst) - 1)の呼び出しは、
       dstの文字列を'\0'終端しない。
@@ -5523,13 +5523,13 @@ ___
     * strncpy(), strncat()ともに、
       sizeof(dst) < strlen(src) のときにsrcの文字列が切り捨てられたことを判別できない。
 
-##### TOCTOU (Time Of Check, Time Of Use) <a id="SS_2_10_2_3_4"></a>
+##### TOCTOU (Time Of Check, Time Of Use) <a id="SS_3_10_2_3_4"></a>
 * open()前にaccess()でファイルの存在を確認する等、チェックして使用するパターンでは、
   この動作がアトミックに行われないため問題が発生する。
   この問題回避の一般解はないが「ファイルの存在確認後、read-open」のような場合では、
   「いきなりread-openし、エラーした場合に対処」することでアトミックな処理にできる。
 
-##### メモリアロケーション <a id="SS_2_10_2_3_5"></a>
+##### メモリアロケーション <a id="SS_3_10_2_3_5"></a>
 * new/deleteとmalloc/freeの混在を避けるため下記の使用をしない。
   newしたオブジェクトのポインタをfreeした場合、そのオブジェクトのデストラクタが呼び出されず、
   リソースリークしてしまうことがある。
@@ -5538,7 +5538,7 @@ ___
     malloc(), realloc(), free()
 ```
 
-##### 非同期シグナル <a id="SS_2_10_2_3_6"></a>
+##### 非同期シグナル <a id="SS_3_10_2_3_6"></a>
 * プロセス監視のSIGCHLDや、accept()でのブロッキングの中断等、シグナルでしか処理できない場合を除き、
   非同期シグナルを使用しない。
 * 使用してもよいシグナルは、以下に限られる。
@@ -5555,12 +5555,12 @@ ___
 * 上記シグナルを扱う場合であっても、シグナル処理専用スレッドでsigwait()を用いることで、
   非同期シグナルを同期的に扱うようにする。
 
-## その他 <a id="SS_2_11"></a>
-### assertion <a id="SS_2_11_1"></a>
+## その他 <a id="SS_3_11"></a>
+### assertion <a id="SS_3_11_1"></a>
 * 論理的にありえない状態(特に論理的に到達しないはずの条件文への到達)を検出するために、
-  assert()を使用する(「[switch文](programming_convention.md#SS_2_4_2)」、「[if文](programming_convention.md#SS_2_4_3)」参照)。
+  assert()を使用する(「[switch文](programming_convention.md#SS_3_4_2)」、「[if文](programming_convention.md#SS_3_4_3)」参照)。
 * assert()はコンパイルオプションにより無効化されることがあるため、
-  assert()の引数に[副作用](cpp_idioms.md#SS_11_12_16)のある式を入れない。
+  assert()の引数に[副作用](cpp_idioms.md#SS_12_12_16)のある式を入れない。
 * ランタイムでなく、コンパイル時に判断できる論理矛盾や使用制限には、static\_assertを使用する。
 
 ```cpp
@@ -5588,16 +5588,16 @@ ___
 * static\_assert、assert両方が使える場合には、static\_assertを優先して使用する。
 
 
-### アセンブラ <a id="SS_2_11_2"></a>
+### アセンブラ <a id="SS_3_11_2"></a>
 * アセンブラ関数は、.asm等で定義し、ヘッダファイルでCの関数として宣言する。
-* アセンブラ関数も、関数/メンバ関数のルールに従う(「[関数](programming_convention.md#SS_2_3)」参照)。
-* インラインアセンブラや、それを含む[関数型マクロ](programming_convention.md#SS_2_6_1)がソースコード全域に広がらないようにする。
+* アセンブラ関数も、関数/メンバ関数のルールに従う(「[関数](programming_convention.md#SS_3_3)」参照)。
+* インラインアセンブラや、それを含む[関数型マクロ](programming_convention.md#SS_3_6_1)がソースコード全域に広がらないようにする。
 
-### 言語拡張機能 <a id="SS_2_11_3"></a>
+### 言語拡張機能 <a id="SS_3_11_3"></a>
 * #pragma once以外で、且つそれ以外に実装方法がない場合を除き、
   コンパイラ独自の言語拡張機能を使用しない。
 * オブジェクトのアライメントが必要な場合、
-    * alignas、alignofを使用する(「[プレースメントnew](core_lang_spec.md#SS_9_6_9)」参照)。
+    * alignas、alignofを使用する(「[プレースメントnew](core_lang_spec.md#SS_10_6_9)」参照)。
     * コンパイラ独自のアライメント機能(#pragma等)の使用を避ける。
 * 繰り返し使用する#pragmaに関しては、\_Pragma演算子とマクロを組み合わせて使用する。
   コンパイラの警告には従うべきであるが、ごく稀に無視せざるを得ない場合がある。
@@ -5647,32 +5647,32 @@ ___
     SUPPRESS_WARN_GCC_END;
 ```
 
-## 特に重要なプログラミング規約 <a id="SS_2_12"></a>
+## 特に重要なプログラミング規約 <a id="SS_3_12"></a>
 本章で取り上げた規約は、重要度という観点で様々なレベルのものが混在するため量も多く、
 すぐに実践することが難しいかもしれない。
 そういった場合には、まずは特に重要な下記リストを守ることから始めるのが良いだろう。
 
-* 浮動小数点型をなるべく使わない([浮動小数点型](core_lang_spec.md#SS_9_1_12))。
-* const/constexprを積極的に使用する([const/constexprインスタンス](programming_convention.md#SS_2_1_9), [メンバ関数](programming_convention.md#SS_2_2_4))。
-* すべてのインスタンスは定義と同時に初期化する([インスタンスの初期化](programming_convention.md#SS_2_1_12))。
-* クラスのpublicメンバ関数は最大7個([メンバの数](programming_convention.md#SS_2_2_2_2))。
-* クラスのメンバ変数は最大4個([メンバの数](programming_convention.md#SS_2_2_2_2))。
-* クラスのメンバ変数はprivateのみ([アクセスレベルと隠蔽化](programming_convention.md#SS_2_2_3))。
-* クラスのメンバ変数はコンストラクタ終了時までに初期化する([非静的なメンバ変数](programming_convention.md#SS_2_2_5_2))。
-* friendは使用しない([アクセスレベルと隠蔽化](programming_convention.md#SS_2_2_3))。
-* 派生は最大2回([継承/派生](programming_convention.md#SS_2_2_6))。
-* 関数は小さくする([サイクロマティック複雑度のクライテリア](cpp_idioms.md#SS_11_6_2))。
-* 関数の仮引数は最大4個([実引数/仮引数](programming_convention.md#SS_2_3_4))。
-* グローバルなインスタンスは使わない([スコープ](programming_convention.md#SS_2_8))。
-* throw, try-catchは控えめに使用する([エクセプション処理](programming_convention.md#SS_2_3_9))。
+* 浮動小数点型をなるべく使わない([浮動小数点型](core_lang_spec.md#SS_10_1_12))。
+* const/constexprを積極的に使用する([const/constexprインスタンス](programming_convention.md#SS_3_1_9), [メンバ関数](programming_convention.md#SS_3_2_4))。
+* すべてのインスタンスは定義と同時に初期化する([インスタンスの初期化](programming_convention.md#SS_3_1_12))。
+* クラスのpublicメンバ関数は最大7個([メンバの数](programming_convention.md#SS_3_2_2_2))。
+* クラスのメンバ変数は最大4個([メンバの数](programming_convention.md#SS_3_2_2_2))。
+* クラスのメンバ変数はprivateのみ([アクセスレベルと隠蔽化](programming_convention.md#SS_3_2_3))。
+* クラスのメンバ変数はコンストラクタ終了時までに初期化する([非静的なメンバ変数](programming_convention.md#SS_3_2_5_2))。
+* friendは使用しない([アクセスレベルと隠蔽化](programming_convention.md#SS_3_2_3))。
+* 派生は最大2回([継承/派生](programming_convention.md#SS_3_2_6))。
+* 関数は小さくする([サイクロマティック複雑度のクライテリア](cpp_idioms.md#SS_12_6_2))。
+* 関数の仮引数は最大4個([実引数/仮引数](programming_convention.md#SS_3_3_4))。
+* グローバルなインスタンスは使わない([スコープ](programming_convention.md#SS_3_8))。
+* throw, try-catchは控えめに使用する([エクセプション処理](programming_convention.md#SS_3_3_9))。
 * 構文に関しては以下に気を付ける。
-    * if, else, for, while, do後には{}を使う([複合文](programming_convention.md#SS_2_4_1))。
-    * switchでのフォールスルーをしない([switch文](programming_convention.md#SS_2_4_2))。
-    * switchにはdefaultラベルを入れる([switch文](programming_convention.md#SS_2_4_2))。
-    * 範囲for文を積極的に使う([範囲for文](core_lang_spec.md#SS_9_9_2))。
-    * gotoを使用しない([goto文](programming_convention.md#SS_2_4_8))。
+    * if, else, for, while, do後には{}を使う([複合文](programming_convention.md#SS_3_4_1))。
+    * switchでのフォールスルーをしない([switch文](programming_convention.md#SS_3_4_2))。
+    * switchにはdefaultラベルを入れる([switch文](programming_convention.md#SS_3_4_2))。
+    * 範囲for文を積極的に使う([範囲for文](core_lang_spec.md#SS_10_9_2))。
+    * gotoを使用しない([goto文](programming_convention.md#SS_3_4_8))。
 * オブジェクトのダイナミックな生成には`std::make_unique<>`や`std::make_shared<>`を使用する
-  ([メモリアロケーション](programming_convention.md#SS_2_5_6))。
-* Cタイプのキャストは使用しない([キャスト、暗黙の型変換](programming_convention.md#SS_2_5_10))。
+  ([メモリアロケーション](programming_convention.md#SS_3_5_6))。
+* Cタイプのキャストは使用しない([キャスト、暗黙の型変換](programming_convention.md#SS_3_5_10))。
 
 
