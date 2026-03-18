@@ -72,6 +72,8 @@ __この章の構成__
 &emsp;&emsp;&emsp; [danglingリファレンス](cpp_idioms.md#SS_11_11_2)  
 &emsp;&emsp;&emsp; [danglingポインタ](cpp_idioms.md#SS_11_11_3)  
 &emsp;&emsp;&emsp; [Most Vexing Parse](cpp_idioms.md#SS_11_11_4)  
+&emsp;&emsp;&emsp; [Static Initialization Order Fiasco(静的初期化順序問題)](cpp_idioms.md#SS_11_11_5)  
+&emsp;&emsp;&emsp; [Unbounded Functions](cpp_idioms.md#SS_11_11_6)  
 
 &emsp;&emsp; [ソフトウェア一般](cpp_idioms.md#SS_11_12)  
 &emsp;&emsp;&emsp; [ヒープ](cpp_idioms.md#SS_11_12_1)  
@@ -85,13 +87,13 @@ __この章の構成__
 &emsp;&emsp;&emsp; [フリースタンディング環境](cpp_idioms.md#SS_11_12_9)  
 &emsp;&emsp;&emsp; [メモリ保護機構](cpp_idioms.md#SS_11_12_10)  
 &emsp;&emsp;&emsp; [CPU例外](cpp_idioms.md#SS_11_12_11)  
-&emsp;&emsp;&emsp; [サイクロマティック複雑度](cpp_idioms.md#SS_11_12_12)  
-&emsp;&emsp;&emsp; [凝集性](cpp_idioms.md#SS_11_12_13)  
-&emsp;&emsp;&emsp;&emsp; [凝集性の欠如](cpp_idioms.md#SS_11_12_13_1)  
-&emsp;&emsp;&emsp;&emsp; [LCOM](cpp_idioms.md#SS_11_12_13_2)  
+&emsp;&emsp;&emsp; [Fluent Interface](cpp_idioms.md#SS_11_12_12)  
+&emsp;&emsp;&emsp; [サイクロマティック複雑度](cpp_idioms.md#SS_11_12_13)  
+&emsp;&emsp;&emsp; [凝集性](cpp_idioms.md#SS_11_12_14)  
+&emsp;&emsp;&emsp;&emsp; [凝集性の欠如](cpp_idioms.md#SS_11_12_14_1)  
+&emsp;&emsp;&emsp;&emsp; [LCOM](cpp_idioms.md#SS_11_12_14_2)  
 
-&emsp;&emsp;&emsp; [Spurious Wakeup](cpp_idioms.md#SS_11_12_14)  
-&emsp;&emsp;&emsp; [Static Initialization Order Fiasco(静的初期化順序問題)](cpp_idioms.md#SS_11_12_15)  
+&emsp;&emsp;&emsp; [Spurious Wakeup](cpp_idioms.md#SS_11_12_15)  
 &emsp;&emsp;&emsp; [副作用](cpp_idioms.md#SS_11_12_16)  
 &emsp;&emsp;&emsp; [Itanium C++ ABI](cpp_idioms.md#SS_11_12_17)  
 
@@ -3549,7 +3551,7 @@ CopyAssignable要件は、C++において型がcopy代入をサポートする�
 
 
 ### サイクロマティック複雑度のクライテリア <a id="SS_11_6_2"></a>
-関数構造の適・不適については、[サイクロマティック複雑度](cpp_idioms.md#SS_11_12_12)によって下記テーブルのように定義する。
+関数構造の適・不適については、[サイクロマティック複雑度](cpp_idioms.md#SS_11_12_13)によって下記テーブルのように定義する。
 
 | サイクロマティック複雑度(CC) | 複雑さの状態                                     |
 | :--------------------------: | :----------------------------------------------- |
@@ -3636,7 +3638,7 @@ C++の創始者であるビャーネ・ストラウストラップ氏は、
 に従わなけならない。
 
 ### クラス凝集性のクライテリア <a id="SS_11_7_3"></a>
-クラス構造の適・不適については、[LCOM](cpp_idioms.md#SS_11_12_13_2)によって下記テーブルのように定義する。
+クラス構造の適・不適については、[LCOM](cpp_idioms.md#SS_11_12_14_2)によって下記テーブルのように定義する。
 
 | 凝集性の欠如(LCOM)  |  クラスの状態              |
 |:-------------------:|:--------------------------:|
@@ -4578,8 +4580,28 @@ Scott Meyersが彼の著書"Effective STL"の中でこの現象に名前をつ�
     // となる。
 ```
 
+### Static Initialization Order Fiasco(静的初期化順序問題) <a id="SS_11_11_5"></a>
+静的初期化順序問題とは、
+グローバルや名前空間スコープの静的オブジェクトの初期化順序が翻訳単位間で未定義であることに起因する不具合である。
+あるオブジェクトAが初期化時に別のオブジェクトBに依存していても、Bがまだ初期化されていない場合、
+Aの初期化は未定義の状態となり、不正アクセスやクラッシュを引き起こす可能性がある。
+
+原因は、C++標準が同じ翻訳単位内の静的オブジェクトの初期化順序は保証するが、
+異なる翻訳単位間の順序は保証しないことにある。さらに、動的初期化を必要とするオブジェクトでは、
+初期化順序の依存関係が問題を起こす。
+
+C++20からこの問題の対策として、[constinit](core_lang_spec.md#SS_9_5_8)が導入された。
+
 [初期化子リストコンストラクタ](core_lang_spec.md#SS_9_6_1_1)の呼び出しでオブジェクトの初期化を行うことで、
 このような問題を回避できる。
+
+### Unbounded Functions <a id="SS_11_11_6"></a>
+unbounded function とは操作対象のバッファサイズを引数として受け取らない関数を指す。
+strcpy や gets のように書き込み先のサイズ検証を行わないため、
+入力データ次第でバッファの境界を超えて書き込みが発生するリスクがある。
+サイズ引数を持つstrncpyやsnprintfのようなbounded functionと対をなす概念であり、
+MISRA-CやAUTOSAR等のコーディング標準ではunbounded functionの使用を禁止または制限するルールが設けられている。
+
 
 ## ソフトウェア一般 <a id="SS_11_12"></a>
 ### ヒープ <a id="SS_11_12_1"></a>
@@ -4746,18 +4768,32 @@ CPU例外とは、プログラム実行中にCPUが検出する異常事象で�
 特に組み込みシステムでは、例外発生時のレジスタ状態やスタックトレースを記録する機構を用意しておくことが、
 効果的なデバッグ手法となる。
 
+### Fluent Interface <a id="SS_11_12_12"></a>
+メソッドや演算子の連鎖によって一連の操作を一文で表現できるように設計する手法であり、
+C++ においては古くから`std::ostream`の`operator<<`がその代表例である。
+`std::cout << "value=" << x << std::endl;` はまさに Fluent Interfaceであり、
+各`operator<<`が`std::ostream&`を返すことでチェーンを実現している。
+C++20では`std::ranges::views`においてパイプ演算子`|` によるビュー合成が標準化され、
+`vec | views::filter(...) | views::transform(...)` のような宣言的な記述が可能になった。
+これはFluent Interfaceの思想をアルゴリズム合成の領域に持ち込んだものであり、
+標準ライブラリにおける同パターンの本格的な拡張といえる。
+可読性の向上という恩恵は大きい一方、デバッガでのステップ実行がしにくくなる点は従来から変わらぬ注意点である。
 
-### サイクロマティック複雑度 <a id="SS_11_12_12"></a>
+__補足：__
+`operator<<`によるチェーンと`|`によるパイプ合成は、どちらも「前の式の結果を次の操作に渡す」という同じ思想を持つ。
+前者は C++98 から存在する枯れた実績であり、後者はC++20 で標準化された現代的なスタイルである。
+
+### サイクロマティック複雑度 <a id="SS_11_12_13"></a>
 [サイクロマティック複雑度](https://ja.wikipedia.org/wiki/%E5%BE%AA%E7%92%B0%E7%9A%84%E8%A4%87%E9%9B%91%E5%BA%A6)
 とは関数の複雑さを表すメトリクスである。
 
 
-### 凝集性 <a id="SS_11_12_13"></a>
+### 凝集性 <a id="SS_11_12_14"></a>
 [凝集性(凝集度)](https://ja.wikipedia.org/wiki/%E5%87%9D%E9%9B%86%E5%BA%A6)
 とはクラス設計の妥当性を表す尺度の一種であり、
-「[凝集性の欠如](cpp_idioms.md#SS_11_12_13_1)(LCOM)」というメトリクスで計測される。
+「[凝集性の欠如](cpp_idioms.md#SS_11_12_14_1)(LCOM)」というメトリクスで計測される。
 
-* [凝集性の欠如](cpp_idioms.md#SS_11_12_13_1)メトリクスの値が1に近ければ凝集性は低く、この値が0に近ければ凝集性は高い。
+* [凝集性の欠如](cpp_idioms.md#SS_11_12_14_1)メトリクスの値が1に近ければ凝集性は低く、この値が0に近ければ凝集性は高い。
 * メンバ変数やメンバ関数が多くなれば、凝集性は低くなりやすい。
 * 凝集性は、クラスのメンバがどれだけ一貫した責任を持つかを示す。
 * 「[単一責任の原則(SRP)](solid.md#SS_6_1)」を守ると凝集性は高くなりやすい。
@@ -4834,8 +4870,8 @@ CPU例外とは、プログラム実行中にCPUが検出する異常事象で�
     }
 ```
 
-#### 凝集性の欠如 <a id="SS_11_12_13_1"></a>
-[凝集性](cpp_idioms.md#SS_11_12_13)の欠如(Lack of Cohesion in Methods/LCOM)とは、
+#### 凝集性の欠如 <a id="SS_11_12_14_1"></a>
+[凝集性](cpp_idioms.md#SS_11_12_14)の欠如(Lack of Cohesion in Methods/LCOM)とは、
 クラス設計の妥当性を表す尺度の一種であり、`0 ～ 1`の値で表すメトリクスである。
 
 LCOMの値が大きい(1か1に近い値)場合、「クラス内のメンバ関数が互いに関連性を持たず、
@@ -4843,10 +4879,10 @@ LCOMの値が大きい(1か1に近い値)場合、「クラス内のメンバ関
 
 クラスデザイン見直しの基準値としてLCOMを活用する場合、[クラス凝集性のクライテリア](cpp_idioms.md#SS_11_7_3)に具体的な推奨値を示す。
 
-#### LCOM <a id="SS_11_12_13_2"></a>
-[凝集性の欠如](cpp_idioms.md#SS_11_12_13_1)とはLack of Cohesion in Methodsの和訳であり、LCOMと呼ばれる。
+#### LCOM <a id="SS_11_12_14_2"></a>
+[凝集性の欠如](cpp_idioms.md#SS_11_12_14_1)とはLack of Cohesion in Methodsの和訳であり、LCOMと呼ばれる。
 
-### Spurious Wakeup <a id="SS_11_12_14"></a>
+### Spurious Wakeup <a id="SS_11_12_15"></a>
 [Spurious Wakeup](https://en.wikipedia.org/wiki/Spurious_wakeup)とは、
 条件変数に対する通知待ちの状態であるスレッドが、その通知がされていないにもかかわらず、
 起き上がってしまう現象のことを指す。
@@ -4912,18 +4948,6 @@ std::condition_variable::wait()の第2引数を下記のようにすることで
     }
 ```
 
-### Static Initialization Order Fiasco(静的初期化順序問題) <a id="SS_11_12_15"></a>
-静的初期化順序問題とは、
-グローバルや名前空間スコープの静的オブジェクトの初期化順序が翻訳単位間で未定義であることに起因する不具合である。
-あるオブジェクトAが初期化時に別のオブジェクトBに依存していても、Bがまだ初期化されていない場合、
-Aの初期化は未定義の状態となり、不正アクセスやクラッシュを引き起こす可能性がある。
-
-原因は、C++標準が同じ翻訳単位内の静的オブジェクトの初期化順序は保証するが、
-異なる翻訳単位間の順序は保証しないことにある。さらに、動的初期化を必要とするオブジェクトでは、
-初期化順序の依存関係が問題を起こす。
-
-C++20からこの問題の対策として、[constinit](core_lang_spec.md#SS_9_5_8)が導入された。
-
 ### 副作用 <a id="SS_11_12_16"></a>
 プログラミングにおいて、式の評価による作用には、
 主たる作用とそれ以外の
@@ -4933,7 +4957,6 @@ C++20からこの問題の対策として、[constinit](core_lang_spec.md#SS_9_5
 それ以外のコンピュータの論理的状態(ローカル環境以外の状態変数の値)を変化させる作用を副作用という。
 副作用の例としては、グローバル変数や静的ローカル変数の変更、
 ファイルの読み書き等のI/O実行、等がある。
-
 
 ### Itanium C++ ABI <a id="SS_11_12_17"></a>
 ItaniumC++ABIとは、C++コンパイラ間でバイナリ互換性を確保するための規約である。
