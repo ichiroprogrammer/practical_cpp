@@ -1,5 +1,7 @@
 @startuml
 
+scale max 700 width
+
 package PackageA {
 }
 
@@ -15,8 +17,6 @@ package PackageB {
     rectangle "B2.cpp" as B2_cpp
     rectangle "B2.h" as B2_h
 
-    package PackageSubB {
-    }
 }
 
 package PackageC {
@@ -26,14 +26,17 @@ B0_cpp -up-> B0_h
 B0_cpp -up-> B1_h
 B0_cpp -up-> B2_h
 B1_cpp -up-> B1_h
-B1_cpp -down-> PackageSubB
 B2_cpp -up-> B2_h
-B2_cpp -down-> PackageSubB
 
 note top of h
 h/PackageBに入っている
 ヘッダファイルのみが
 外部公開される
+end note
+
+note right of PackageB
+- B0.h/B0.cpp:ファイルペアで、B0.hは外部公開
+- B1.h/B1.cpp:ファイルペアで、B1.hはパッケージ内部専用
 end note
 
 note "外部公開ヘッダファイル" as N2
