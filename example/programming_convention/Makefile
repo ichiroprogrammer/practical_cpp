@@ -1,7 +1,8 @@
 SRCS:=\
     class_ut.cpp etc.cpp float_ut.cpp func_ut.cpp func_return_ut.cpp func_arg_type_ut.cpp member_func_ut.cpp \
     header_ut.cpp lib/header.cpp operator_ut.cpp preprocessor_ut.cpp runtime_ut.cpp scope_ut.cpp \
-    string_vector.cpp string_view_ut.cpp syntax_ut.cpp type_ut.cpp type_const_ut.cpp raw_literal_ut.cpp
+    string_vector.cpp string_view_ut.cpp syntax_ut.cpp type_ut.cpp type_const_ut.cpp raw_literal_ut.cpp \
+    override_overload_ut.cpp dangling_ut.cpp most_vexing_parse_ut.cpp 
 
 OBJDIR:=
 SHARED:=../../essential/
