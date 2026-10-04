@@ -77,7 +77,7 @@ ___
 - [テンプレートメタプログラミング](template_meta_programming.md#SS_9)
 - [C++コア言語仕様](core_lang_spec.md#SS_10)
 - [標準ライブラリとプログラミングの概念](stdlib_and_concepts.md#SS_11)
-- [C++慣用語句](cpp_idioms.md#SS_12)
+- [C++慣用語句](glossary.md#SS_12)
 - [参考文献](bibliography.md#SS_13)
 - [Sample Code](sample_code.md#SS_15)
 

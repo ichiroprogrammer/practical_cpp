@@ -913,14 +913,80 @@ ___
 
 ## 関数
 ### 関数構造のクライテリア
-* 関数の規模・複雑度に関しては、
-    * [サイクロマティック複雑度のクライテリア](---)に従う。
-* [関数の行数のクライテリア](---)に従い、
+* [サイクロマティック複雑度](---)の視点から、過度に複雑な関数(サイクロマティック複雑度 30以上)を作らない。
+
+| サイクロマティック複雑度(CC) | 複雑さの状態                                     |
+| :--------------------------: | :----------------------------------------------- |
+|            CC <= 10          | 非常に良い構造(適)                               |
+|       11 < CC <  30          | やや複雑(概ね適)                                 |
+|       31 < CC <  50          | 構造的なリスクあり(場合により不適)               |
+|       51 < CC                | テスト不可能、デグレードリスクが非常に高い(不適) |
+
+
+* 関数の行数に関して、
     * 7 行程度を理想とする。
     * 40行以下に留める。
 
+なお、C++の創始者であるビャーネ・ストラウストラップ氏は、
+[プログラミング言語C++ 第4版](https://www.amazon.co.jp/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9EC-%E7%AC%AC4%E7%89%88-%E3%83%93%E3%83%A3%E3%83%BC%E3%83%8D%E3%83%BB%E3%82%B9%E3%83%88%E3%83%A9%E3%82%A6%E3%82%B9%E3%83%88%E3%83%A9%E3%83%83%E3%83%97-ebook/dp/B01BGEO9MS)
+の中で、下記のように述べている。
+
+> 約 40 行を関数の上限にすればよい。私自身は、もっと小さい平均 7 行程度を理想としている。 
 
 * [演習-関数分割](~~~)  
+
+### 関数の引数と戻り値の型のガイドライン
+関数の引数型および戻り値型に関するガイドラインを以下の表で表す。
+
+<table>
+  <tr bgcolor="#cccccc">
+    <th style="text-align: center;"> </th>
+    <th style="text-align: center;">copy/moveが低コスト</th>
+    <th style="text-align: center;">copyが高コスト/moveが低コスト</th>
+    <th style="text-align: center;">moveが高コスト</th>
+    <th style="text-align: center;">fがヌルを扱う</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">in</td>
+    <td style="text-align: center;"><code>f(X)</code></td>
+    <td colspan="2" style="text-align: center;"><code>f(X const&)</code></td>
+    <td style="text-align: center;"><code>f(X const\*)</code></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">in/out</td>
+    <td colspan="3" style="text-align: center;"><code>f(X&)</code></td>
+    <td style="text-align: center;"><code>f(X\*)</code></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">out</td>
+    <td colspan="2" style="text-align: center;"><code>X f()</code></td>
+    <td style="text-align: center;"><code>f(X&)</code></td>
+    <td style="text-align: center;"><code>f(X\*)</code></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">move</td>
+    <td colspan="3" style="text-align: center;"><code>f(X&&)</code></td>
+    <td style="text-align: center;">-</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">forward</td>
+    <td colspan="3" style="text-align: center;"><code>template&lt;typename T&gt; f(T&&)</code></td>
+    <td style="text-align: center;">-</td>
+  </tr>
+</table>
+
+[注] Xは任意の型  
+
+[注]
+`templat<typename T> f(T&&)`の`T&&`は[forwardingリファレンス](---)である。  
+
+[注] 以下のような引数型は避けるべきである。  
+
+* `X const*`
+* `X*`
+* `X&`
+
+---
 
 ### オーバーロード
 * [オーバーライドとオーバーロードの違い](---)に注意する。
@@ -997,11 +1063,7 @@ ___
   引数が多くなりすぎる場合、その関数の引数用の構造体を定義し、それを使用して関数を呼び出す。
   この場合、[指示付き初期化](---)を使用する。
 
-* 「[関数設計のガイドライン](---)」の「[関数の引数と戻り値の型](---)」に従う。
-
-* 仮引数を関数の戻り値として利用する場合、
-    * 「関数が、仮引数がnullptrである場合の処理を行う」場合、ポインタ渡しにする。
-    * 「関数が、仮引数がnullptrでないことを前提している」場合、リファレンス渡しにする。
+* 仮引数の型については、「[関数の引数と戻り値の型のガイドライン](---)」に従う。
 
 * [forwardingリファレンス](---)を仮引数とする関数テンプレートでは、仮引数は非constにする。
 
@@ -1103,7 +1165,7 @@ ___
     // @@@ example/programming_convention/func_return_ut.cpp #0:0 begin
 ```
 
-* 戻り値型は「[関数の引数と戻り値の型](---)」に従う。
+* 戻り値型は「[関数の引数と戻り値の型のガイドライン](---)」に従う。
 
 * 関数が複数の値を返す場合、[std::optional](---)、std::pair、std::tupple、
   構造体オブジェクトを戻り値にして返す。パフォーマンスに著しい悪影響がない限り、
@@ -1831,7 +1893,7 @@ ___
 * ソースコードの統一性のため、このオーバーヘッドがない基本型についても、同じルー ルを適用する。
 
 ### 関数の戻り値オブジェクト
-* 戻り値型は「[関数の引数と戻り値の型](---)」に従う。
+* 戻り値型は「[関数の引数と戻り値の型のガイドライン](---)」に従う。
 
 
 ### move処理
@@ -2192,7 +2254,7 @@ ___
 * クラスのメンバ変数はコンストラクタ終了時までに初期化する([非静的なメンバ変数](---))。
 * friendは使用しない([アクセスレベルと隠蔽化](---))。
 * 派生は最大2回([継承/派生](---))。
-* 関数は小さくする([サイクロマティック複雑度のクライテリア](---))。
+* 関数は小さくする([関数構造のクライテリア](---))。
 * 関数の仮引数は最大4個([関数|実引数/仮引数](---))。
 * グローバルなインスタンスは使わない([スコープ](---))。
 * throw, try-catchは控えめに使用する([エクセプション処理](---))。
