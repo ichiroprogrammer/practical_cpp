@@ -14,6 +14,7 @@ MDS:=practical_intro.md \
      comment.md class_design.md design_pattern.md template_meta_programming.md \
      core_lang_spec.md stdlib_and_concepts.md glossary.md bibliography.md
 
-INDEX_OPT:=--exclude $(addsuffix :1,$(MDS) sample_code.md)
+INDEX_OPT:=--exclude $(addsuffix :1,$(MDS))
+MD_SC=
 
 include essential/make/md.mk
