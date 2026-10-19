@@ -1,4 +1,6 @@
+#include <array>
 #include <mutex>
+#include <type_traits>
 
 #include "gtest_wrapper.h"
 
@@ -14,7 +16,12 @@ TEST(coding_style, AAA)
     auto ui = 1U;
     auto d  = 1.0;
     auto s  = "str";
-    auto v  = {0, 1, 2};
+
+    auto v = {0, 1, 2};  // vはinitializer_list
+    static_assert(std::is_same_v<decltype(v), std::initializer_list<int>>);
+
+    int  ai[]{0, 1, 2};  // 配列のautoでの定義はできない
+    auto ai2 = std::array{0, 1, 2};
 
     for (auto i : v) {
         // 何らかの処理
@@ -42,7 +49,7 @@ TEST(coding_style, AAA)
     static_assert(std::is_same_v<decltype(p3), std::nullptr_t>);
     // @@@ sample end
 
-    IGNORE_UNUSED_VAR(i, ui, d, s, v, s2, p0, p1, p2, p3);
+    IGNORE_UNUSED_VAR(i, ui, d, s, v, s2, p0, p1, p2, p3, ai, ai2);
     ASSERT_EQ(2, add(1, 1));
 }
 

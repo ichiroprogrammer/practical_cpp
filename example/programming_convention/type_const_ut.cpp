@@ -51,22 +51,32 @@ void f(std::vector<int32_t>& vec)
 // constの位置の例のため、このファイルをwesterlyでformatしてはならない
 // @@@ sample begin 0:1
 
+// clang-format off
 const std::string s;  // NG
+// clang-format on
 std::string const t;  // OK
 
-std::string const* s_ptr;  // NG
+// clang-format off
+const std::string * s_ptr;  // NG
+// clang-format on
 std::string const* t_ptr;  // OK
 
-std::string const& f();  // NG 関数の宣言
+// clang-format off
+const std::string& f();  // NG 関数の宣言
+// clang-format on
 std::string const& g();  // OK 関数の宣言
 
-char        abc[]{"abc"};
-char const* a = abc;  // NG *aはconst
-char const* b = abc;  // OK *aはconst
-char* const c = abc;  // NG *aではなく、aがconstになり、意味が変わる
+char abc[]{"abc"};
+// clang-format off
+const char *a = abc;  // NG *aはconst
+// clang-format on
+char const* b = abc;  // OK *bはconst
+char* const c = abc;  // NG *cではなく、cがconstになり、意味が変わる
 
-char const* const d = abc;  // NG
-char const* const e = abc;  // OK
+// clang-format off
+const char* const d = abc;  // NG
+// clang-format on
+char const* const e = abc;  // OK eがconstで且つ、*eもconst
 // @@@ sample end
 SUPPRESS_WARN_END;
 }  // namespace ConsConstexprSample

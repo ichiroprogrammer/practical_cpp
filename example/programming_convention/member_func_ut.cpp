@@ -187,17 +187,25 @@ private:
     int32_t* b_;
     // @@@ ignore end
 };
+// @@@ sample end
 
 void f_A0(A0) noexcept {}
 void f_A1(A1) noexcept {}
 void f_A2(A2) noexcept {}
 void f_A3(A3) noexcept {}
+
+// @@@ sample begin 1:3
+
+void f_A0(A0) noexcept;
+void f_A1(A1) noexcept;
+void f_A2(A2) noexcept;
+void f_A3(A3) noexcept;
 // @@@ sample end
 
 TEST(ProgrammingConvention, func_constructor)
 {
     // clang-format off
-    // @@@ sample begin 1:3
+    // @@@ sample begin 1:4
 
     A0 a0 = 1;           // NG 1からA0への暗黙の型変換。
                          //    このような変換はセマンティクス的不整合につながる場合がある
