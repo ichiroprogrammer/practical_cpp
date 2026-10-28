@@ -44,7 +44,8 @@ TEST(OverrideOverload, override_overload)
 
     ret = d.g();  // Derived::g()呼び出し
     ASSERT_EQ("Derived::g", ret);
-    // ret = d.g(int{});   // Derived::gによって、Base::gが隠されるのでコンパイルエラー
+    // ret = d.g(int{});     // Derived::gによって、Base::gが隠されるのでコンパイルエラー
+    ret = d.Base::g(int{});  // 上記のコンパイルエラーの回避のために"Base::"が必要になる
 
     ret = d_ref.f();  // Base::fはDerived::fによってオーバーライドされたので、Derived::f()呼び出し
     ASSERT_EQ("Derived::f", ret);
