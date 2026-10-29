@@ -478,6 +478,8 @@ OSによっては、その区別がないものがあるため、この違いが
 
 ---
 
+[インデックス](practical_intro.md#SS_1_3)/[章の先頭](naming_practice.md#SS_5)
+
 ---
 
 

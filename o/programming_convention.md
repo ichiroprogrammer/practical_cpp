@@ -5838,6 +5838,8 @@ C++20からこの問題の対策として、[constinit](core_lang_spec.md#SS_10_
 
 ---
 
+[インデックス](practical_intro.md#SS_1_3)/[章の先頭](programming_convention.md#SS_3)
+
 ---
 
 

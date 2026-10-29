@@ -30,7 +30,7 @@ __この章の構成__
 &emsp;[Accessor](design_pattern.md#SS_8_1_6)  
 &emsp;[Immutable](design_pattern.md#SS_8_1_7)  
 &emsp;[NVI(non virtual interface)](design_pattern.md#SS_8_1_8)  
-&emsp;[二段階文字列化(STRINGIZE) ](design_pattern.md#SS_8_1_9)  
+&emsp;[二段階文字列化(STRINGIZE)](design_pattern.md#SS_8_1_9)  
 
 [実装パターン](design_pattern.md#SS_8_2)  
 &emsp;[Pimpl](design_pattern.md#SS_8_2_1)  
@@ -1024,7 +1024,7 @@ privateなメンバ関数はデフォルト引数を持つべきではない。
 
 ---
 
-### 二段階文字列化(STRINGIZE)  <a id="SS_8_1_9"></a>
+### 二段階文字列化(STRINGIZE) <a id="SS_8_1_9"></a>
 本節では、プリプロセッサの文字列化演算子 `#` を二段階のマクロで包むイディオムと、
 その代表的な応用2つを解説する。
 
@@ -3411,7 +3411,7 @@ ThreadOldStyleStateStr()、ThreadOldStyleRun()、ThreadOldStyleAbort()、ThreadO
         Suspending,
     };
 
-    ThreadOldStyleState thread_old_style_state;
+    ThreadOldStyleState thread_old_style_state;  // 状態の保存
     // ...
     }  // namespace
 
@@ -3430,6 +3430,7 @@ ThreadOldStyleStateStr()、ThreadOldStyleRun()、ThreadOldStyleAbort()、ThreadO
         }
     }
 
+    // スレッドをrunning状態に移行させる
     void ThreadOldStyleRun()
     {
         switch (thread_old_style_state) {
@@ -3437,14 +3438,14 @@ ThreadOldStyleStateStr()、ThreadOldStyleRun()、ThreadOldStyleAbort()、ThreadO
         case ThreadOldStyleState::Running:
             thread_old_style_state = ThreadOldStyleState::Running;
             break;
-        case ThreadOldStyleState::Suspending:
-            --thread_old_style_suspend_count;
+        case ThreadOldStyleState::Suspending:  // suspend状態
+            --thread_old_style_suspend_count;  // suspend状態はネスティングする
             if (thread_old_style_suspend_count == 0) {
-                thread_old_style_state = ThreadOldStyleState::Running;
+                thread_old_style_state = ThreadOldStyleState::Running;  // suspend状態 ->  running状態
             }
             break;
         default:
-            assert(false);
+            assert(false);  // バグ以外でここに来ることはない
         }
     }
 
@@ -5277,5 +5278,11 @@ ViewはModelの[Observer](design_pattern.md#SS_8_4_4)であるため、ModelはV
   Viewのそれよりもかなり少ない。
   しかし、ModelがViewに依存してしまうと、Viewに影響されModelのソースコード変更も多くなる。
 
+
+---
+
+[インデックス](practical_intro.md#SS_1_3)/[章の先頭](design_pattern.md#SS_8)
+
+---
 
 
