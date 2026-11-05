@@ -400,17 +400,19 @@ B& getB() noexcept { return b; }
 
 void f() noexcept
 {
+    // clang-format off
     // @@@ sample begin 5:1
 
     // ライフタイムが終了したオブジェクトにアクセスしてしまう例
     auto a = A{};
     {
         auto b = B{};
-        a.SetB(&b);  // NG aのメンバ変数へ&bを代入。
-    }                //    この行でbのライフタイム終了。
+        a.SetB(&b);  // NG aのメンバ変数へ&bを代入
+    } //    この行でbのライフタイム終了
 
-    a.DoSomething();  // NG bのポインタを使用して何かすると不定動作。
+    a.DoSomething();  // NG bへのポインタをデリファレンスすると未定義動作
     // @@@ sample end
+    // clang-format on
 }
 
 class E {
