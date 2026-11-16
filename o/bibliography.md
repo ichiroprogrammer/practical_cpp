@@ -7,7 +7,22 @@
 その理由はソフトウェア開発の肝要は急激に変化することがないことと、
 これら書籍のほとんどが不朽の必読書と言って良いレベルであることによる。
 
-[インデックス](practical_intro.md#SS_1_3)に戻る。  
+
+___
+
+__この章の構成__
+
+[プロセス・プラクティス](bibliography.md#SS_13_1)  
+[設計・デザイン](bibliography.md#SS_13_2)  
+[C++・C](bibliography.md#SS_13_3)  
+[CMake](bibliography.md#SS_13_4)  
+  
+  
+
+___
+
+
+[インデックス](practical_intro.md#SS_1_3)/[章の最後](bibliography.md#SS_13_999)
 
 ___
 
@@ -54,4 +69,6 @@ ___
 
 ---
 
+
+<a id="SS_13_999"></a>
 

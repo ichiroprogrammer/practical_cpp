@@ -180,9 +180,13 @@ __この章の構成__
   
   
 
-[インデックス](practical_intro.md#SS_1_3)に戻る。  
+___
+
+
+[インデックス](practical_intro.md#SS_1_3)/[章の最後](programming_convention.md#SS_3_999)/[次の章](coding_style.md#SS_4)
 
 ___
+
 
 ## 型とインスタンス <a id="SS_3_1"></a>
 
@@ -1448,7 +1452,7 @@ ___
   不要なコンパイラ生成関数が作られないようにする。
 
 ```cpp
-    //  example/programming_convention/class_ut.cpp 454
+    //  example/programming_convention/class_ut.cpp 456
 
     /// @brief クラスのひな形。クラスを定義、宣言するときには、このクラスの下記6関数を適切に
     ///        定義、宣言すること。
@@ -2137,16 +2141,16 @@ ___
   オブジェクトaがオブジェクトbにアクセスできないようにする(Observerパターンのdetachメンバ関数等)。
 
 ```cpp
-    //  example/programming_convention/class_ut.cpp 403
+    //  example/programming_convention/class_ut.cpp 404
 
     // ライフタイムが終了したオブジェクトにアクセスしてしまう例
     auto a = A{};
     {
         auto b = B{};
-        a.SetB(&b);  // NG aのメンバ変数へ&bを代入。
-    }                //    この行でbのライフタイム終了。
+        a.SetB(&b);  // NG aのメンバ変数へ&bを代入
+    } //    この行でbのライフタイム終了
 
-    a.DoSomething();  // NG bのポインタを使用して何かすると不定動作。
+    a.DoSomething();  // NG bへのポインタをデリファレンスすると未定義動作
 ```
 
 * スタック上のオブジェクトのハンドルをその関数外部へ開示しない
@@ -2159,7 +2163,7 @@ ___
   もしくはrvalueリファレンス(T&&)を使用する(「[rvalue](programming_convention.md#SS_3_1_13)」参照)。
 
 ```cpp
-    //  example/programming_convention/class_ut.cpp 436
+    //  example/programming_convention/class_ut.cpp 438
 
     void f0(E&) noexcept;
     void f1(E const&) noexcept;
@@ -4873,7 +4877,7 @@ ___
 
 ### 名前空間のエイリアス <a id="SS_3_8_5"></a>
 * ネストされた長い名前空間を短く簡潔に書くための名前空間エイリアスは、
-  その効果をブロックスコープ内のみに留める。
+  その効果を関数かクラスのスコープ内に留める。
 * 名前空間のエイリアスを[using宣言/usingディレクティブ](programming_convention.md#SS_3_8_3)で使用しない。
 
 ```cpp
@@ -5838,8 +5842,10 @@ C++20からこの問題の対策として、[constinit](core_lang_spec.md#SS_10_
 
 ---
 
-[インデックス](practical_intro.md#SS_1_3)/[章の先頭](programming_convention.md#SS_3)
+[インデックス](practical_intro.md#SS_1_3)/[章の先頭](programming_convention.md#SS_3)/[次の章](coding_style.md#SS_4)
 
 ---
 
+
+<a id="SS_3_999"></a>
 

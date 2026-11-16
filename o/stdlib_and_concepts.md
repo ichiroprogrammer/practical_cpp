@@ -84,7 +84,10 @@ __この章の構成__
   
   
 
-[インデックス](practical_intro.md#SS_1_3)に戻る。  
+___
+
+
+[インデックス](practical_intro.md#SS_1_3)/[章の最後](stdlib_and_concepts.md#SS_11_999)/[次の章](glossary.md#SS_12)
 
 ___
 
@@ -2752,8 +2755,10 @@ new/deleteの呼び出しをまとめたり省略したりすることができ�
 
 ---
 
-[インデックス](practical_intro.md#SS_1_3)/[章の先頭](stdlib_and_concepts.md#SS_11)
+[インデックス](practical_intro.md#SS_1_3)/[章の先頭](stdlib_and_concepts.md#SS_11)/[次の章](glossary.md#SS_12)
 
 ---
 
+
+<a id="SS_11_999"></a>
 

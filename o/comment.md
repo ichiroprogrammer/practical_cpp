@@ -17,9 +17,13 @@ __この章の構成__
   
   
 
-[インデックス](practical_intro.md#SS_1_3)に戻る。  
+___
+
+
+[インデックス](practical_intro.md#SS_1_3)/[章の最後](comment.md#SS_6_999)/[次の章](class_design.md#SS_7)
 
 ___
+
 
 ## 情報を付加しないコメント <a id="SS_6_1"></a>
 以下のような情報を付加しないコメントは無駄であるだけではなく、可読性に悪影響を与える場合もあるため、
@@ -104,8 +108,10 @@ doxygenフォーマットの各要素に対する書き方を例示する。
 
 ---
 
-[インデックス](practical_intro.md#SS_1_3)/[章の先頭](comment.md#SS_6)
+[インデックス](practical_intro.md#SS_1_3)/[章の先頭](comment.md#SS_6)/[次の章](class_design.md#SS_7)
 
 ---
 
+
+<a id="SS_6_999"></a>
 

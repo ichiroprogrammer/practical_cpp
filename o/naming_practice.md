@@ -51,9 +51,14 @@ __この章の構成__
   
   
 
-[インデックス](practical_intro.md#SS_1_3)に戻る。  
+___
+
+
+[インデックス](practical_intro.md#SS_1_3)/[章の最後](naming_practice.md#SS_5_999)/[次の章](comment.md#SS_6)
 
 ___
+
+
 
 ## 禁止事項 <a id="SS_5_1"></a>
 
@@ -478,8 +483,10 @@ OSによっては、その区別がないものがあるため、この違いが
 
 ---
 
-[インデックス](practical_intro.md#SS_1_3)/[章の先頭](naming_practice.md#SS_5)
+[インデックス](practical_intro.md#SS_1_3)/[章の先頭](naming_practice.md#SS_5)/[次の章](comment.md#SS_6)
 
 ---
 
+
+<a id="SS_5_999"></a>
 

@@ -36,7 +36,11 @@
     * [Inside-Outの原則](software_practice.md#SS_2_11)
     * [SOLID](software_practice.md#SS_2_12)
 
-[インデックス](practical_intro.md#SS_1_3)に戻る。  
+
+___
+
+
+[インデックス](practical_intro.md#SS_1_3)/[章の最後](software_practice.md#SS_2_999)/[次の章](programming_convention.md#SS_3)
 
 ___
 
@@ -437,8 +441,10 @@ Modelから開発を始め、それを外部の「回帰テスト用ソフトウ
 
 ---
 
-[インデックス](practical_intro.md#SS_1_3)/[章の先頭](software_practice.md#SS_2)
+[インデックス](practical_intro.md#SS_1_3)/[章の先頭](software_practice.md#SS_2)/[次の章](programming_convention.md#SS_3)
 
 ---
 
+
+<a id="SS_2_999"></a>
 

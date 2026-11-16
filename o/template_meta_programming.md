@@ -116,8 +116,13 @@ __この章の構成__
   
   
 
-[インデックス](practical_intro.md#SS_1_3)に戻る。  
 ___
+
+
+[インデックス](practical_intro.md#SS_1_3)/[章の最後](template_meta_programming.md#SS_9_999)/[次の章](core_lang_spec.md#SS_10)
+
+___
+
 
 ## ログ取得ライブラリの開発 <a id="SS_9_1"></a>
 ここではログ取得ライブラリの開発を行う。
@@ -7630,8 +7635,10 @@ C++17からサポートされた「クラステンプレートのテンプレー
 
 ---
 
-[インデックス](practical_intro.md#SS_1_3)/[章の先頭](template_meta_programming.md#SS_9)
+[インデックス](practical_intro.md#SS_1_3)/[章の先頭](template_meta_programming.md#SS_9)/[次の章](core_lang_spec.md#SS_10)
 
 ---
 
+
+<a id="SS_9_999"></a>
 
