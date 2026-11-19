@@ -40,7 +40,7 @@ ___
   (ハードタブはビューアにより見え方が変わるため使用しない)。
 
 ```cpp
-    // @@@ example/etc/coding_style.cpp #0:0 begin
+    // @@@ example/coding_style/coding_style.cpp #0:0 begin
 ```
 
 #### if、for、while、do-whileのインデント
@@ -58,7 +58,7 @@ ___
   その直後に配置する。'}'はcaseと同じカラムに置く。
 
 ```cpp
-    // @@@ example/etc/coding_style.cpp #1:0 begin -1
+    // @@@ example/coding_style/coding_style.cpp #1:0 begin -1
 ```
 
 ### ブロック(波括弧({}))
@@ -67,7 +67,7 @@ ___
 * 関数宣言に続く'{'は、関数宣言の直後に改行し、直前の行の先頭と同じカラムに '{' を配置する。
 
 ```cpp
-    // @@@ example/etc/coding_style.cpp #2:0 begin
+    // @@@ example/coding_style/coding_style.cpp #2:0 begin
 ```
 
 ### 関数シグネチャ内の'()'
@@ -76,14 +76,14 @@ ___
 * 全体が一行に収まるときは、そのまま一行に書く。
 
 ```cpp
-    // @@@ example/etc/coding_style.cpp #3:0 begin
+    // @@@ example/coding_style/coding_style.cpp #3:0 begin
 ```
 
 ### クラスのアクセスレベル
 * メンバ関数等のネストが深くなりすぎるため、クラスのアクセスレベルはインデントしない。
 
 ```cpp
-    // @@@ example/etc/coding_style.cpp #4:0 begin
+    // @@@ example/coding_style/coding_style.cpp #4:0 begin
 ```
 
 ### スペース
@@ -92,14 +92,14 @@ ___
 * 関数名の直後にはスペースを入れない。
 
 ```cpp
-    // @@@ example/etc/coding_style.cpp #5:0 begin -1
+    // @@@ example/coding_style/coding_style.cpp #5:0 begin -1
 ```
 
 #### コンマの後  
 * 行最後の文字でないコンマ(,)の後には1スペースを入れる。
 
 ```cpp
-    // @@@ example/etc/coding_style.cpp #6:0 begin -1
+    // @@@ example/coding_style/coding_style.cpp #6:0 begin -1
 ```
 
 #### 単項演算子、二項演算子、三項演算子の前後
@@ -107,7 +107,7 @@ ___
 * []、->、ピリオド(.)、コンマ(,)は除き、 二項演算子、三項演算子の前後には1スペースを入れる。
 
 ```cpp
-    // @@@ example/etc/coding_style.cpp #7:0 begin -1
+    // @@@ example/coding_style/coding_style.cpp #7:0 begin -1
 ```
 
 #### 不要なブランク文字
@@ -119,26 +119,26 @@ ___
 * 三項演算子は以下のように書く。
 
 ```cpp
-    // @@@ example/etc/coding_style.cpp #8:0 begin -1
+    // @@@ example/coding_style/coding_style.cpp #8:0 begin -1
 ```
 
 * 以下のような表記方法も認められる。この表記は、switch文やif-else-if文と同様に使える。
 
 ```cpp
-    // @@@ example/etc/coding_style.cpp #8:1 begin -1
+    // @@@ example/coding_style/coding_style.cpp #8:1 begin -1
 ```
 
 ### ポインタ型やリファレンス型インスタンスの宣言、定義の\*や&の場所
 * ポインタ型やリファレンス型インスタンスの宣言、定義の\*や&は型の直後に配置する。
 
 ```cpp
-    // @@@ example/etc/coding_style.cpp #9:0 begin -1
+    // @@@ example/coding_style/coding_style.cpp #9:0 begin -1
 ```
 
 * 一つの文で複数の変数の定義をしない。
 
 ```cpp
-    // @@@ example/etc/coding_style.cpp #9:1 begin -1
+    // @@@ example/coding_style/coding_style.cpp #9:1 begin -1
 ```
 
 ### 行数・桁数
@@ -155,44 +155,44 @@ ___
     * 関数の宣言
 
     ```.cpp
-            // @@@ example/etc/coding_style.cpp #10:0 begin
+            // @@@ example/coding_style/coding_style.cpp #10:0 begin
     ```
 
     * 定義を伴う関数の宣言
 
     ```.cpp
-            // @@@ example/etc/coding_style.cpp #10:1 begin
+            // @@@ example/coding_style/coding_style.cpp #10:1 begin
     ```
 
     * 関数呼び出し
 
     ```.cpp
-            // @@@ example/etc/coding_style.cpp #10:2 begin -1
+            // @@@ example/coding_style/coding_style.cpp #10:2 begin -1
     ```
 
     * 論理演算子は行末ではなく、行頭に配置(行中にあってもよい)
 
     ```.cpp
-            // @@@ example/etc/coding_style.cpp #10:3 begin -1
+            // @@@ example/coding_style/coding_style.cpp #10:3 begin -1
     ```
 
     * 代入の'='の前で改行し、'='を行頭に持ってくる。 
 
     ```.cpp
-            // @@@ example/etc/coding_style.cpp #10:4 begin -1
+            // @@@ example/coding_style/coding_style.cpp #10:4 begin -1
     ```
 
     * 長い文字列
 
     ```.cpp
-            // @@@ example/etc/coding_style.cpp #10:5 begin -1
+            // @@@ example/coding_style/coding_style.cpp #10:5 begin -1
     ```
 
 ### ブロックの論理レベル
 * 各ブロックの抽象度を揃える。
 
 ```cpp
-    // @@@ example/etc/coding_style.cpp #11:0 begin
+    // @@@ example/coding_style/coding_style.cpp #11:0 begin
 ```
 
 ### 名前空間
@@ -201,7 +201,7 @@ ___
 * ネストが深くなりすぎるため、名前空間用のインデントはしない。
 
 ```cpp
-    // @@@ example/etc/coding_style.cpp #12:0 begin
+    // @@@ example/coding_style/coding_style.cpp #12:0 begin
 ```
 
 ### clang-format
@@ -225,39 +225,39 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 特定の型を明示して使用する必要がない場合、下記のように書く。
 
 ```cpp
-    // @@@ example/etc/aaa.cpp #0:0 begin -1
+    // @@@ example/coding_style/aaa.cpp #0:0 begin -1
 ```
 
 特定の型を明示して使用する必要がある場合、下記のように書く。
 
 ```cpp
-    // @@@ example/etc/aaa.cpp #1:0 begin -1
+    // @@@ example/coding_style/aaa.cpp #1:0 begin -1
 ```
 
 関数の戻り値を受け取る変数を宣言する場合、下記のように書く。
 
 ```cpp
-    // @@@ example/etc/aaa.cpp #2:0 begin -1
+    // @@@ example/coding_style/aaa.cpp #2:0 begin -1
 ```
 
 ただし、関数の戻り値型が容易に推測しがたい下記のような場合、
 型を明示しないAAAスタイルは使うべきではない。
 
 ```cpp
-    // @@@ example/etc/aaa.cpp #2:1 begin -1
+    // @@@ example/coding_style/aaa.cpp #2:1 begin -1
 ```
 
 インライン関数や関数テンプレートの宣言は、下記のように書く。
 
 ```cpp
-    // @@@ example/etc/aaa.cpp #3:0 begin
+    // @@@ example/coding_style/aaa.cpp #3:0 begin
 ```
 
 ただし、インライン関数や関数テンプレートが複雑な下記のような場合、
 AAAスタイルは出来る限り避けるべきである。
 
 ```cpp
-    // @@@ example/etc/aaa.cpp #3:1 begin
+    // @@@ example/coding_style/aaa.cpp #3:1 begin
 ```
 
 このスタイルには下記のような狙いがある。
@@ -267,7 +267,7 @@ AAAスタイルは出来る限り避けるべきである。
   また、下記のように縮小型変換(下記では、unsignedからsignedの変換)を防ぐこともできる。
 
 ```cpp
-    // @@@ example/etc/aaa.cpp #4:0 begin -1
+    // @@@ example/coding_style/aaa.cpp #4:0 begin -1
 ```
 
 * コードの可読性の向上  
@@ -289,7 +289,7 @@ AAAスタイルでは、以下のような場合に注意が必要である。
   下記のような型推論は、直感に反する場合があるため、autoの使い方に対する習熟が必要である。
 
 ```cpp
-    // @@@ example/etc/aaa.cpp #5:0 begin -1
+    // @@@ example/coding_style/aaa.cpp #5:0 begin -1
 ```
 
 ---
@@ -302,7 +302,7 @@ east-constとは、`const`修飾子を修飾する型要素の右側(east＝右)
 テンプレート展開や型推論の際に一貫性があり、C++コミュニティではしばしば論理的・直感的と評価されている。
 
 ```cpp
-    // @@@ example/etc/east_west_const.cpp #0:0 begin -1
+    // @@@ example/coding_style/east_west_const.cpp #0:0 begin -1
 ```
 
 このスタイルは 「east constスタイル」 または 「右側const」と呼ばれ、
@@ -319,7 +319,7 @@ C言語からの伝統的な表記法であり、多くの標準ライブラリ�
 可読性は慣れに依存するが、`const`の位置が一貫しないケース(`T* const`など)では理解しづらくなることもある。
 
 ```cpp
-    // @@@ example/etc/east_west_const.cpp #0:1 begin -1
+    // @@@ example/coding_style/east_west_const.cpp #0:1 begin -1
 ```
 
 このスタイルは「west constスタイル」または「左側const」と呼ばれ、

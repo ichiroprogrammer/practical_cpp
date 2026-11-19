@@ -1,5 +1,5 @@
 <!-- ./md/comment.md -->
-# コメント <a id="SS_6"></a>
+# コメント <a id="SS_5"></a>
 コメントの目的は、複雑怪奇なソースコードのエクスキューズでない。
 ソースコードから読み取れない情報や、ソースコードのサマリーを書くべきである。
 
@@ -7,25 +7,25 @@ ___
 
 __この章の構成__
 
-[情報を付加しないコメント](comment.md#SS_6_1)  
-[コメントのスタイル](comment.md#SS_6_2)  
-&emsp;[クラスのコメント](comment.md#SS_6_2_1)  
-&emsp;[関数のコメント](comment.md#SS_6_2_2)  
-&emsp;[enumのコメント](comment.md#SS_6_2_3)  
-&emsp;[型エイリアスのコメント](comment.md#SS_6_2_4)  
-&emsp;[template仮引数のコメント](comment.md#SS_6_2_5)  
+[情報を付加しないコメント](comment.md#SS_5_1)  
+[コメントのスタイル](comment.md#SS_5_2)  
+&emsp;[クラスのコメント](comment.md#SS_5_2_1)  
+&emsp;[関数のコメント](comment.md#SS_5_2_2)  
+&emsp;[enumのコメント](comment.md#SS_5_2_3)  
+&emsp;[型エイリアスのコメント](comment.md#SS_5_2_4)  
+&emsp;[template仮引数のコメント](comment.md#SS_5_2_5)  
   
   
 
 ___
 
 
-[インデックス](practical_intro.md#SS_1_3)/[章の最後](comment.md#SS_6_999)/[次の章](class_design.md#SS_7)
+[インデックス](practical_intro.md#SS_1_3)/[章の最後](comment.md#SS_5_999)/[次の章](class_design.md#SS_6)
 
 ___
 
 
-## 情報を付加しないコメント <a id="SS_6_1"></a>
+## 情報を付加しないコメント <a id="SS_5_1"></a>
 以下のような情報を付加しないコメントは無駄であるだけではなく、可読性に悪影響を与える場合もあるため、
 避けるべきである。
 
@@ -37,26 +37,26 @@ ___
 特に2、3のコメントを書くプログラマは、バージョン管理システムに未習熟である可能性が高い。
 そういうプログラマには、バージョン管理システムの書籍を読ませることを推奨する。
 
-## コメントのスタイル <a id="SS_6_2"></a>
+## コメントのスタイル <a id="SS_5_2"></a>
 有償、無名もしくは、日本でしか使われていないコメントフォーマットやそのツールを使うべきではない。
 本ドキュメントでは、doxygenを推奨する。
 
 doxygenフォーマットの各要素に対する書き方を例示する。
 
-### クラスのコメント <a id="SS_6_2_1"></a>
+### クラスのコメント <a id="SS_5_2_1"></a>
 
 ```cpp
-    //  example/etc/comment.cpp 9
+    //  example/comment/comment.cpp 9
 
     /// @brief ディレクトリ配下の特定のファイルをリカーシブに探して、その一覧を返すクラス
     class FileFinder {
     public:
 ```
 
-### 関数のコメント <a id="SS_6_2_2"></a>
+### 関数のコメント <a id="SS_5_2_2"></a>
 
 ```cpp
-    //  example/etc/comment.cpp 42
+    //  example/comment/comment.cpp 42
 
     /// @brief 条件にマッチしたファイルをリカーシブに探して返す
     /// @param is_match どのようなファイルかをラムダ式で指定する
@@ -64,10 +64,10 @@ doxygenフォーマットの各要素に対する書き方を例示する。
     std::vector<std::string> FindFileRecursively(IsMatch is_match);
 ```
 
-### enumのコメント <a id="SS_6_2_3"></a>
+### enumのコメント <a id="SS_5_2_3"></a>
 
 ```cpp
-    //  example/etc/comment.cpp 20
+    //  example/comment/comment.cpp 20
 
     /// @enum FileSort
     /// FindFileRecursivelyの条件
@@ -78,20 +78,20 @@ doxygenフォーマットの各要素に対する書き方を例示する。
     };
 ```
 
-### 型エイリアスのコメント <a id="SS_6_2_4"></a>
+### 型エイリアスのコメント <a id="SS_5_2_4"></a>
 
 ```cpp
-    //  example/etc/comment.cpp 36
+    //  example/comment/comment.cpp 36
 
     /// @typedef IsMatch
     /// @brief   FindFileRecursivelyの仮引数の型
     using IsMatch = std::function<bool(std::filesystem::path const&)>;
 ```
 
-### template仮引数のコメント <a id="SS_6_2_5"></a>
+### template仮引数のコメント <a id="SS_5_2_5"></a>
 
 ```cpp
-    //  example/etc/comment.cpp 62
+    //  example/comment/comment.cpp 62
 
     /// @brief BASIC_TYPEで指定する基本型のビット長を持つ固定小数点を扱うためのクラス
     /// @tparam BASIC_TYPE       全体のビット長や、符号を指定するための整数型
@@ -108,10 +108,10 @@ doxygenフォーマットの各要素に対する書き方を例示する。
 
 ---
 
-[インデックス](practical_intro.md#SS_1_3)/[章の先頭](comment.md#SS_6)/[次の章](class_design.md#SS_7)
+[インデックス](practical_intro.md#SS_1_3)/[章の先頭](comment.md#SS_5)/[次の章](class_design.md#SS_6)
 
 ---
 
 
-<a id="SS_6_999"></a>
+<a id="SS_5_999"></a>
 

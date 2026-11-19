@@ -1,5 +1,5 @@
 SRCS:=\
-   aaa.cpp east_west_const.cpp coding_style.cpp comment.cpp debug.cpp naming.cpp
+   aaa.cpp east_west_const.cpp coding_style.cpp
 
 OBJDIR:=
 SHARED:=../../essential/

@@ -1,5 +1,5 @@
 <!-- ./md/coding_style.md -->
-# コーディングスタイル <a id="SS_4"></a>
+# コーディングスタイル <a id="SS_3"></a>
 スタイルが統一されていないソースコードは、それだけで可読性に劣るため、
 スタイルの統一は重要であるが、それにこだわりすぎれば、不毛な宗教論争が発生してしまう。
 そのようなロスを避けスタイルを定めたとしても、その遵守が目視、手作業によって行われるならば、
@@ -11,76 +11,76 @@
 
 このドキュメントのコード例は、以下に示したスタイルを採用している。
 
-- [コード全体のスタイル](coding_style.md#SS_4_1)
-- [AAAスタイル](coding_style.md#SS_4_2_1)(すべてではないが、このスタイルが自然な場合)    
-- [east-const](coding_style.md#SS_4_2_2)
-- [Trailing Underscore(末尾アンダースコア)](coding_style.md#SS_4_2_4)
+- [コード全体のスタイル](coding_style.md#SS_3_1)
+- [AAAスタイル](coding_style.md#SS_3_2_1)(すべてではないが、このスタイルが自然な場合)    
+- [east-const](coding_style.md#SS_3_2_2)
+- [Trailing Underscore(末尾アンダースコア)](coding_style.md#SS_3_2_4)
 
 ___
 
 
 __この章の構成__
 
-[コード全体のスタイル](coding_style.md#SS_4_1)  
-&emsp;[インデント](coding_style.md#SS_4_1_1)  
-&emsp;&emsp;[インデント用文字](coding_style.md#SS_4_1_1_1)  
-&emsp;&emsp;[if、for、while、do-whileのインデント](coding_style.md#SS_4_1_1_2)  
-&emsp;&emsp;[ブロックのインデント](coding_style.md#SS_4_1_1_3)  
-&emsp;&emsp;[case、defaultのインデント](coding_style.md#SS_4_1_1_4)  
+[コード全体のスタイル](coding_style.md#SS_3_1)  
+&emsp;[インデント](coding_style.md#SS_3_1_1)  
+&emsp;&emsp;[インデント用文字](coding_style.md#SS_3_1_1_1)  
+&emsp;&emsp;[if、for、while、do-whileのインデント](coding_style.md#SS_3_1_1_2)  
+&emsp;&emsp;[ブロックのインデント](coding_style.md#SS_3_1_1_3)  
+&emsp;&emsp;[case、defaultのインデント](coding_style.md#SS_3_1_1_4)  
 
-&emsp;[ブロック(波括弧({}))](coding_style.md#SS_4_1_2)  
-&emsp;[関数シグネチャ内の'()'](coding_style.md#SS_4_1_3)  
-&emsp;[クラスのアクセスレベル](coding_style.md#SS_4_1_4)  
-&emsp;[スペース](coding_style.md#SS_4_1_5)  
-&emsp;&emsp;[文の後](coding_style.md#SS_4_1_5_1)  
-&emsp;&emsp;[コンマの後  ](coding_style.md#SS_4_1_5_2)  
-&emsp;&emsp;[単項演算子、二項演算子、三項演算子の前後](coding_style.md#SS_4_1_5_3)  
-&emsp;&emsp;[不要なブランク文字](coding_style.md#SS_4_1_5_4)  
+&emsp;[ブロック(波括弧({}))](coding_style.md#SS_3_1_2)  
+&emsp;[関数シグネチャ内の'()'](coding_style.md#SS_3_1_3)  
+&emsp;[クラスのアクセスレベル](coding_style.md#SS_3_1_4)  
+&emsp;[スペース](coding_style.md#SS_3_1_5)  
+&emsp;&emsp;[文の後](coding_style.md#SS_3_1_5_1)  
+&emsp;&emsp;[コンマの後  ](coding_style.md#SS_3_1_5_2)  
+&emsp;&emsp;[単項演算子、二項演算子、三項演算子の前後](coding_style.md#SS_3_1_5_3)  
+&emsp;&emsp;[不要なブランク文字](coding_style.md#SS_3_1_5_4)  
 
-&emsp;[三項演算子のスタイル](coding_style.md#SS_4_1_6)  
-&emsp;[ポインタ型やリファレンス型インスタンスの宣言、定義の\*や&の場所](coding_style.md#SS_4_1_7)  
-&emsp;[行数・桁数](coding_style.md#SS_4_1_8)  
-&emsp;&emsp;[関数の行数](coding_style.md#SS_4_1_8_1)  
-&emsp;&emsp;[行のカラム数](coding_style.md#SS_4_1_8_2)  
+&emsp;[三項演算子のスタイル](coding_style.md#SS_3_1_6)  
+&emsp;[ポインタ型やリファレンス型インスタンスの宣言、定義の\*や&の場所](coding_style.md#SS_3_1_7)  
+&emsp;[行数・桁数](coding_style.md#SS_3_1_8)  
+&emsp;&emsp;[関数の行数](coding_style.md#SS_3_1_8_1)  
+&emsp;&emsp;[行のカラム数](coding_style.md#SS_3_1_8_2)  
 
-&emsp;[ブロックの論理レベル](coding_style.md#SS_4_1_9)  
-&emsp;[名前空間](coding_style.md#SS_4_1_10)  
-&emsp;[clang-format](coding_style.md#SS_4_1_11)  
+&emsp;[ブロックの論理レベル](coding_style.md#SS_3_1_9)  
+&emsp;[名前空間](coding_style.md#SS_3_1_10)  
+&emsp;[clang-format](coding_style.md#SS_3_1_11)  
 
-[局所スタイル](coding_style.md#SS_4_2)  
-&emsp;[AAAスタイル](coding_style.md#SS_4_2_1)  
-&emsp;[east-const](coding_style.md#SS_4_2_2)  
-&emsp;[west-const](coding_style.md#SS_4_2_3)  
-&emsp;[Trailing Underscore(末尾アンダースコア)](coding_style.md#SS_4_2_4)  
+[局所スタイル](coding_style.md#SS_3_2)  
+&emsp;[AAAスタイル](coding_style.md#SS_3_2_1)  
+&emsp;[east-const](coding_style.md#SS_3_2_2)  
+&emsp;[west-const](coding_style.md#SS_3_2_3)  
+&emsp;[Trailing Underscore(末尾アンダースコア)](coding_style.md#SS_3_2_4)  
 
-[ケース記法](coding_style.md#SS_4_3)  
-&emsp;[スネークケース(snake_case)](coding_style.md#SS_4_3_1)  
-&emsp;[アッパースネークケース(UPPER_SNAKE_CASE)](coding_style.md#SS_4_3_2)  
-&emsp;[アッパーキャメルケース(UpperCamelCase)](coding_style.md#SS_4_3_3)  
-&emsp;[ロワーキャメルケース(lowerCamelCase)](coding_style.md#SS_4_3_4)  
-&emsp;[ケバブケース(kebab-case)](coding_style.md#SS_4_3_5)  
+[ケース記法](coding_style.md#SS_3_3)  
+&emsp;[スネークケース(snake_case)](coding_style.md#SS_3_3_1)  
+&emsp;[アッパースネークケース(UPPER_SNAKE_CASE)](coding_style.md#SS_3_3_2)  
+&emsp;[アッパーキャメルケース(UpperCamelCase)](coding_style.md#SS_3_3_3)  
+&emsp;[ロワーキャメルケース(lowerCamelCase)](coding_style.md#SS_3_3_4)  
+&emsp;[ケバブケース(kebab-case)](coding_style.md#SS_3_3_5)  
   
   
 
 ___
 
 
-[インデックス](practical_intro.md#SS_1_3)/[章の最後](coding_style.md#SS_4_999)/[次の章](naming_practice.md#SS_5)
+[インデックス](practical_intro.md#SS_1_3)/[章の最後](coding_style.md#SS_3_999)/[次の章](naming_practice.md#SS_4)
 
 ___
 
 
 
-## コード全体のスタイル <a id="SS_4_1"></a>
+## コード全体のスタイル <a id="SS_3_1"></a>
 以下は、clang-formatを使えない場合のスタイルの指針である。
 
-### インデント <a id="SS_4_1_1"></a>
-#### インデント用文字 <a id="SS_4_1_1_1"></a>
+### インデント <a id="SS_3_1_1"></a>
+#### インデント用文字 <a id="SS_3_1_1_1"></a>
 * 1インデントは、4つのスペース文字で表す
   (ハードタブはビューアにより見え方が変わるため使用しない)。
 
 ```cpp
-    //  example/etc/coding_style.cpp 13
+    //  example/coding_style/coding_style.cpp 13
 
     int32_t f0() noexcept
     {
@@ -107,14 +107,14 @@ ___
     }
 ```
 
-#### if、for、while、do-whileのインデント <a id="SS_4_1_1_2"></a>
+#### if、for、while、do-whileのインデント <a id="SS_3_1_1_2"></a>
 * if、for、while、do-whileに付随する文は、
-  if、for、while、do-whileより1インデント下げる(「[ブロック(波括弧({}))](coding_style.md#SS_4_1_2)」等を参照)。
+  if、for、while、do-whileより1インデント下げる(「[ブロック(波括弧({}))](coding_style.md#SS_3_1_2)」等を参照)。
 
-#### ブロックのインデント <a id="SS_4_1_1_3"></a>
+#### ブロックのインデント <a id="SS_3_1_1_3"></a>
 * ブロック内部の文はブロック開始の'{'より1インデント下げる。
 
-#### case、defaultのインデント <a id="SS_4_1_1_4"></a>
+#### case、defaultのインデント <a id="SS_3_1_1_4"></a>
 * case、defaultのインデントはswitchと合わせる。
 * case、defaultに続く文のインデントは一つ下げる。 
 * case、defaultの次の文は改行後に書く。
@@ -122,7 +122,7 @@ ___
   その直後に配置する。'}'はcaseと同じカラムに置く。
 
 ```cpp
-    //  example/etc/coding_style.cpp 47
+    //  example/coding_style/coding_style.cpp 47
 
     switch (var_a) {
     case 1: {                   // OK
@@ -144,13 +144,13 @@ ___
     }
 ```
 
-### ブロック(波括弧({})) <a id="SS_4_1_2"></a>
+### ブロック(波括弧({})) <a id="SS_3_1_2"></a>
 * 文に続く'{'は、文の後に1スペースを置き、その直後に配置する。
 * '}'の後に続く文は'}'の直後に改行を入れ、同じカラムから書き始める。
 * 関数宣言に続く'{'は、関数宣言の直後に改行し、直前の行の先頭と同じカラムに '{' を配置する。
 
 ```cpp
-    //  example/etc/coding_style.cpp 76
+    //  example/coding_style/coding_style.cpp 76
 
     void f0(int32_t var_x, int32_t* var_y) noexcept { // NG {の前に改行
         if (var_x == 0)
@@ -211,13 +211,13 @@ ___
     }
 ```
 
-### 関数シグネチャ内の'()' <a id="SS_4_1_3"></a>
+### 関数シグネチャ内の'()' <a id="SS_3_1_3"></a>
 * 関数シグネチャ内の'('は関数名の直後に置く。
 * 行が長すぎる等より関数を複数行で宣言する場合、')'は最後の仮引数の直後か、独立の行に置く。
 * 全体が一行に収まるときは、そのまま一行に書く。
 
 ```cpp
-    //  example/etc/coding_style.cpp 140
+    //  example/coding_style/coding_style.cpp 140
 
     void function();            // OK
     void function(int32_t foo,  // OK
@@ -235,11 +235,11 @@ ___
              );
 ```
 
-### クラスのアクセスレベル <a id="SS_4_1_4"></a>
+### クラスのアクセスレベル <a id="SS_3_1_4"></a>
 * メンバ関数等のネストが深くなりすぎるため、クラスのアクセスレベルはインデントしない。
 
 ```cpp
-    //  example/etc/coding_style.cpp 161
+    //  example/coding_style/coding_style.cpp 161
 
     class A {
         public:         // NG
@@ -249,13 +249,13 @@ ___
     };
 ```
 
-### スペース <a id="SS_4_1_5"></a>
-#### 文の後 <a id="SS_4_1_5_1"></a>
+### スペース <a id="SS_3_1_5"></a>
+#### 文の後 <a id="SS_3_1_5_1"></a>
 * `if`、`else`、`for、`while`、`switch`、`try`等のステートメントを開始するキーワードの後には1スペースを入れる。
 * 関数名の直後にはスペースを入れない。
 
 ```cpp
-    //  example/etc/coding_style.cpp 177
+    //  example/coding_style/coding_style.cpp 177
 
     for (;;) {                          // OK forの後ろにはスペース
         // ...
@@ -284,11 +284,11 @@ ___
     g ();                               // NG
 ```
 
-#### コンマの後   <a id="SS_4_1_5_2"></a>
+#### コンマの後   <a id="SS_3_1_5_2"></a>
 * 行最後の文字でないコンマ(,)の後には1スペースを入れる。
 
 ```cpp
-    //  example/etc/coding_style.cpp 220
+    //  example/coding_style/coding_style.cpp 220
 
     for (int32_t i{0}, j{0}; i + j < 10; ++i, ++j) {  // OK
         // ...
@@ -302,12 +302,12 @@ ___
       a);                                // OK ,の直後、スペース無し ↑
 ```
 
-#### 単項演算子、二項演算子、三項演算子の前後 <a id="SS_4_1_5_3"></a>
+#### 単項演算子、二項演算子、三項演算子の前後 <a id="SS_3_1_5_3"></a>
 * 単項演算子とオペランドの間にはスペースを入れない。
 * []、->、ピリオド(.)、コンマ(,)は除き、 二項演算子、三項演算子の前後には1スペースを入れる。
 
 ```cpp
-    //  example/etc/coding_style.cpp 241
+    //  example/coding_style/coding_style.cpp 241
 
     var_a=0;                        // NG
     var_a = 0;                      // OK
@@ -326,16 +326,16 @@ ___
     }
 ```
 
-#### 不要なブランク文字 <a id="SS_4_1_5_4"></a>
+#### 不要なブランク文字 <a id="SS_3_1_5_4"></a>
 * スペース文字は、セパレータとして適切に使用するためのものである。
   従って、行末に不要なブランクキャラクタを置かない。
 * ファイル末に不要な改行を入れない。
 
-### 三項演算子のスタイル <a id="SS_4_1_6"></a>
+### 三項演算子のスタイル <a id="SS_3_1_6"></a>
 * 三項演算子は以下のように書く。
 
 ```cpp
-    //  example/etc/coding_style.cpp 265
+    //  example/coding_style/coding_style.cpp 265
 
     auto ret = condition ? x : y;  // ワンライナーが基本
 
@@ -346,7 +346,7 @@ ___
 * 以下のような表記方法も認められる。この表記は、switch文やif-else-if文と同様に使える。
 
 ```cpp
-    //  example/etc/coding_style.cpp 278
+    //  example/coding_style/coding_style.cpp 278
 
     auto max = (a > b) ? a :
                (b > c) ? b : 
@@ -355,11 +355,11 @@ ___
                          x;
 ```
 
-### ポインタ型やリファレンス型インスタンスの宣言、定義の\*や&の場所 <a id="SS_4_1_7"></a>
+### ポインタ型やリファレンス型インスタンスの宣言、定義の\*や&の場所 <a id="SS_3_1_7"></a>
 * ポインタ型やリファレンス型インスタンスの宣言、定義の\*や&は型の直後に配置する。
 
 ```cpp
-    //  example/etc/coding_style.cpp 299
+    //  example/coding_style/coding_style.cpp 299
 
     char* a;  // OK
     char *b;  // NG 型の直後に*
@@ -370,27 +370,27 @@ ___
 * 一つの文で複数の変数の定義をしない。
 
 ```cpp
-    //  example/etc/coding_style.cpp 306
+    //  example/coding_style/coding_style.cpp 306
 
     char*   c, d;  // NG dはchar*ではない
     int32_t e, f;  // NG
 ```
 
-### 行数・桁数 <a id="SS_4_1_8"></a>
-#### 関数の行数 <a id="SS_4_1_8_1"></a>
+### 行数・桁数 <a id="SS_3_1_8"></a>
+#### 関数の行数 <a id="SS_3_1_8_1"></a>
 
 * 関数の行数({から}の間)は30行までに収める。
 * 「テストシーケンスを一つの関数に押し込める」という方法は一般的なため、
   単体テストのための関数に対しては、この制限を適用しない。
 
-#### 行のカラム数 <a id="SS_4_1_8_2"></a>
+#### 行のカラム数 <a id="SS_3_1_8_2"></a>
 * 1行の最長は コメントを含めて100カラムとする。100カラムを超える行は、適切な位置に改行を入れる。
 * 以下に100カラムを超える行のスタイルを例示する(縦にそろえることを重要視する)。
 
     * 関数の宣言
 
     ```.cpp
-            //  example/etc/coding_style.cpp 317
+            //  example/coding_style/coding_style.cpp 317
 
             int32_t f(int32_t arg1,  // OK
                       int32_t arg2,
@@ -405,7 +405,7 @@ ___
     * 定義を伴う関数の宣言
 
     ```.cpp
-            //  example/etc/coding_style.cpp 328
+            //  example/coding_style/coding_style.cpp 328
 
             int32_t f(int32_t arg1,  // OK
                       int32_t arg2,
@@ -426,7 +426,7 @@ ___
     * 関数呼び出し
 
     ```.cpp
-            //  example/etc/coding_style.cpp 348
+            //  example/coding_style/coding_style.cpp 348
 
             int32_t ret{f(arg1,
                           arg2,
@@ -436,7 +436,7 @@ ___
     * 論理演算子は行末ではなく、行頭に配置(行中にあってもよい)
 
     ```.cpp
-            //  example/etc/coding_style.cpp 354
+            //  example/coding_style/coding_style.cpp 354
 
             if (((arg1 == arg2) && (arg2 == arg3))
               || (arg3 == 3)) {
@@ -447,7 +447,7 @@ ___
     * 代入の'='の前で改行し、'='を行頭に持ってくる。 
 
     ```.cpp
-            //  example/etc/coding_style.cpp 362
+            //  example/coding_style/coding_style.cpp 362
 
             auto some_looooooooooooooooooooog_variable  // 式の最後までが100カラムに入らない場合
                  = arg1 + 1;
@@ -456,18 +456,18 @@ ___
     * 長い文字列
 
     ```.cpp
-            //  example/etc/coding_style.cpp 368
+            //  example/coding_style/coding_style.cpp 368
 
             std::cout << "foobarfubarhoge"
                          "hugahogehoge"
                          "1234567890";  // 長い文字列は分割
     ```
 
-### ブロックの論理レベル <a id="SS_4_1_9"></a>
+### ブロックの論理レベル <a id="SS_3_1_9"></a>
 * 各ブロックの抽象度を揃える。
 
 ```cpp
-    //  example/etc/coding_style.cpp 394
+    //  example/coding_style/coding_style.cpp 394
 
     void DoSomethingNG() noexcept  // NG
     {
@@ -494,13 +494,13 @@ ___
     }
 ```
 
-### 名前空間 <a id="SS_4_1_10"></a>
+### 名前空間 <a id="SS_3_1_10"></a>
 * 一般に名前空間定義の区間は縦に長いため、
   最後に必ず名前空間の終わりであることを示すためのコメントを記述する。
 * ネストが深くなりすぎるため、名前空間用のインデントはしない。
 
 ```cpp
-    //  example/etc/coding_style.cpp 423
+    //  example/coding_style/coding_style.cpp 423
     namespace event {
 
     class A {  // インデントなし
@@ -520,7 +520,7 @@ ___
     }  // namespace event
 ```
 
-### clang-format <a id="SS_4_1_11"></a>
+### clang-format <a id="SS_3_1_11"></a>
 参考のために、サンプルソースコードに適用している.clang-formatを例示する。
 
 ```
@@ -584,9 +584,9 @@ ___
 
 ---
 
-## 局所スタイル <a id="SS_4_2"></a>
+## 局所スタイル <a id="SS_3_2"></a>
 
-### AAAスタイル <a id="SS_4_2_1"></a>
+### AAAスタイル <a id="SS_3_2_1"></a>
 このドキュメントでのAAAとは、単体テストのパターンarrange-act-assertではなく、
 almost always autoを指し、
 AAAスタイルとは、「可能な場合、型を左辺に明示して変数を宣言する代わりに、autoを使用する」
@@ -596,7 +596,7 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 特定の型を明示して使用する必要がない場合、下記のように書く。
 
 ```cpp
-    //  example/etc/aaa.cpp 13
+    //  example/coding_style/aaa.cpp 13
 
     auto i  = 1;
     auto ui = 1U;
@@ -637,7 +637,7 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 特定の型を明示して使用する必要がある場合、下記のように書く。
 
 ```cpp
-    //  example/etc/aaa.cpp 58
+    //  example/coding_style/aaa.cpp 58
 
     auto b  = new char[10]{0};
     auto v  = std::vector<int>{0, 1, 2};
@@ -678,7 +678,7 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 関数の戻り値を受け取る変数を宣言する場合、下記のように書く。
 
 ```cpp
-    //  example/etc/aaa.cpp 101
+    //  example/coding_style/aaa.cpp 101
 
     auto v = std::vector<int>{0, 1, 2};
 
@@ -699,7 +699,7 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 型を明示しないAAAスタイルは使うべきではない。
 
 ```cpp
-    //  example/etc/aaa.cpp 125
+    //  example/coding_style/aaa.cpp 125
 
     extern std::map<std::string, int> gen_map();
 
@@ -724,7 +724,7 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 インライン関数や関数テンプレートの宣言は、下記のように書く。
 
 ```cpp
-    //  example/etc/aaa.cpp 152
+    //  example/coding_style/aaa.cpp 152
 
     template <typename F, typename T>
     auto apply_0(F&& f, T value)
@@ -737,7 +737,7 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 AAAスタイルは出来る限り避けるべきである。
 
 ```cpp
-    //  example/etc/aaa.cpp 160
+    //  example/coding_style/aaa.cpp 160
 
     template <typename F, typename T>
     auto apply_1(F&& f, T value) -> decltype(f(std::declval<T>()))  // autoを使用しているが、AAAではない
@@ -763,7 +763,7 @@ AAAスタイルは出来る限り避けるべきである。
   また、下記のように縮小型変換(下記では、unsignedからsignedの変換)を防ぐこともできる。
 
 ```cpp
-    //  example/etc/aaa.cpp 187
+    //  example/coding_style/aaa.cpp 187
 
     auto v = std::vector<int>{0, 1, 2};
 
@@ -791,7 +791,7 @@ AAAスタイルでは、以下のような場合に注意が必要である。
   下記のような型推論は、直感に反する場合があるため、autoの使い方に対する習熟が必要である。
 
 ```cpp
-    //  example/etc/aaa.cpp 201
+    //  example/coding_style/aaa.cpp 201
 
     auto str0 = "str";
     static_assert(std::is_same_v<char const*, decltype(str0)>);  // str0はchar[4]ではない
@@ -863,15 +863,15 @@ AAAスタイルでは、以下のような場合に注意が必要である。
 
 ---
 
-### east-const <a id="SS_4_2_2"></a>
+### east-const <a id="SS_3_2_2"></a>
 east-constとは、`const`修飾子を修飾する型要素の右側(east＝右)に置くコーディングスタイルのこと。
 つまり「`const`はどの対象を修飾するか」を明確にするため、被修飾対象の直後に const を書くのが特徴である。
 
-このスタイルは、C言語由来の「`const`を左に置く」スタイル([west-const](coding_style.md#SS_4_2_3))に比べ、
+このスタイルは、C言語由来の「`const`を左に置く」スタイル([west-const](coding_style.md#SS_3_2_3))に比べ、
 テンプレート展開や型推論の際に一貫性があり、C++コミュニティではしばしば論理的・直感的と評価されている。
 
 ```cpp
-    //  example/etc/east_west_const.cpp 12
+    //  example/coding_style/east_west_const.cpp 12
 
     char              str[] = "hehe";  // 配列strに書き込み可能
     char const*       str0  = str;     // str0が指すオブジェクトはconstなので、*str0への書き込み不可
@@ -895,14 +895,14 @@ typeid のデマングル結果や Itanium C++ ABI でもこの形式が採用�
 
 ---
 
-### west-const <a id="SS_4_2_3"></a>
+### west-const <a id="SS_3_2_3"></a>
 west-constとは、`const`修飾子を型の左側(west＝左)に置くコーディングスタイルのこと。
 C言語からの伝統的な表記法であり、多くの標準ライブラリや教科書でも依然としてこの書き方が用いられている。
 
 可読性は慣れに依存するが、`const`の位置が一貫しないケース(`T* const`など)では理解しづらくなることもある。
 
 ```cpp
-    //  example/etc/east_west_const.cpp 37
+    //  example/coding_style/east_west_const.cpp 37
 
     char              str[] = "hehe";  // 配列strに書き込み可能
     char const*       str0  = str;     // str0が指すオブジェクトはconstなので、*str0への書き込み不可
@@ -924,7 +924,7 @@ C言語文化圏での可読性・慣習を重視する場合に採用される�
 
 ---
 
-### Trailing Underscore(末尾アンダースコア) <a id="SS_4_2_4"></a>
+### Trailing Underscore(末尾アンダースコア) <a id="SS_3_2_4"></a>
 Trailing underscoreとは、C++においてメンバー変数名の末尾にアンダースコア
 (\_)を付ける命名規約である。例えば、data_、count_、name_ のように記述する。
 
@@ -947,20 +947,20 @@ __主要な採用例__
 
 ---
 
-## ケース記法 <a id="SS_4_3"></a>
+## ケース記法 <a id="SS_3_3"></a>
 C++の識別子の命名規則(Naming convention)を以下のようにリストアップする。
 筆者の好みから、このドキュメントのコード例では、アッパーキャメルケースを採用している。
 
 プロジェクトのルールで記法をで統一しなければ、ファイルごとにバラバラになってしまうことがある。
 言うまでもなく、これは好ましいことではないため、コーディングを始める前に記法を定めるべきである。
 
-* [スネークケース(snake_case)](coding_style.md#SS_4_3_1)
-* [アッパースネークケース(UPPER_SNAKE_CASE)](coding_style.md#SS_4_3_2)
-* [アッパーキャメルケース(UpperCamelCase)](coding_style.md#SS_4_3_3)
-* [ロワーキャメルケース(lowerCamelCase)](coding_style.md#SS_4_3_4)
-* [ケバブケース(kebab-case)](coding_style.md#SS_4_3_5)
+* [スネークケース(snake_case)](coding_style.md#SS_3_3_1)
+* [アッパースネークケース(UPPER_SNAKE_CASE)](coding_style.md#SS_3_3_2)
+* [アッパーキャメルケース(UpperCamelCase)](coding_style.md#SS_3_3_3)
+* [ロワーキャメルケース(lowerCamelCase)](coding_style.md#SS_3_3_4)
+* [ケバブケース(kebab-case)](coding_style.md#SS_3_3_5)
 
-### スネークケース(snake_case) <a id="SS_4_3_1"></a>
+### スネークケース(snake_case) <a id="SS_3_3_1"></a>
 識別子はすべて小文字のアルファベットおよび数字で構成し、単語の区切りにはアンダースコア（`_`）を用いる。
 先頭文字は小文字のアルファベットでなければならない。  
 
@@ -980,7 +980,7 @@ C++の識別子の命名規則(Naming convention)を以下のようにリスト�
 
 なお、この記法は、[cpprefjp - C++日本語リファレンス](https://cpprefjp.github.io/)に採用されている。
 
-### アッパースネークケース(UPPER_SNAKE_CASE) <a id="SS_4_3_2"></a>
+### アッパースネークケース(UPPER_SNAKE_CASE) <a id="SS_3_3_2"></a>
 識別子はすべて大文字のアルファベットおよび数字で構成し、単語の区切りにはアンダースコア（`_`）を用いる。
 先頭文字は大文字のアルファベットでなければならない。  
 
@@ -998,7 +998,7 @@ C++の識別子の命名規則(Naming convention)を以下のようにリスト�
 * DEFAULT_TIMEOUT_MS
 * CAN_TX_QUEUE_DEPTH
 
-### アッパーキャメルケース(UpperCamelCase) <a id="SS_4_3_3"></a>
+### アッパーキャメルケース(UpperCamelCase) <a id="SS_3_3_3"></a>
 識別子を構成する各単語の先頭文字を大文字とし、残りの文字は小文字とする。単語の区切りを示す区切り文字は使用しない。
 先頭文字は大文字のアルファベットでなければならない。  
 
@@ -1017,7 +1017,7 @@ C++の識別子の命名規則(Naming convention)を以下のようにリスト�
 * SensorDataParser
 * UartTransmitBuffer
 
-### ロワーキャメルケース(lowerCamelCase) <a id="SS_4_3_4"></a>
+### ロワーキャメルケース(lowerCamelCase) <a id="SS_3_3_4"></a>
 
 識別子を構成する最初の単語はすべて小文字とし、以降の各単語の先頭文字のみを大文字とする。
 単語の区切りを示す区切り文字は使用しない。先頭文字は小文字のアルファベットでなければならない。  
@@ -1035,7 +1035,7 @@ C++の識別子の命名規則(Naming convention)を以下のようにリスト�
 * uartTxBufferSize
 
 
-### ケバブケース(kebab-case) <a id="SS_4_3_5"></a>
+### ケバブケース(kebab-case) <a id="SS_3_3_5"></a>
 
 識別子はすべて小文字のアルファベットおよび数字で構成し、単語の区切りにはハイフン（`-`）を用いる。
 先頭文字は小文字のアルファベットでなければならない。  
@@ -1058,10 +1058,10 @@ C++ ではハイフンが減算演算子と衝突するため、識別子の宣�
 
 ---
 
-[インデックス](practical_intro.md#SS_1_3)/[章の先頭](coding_style.md#SS_4)/[次の章](naming_practice.md#SS_5)
+[インデックス](practical_intro.md#SS_1_3)/[章の先頭](coding_style.md#SS_3)/[次の章](naming_practice.md#SS_4)
 
 ---
 
 
-<a id="SS_4_999"></a>
+<a id="SS_3_999"></a>
 

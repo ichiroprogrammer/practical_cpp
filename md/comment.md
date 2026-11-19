@@ -37,31 +37,31 @@ doxygenフォーマットの各要素に対する書き方を例示する。
 ### クラスのコメント
 
 ```cpp
-    // @@@ example/etc/comment.cpp #0:0 begin
+    // @@@ example/comment/comment.cpp #0:0 begin
 ```
 
 ### 関数のコメント
 
 ```cpp
-    // @@@ example/etc/comment.cpp #0:4 begin -1
+    // @@@ example/comment/comment.cpp #0:4 begin -1
 ```
 
 ### enumのコメント
 
 ```cpp
-    // @@@ example/etc/comment.cpp #0:2 begin -1
+    // @@@ example/comment/comment.cpp #0:2 begin -1
 ```
 
 ### 型エイリアスのコメント
 
 ```cpp
-    // @@@ example/etc/comment.cpp #0:3 begin -1
+    // @@@ example/comment/comment.cpp #0:3 begin -1
 ```
 
 ### template仮引数のコメント
 
 ```cpp
-    // @@@ example/etc/comment.cpp #1:0 begin
+    // @@@ example/comment/comment.cpp #1:0 begin
 ```
 
 ---

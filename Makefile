@@ -10,7 +10,7 @@ MD_GEN:=./md_gen/export/py
 VPATH=./md:deep/md/:essential/md
 
 MDS:=practical_intro.md \
-	 software_practice.md programming_convention.md coding_style.md naming_practice.md \
+     programming_convention.md coding_style.md naming_practice.md \
      comment.md class_design.md design_pattern.md template_meta_programming.md \
      core_lang_spec.md stdlib_and_concepts.md glossary.md bibliography.md
 

@@ -67,18 +67,25 @@ __google testのアサーションの簡単な説明__
 ## インデックス <a id="SS_1_3"></a>
 ___
 
-- [ソフトウェアプラクティス](software_practice.md#SS_2)
-- [プログラミング規約](programming_convention.md#SS_3)
-- [コーディングスタイル](coding_style.md#SS_4)
-- [命名規則](naming_practice.md#SS_5)
-- [コメント](comment.md#SS_6)
-- [クラス設計](class_design.md#SS_7)
-- [デザインパターン](design_pattern.md#SS_8)
-- [テンプレートメタプログラミング](template_meta_programming.md#SS_9)
-- [C++コア言語仕様](core_lang_spec.md#SS_10)
-- [標準ライブラリとプログラミングの概念](stdlib_and_concepts.md#SS_11)
-- [用語集](glossary.md#SS_12)
-- [参考文献](bibliography.md#SS_13)
+__プログラミング__
+
+- [プログラミング規約](programming_convention.md#SS_2)
+- [コーディングスタイル](coding_style.md#SS_3)
+- [命名規則](naming_practice.md#SS_4)
+- [コメント](comment.md#SS_5)
+
+__パターン__
+
+- [クラス設計](class_design.md#SS_6)
+- [デザインパターン](design_pattern.md#SS_7)
+- [テンプレートメタプログラミング](template_meta_programming.md#SS_8)
+
+__Appendix__
+
+- [C++コア言語仕様](core_lang_spec.md#SS_9)
+- [標準ライブラリとプログラミングの概念](stdlib_and_concepts.md#SS_10)
+- [用語集](glossary.md#SS_11)
+- [参考文献](bibliography.md#SS_12)
 
 ---
 

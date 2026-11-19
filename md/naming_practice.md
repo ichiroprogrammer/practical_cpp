@@ -47,33 +47,33 @@ ___
     * `_`で始まる識別子
 
 ```cpp
-    // @@@ example/etc/naming.cpp #0:0 begin -1
+    // @@@ example/naming_practice/naming.cpp #0:0 begin -1
 ```
 
 * システムハンガリアン的な命名は、不要な変更を発生させるため使用しない。  
 
 ```cpp
-    // @@@ example/etc/naming.cpp #0:1 begin -1
+    // @@@ example/naming_practice/naming.cpp #0:1 begin -1
 ```
 
 * 名前に列挙のための数字をつけない。  
 
 ```cpp
-    // @@@ example/etc/naming.cpp #0:2 begin -1
+    // @@@ example/naming_practice/naming.cpp #0:2 begin -1
 ```
 
 * 母音等を省略しない。
   下記のコード例のようにsignalの意味でsigを使用する場合は、その省語を[略語リスト](---)リストに掲載する。
 
 ```cpp
-    // @@@ example/etc/naming.cpp #0:3 begin -1
+    // @@@ example/naming_practice/naming.cpp #0:3 begin -1
 ```
 
 * 英文字の大小で識別子を区別しない。
   ただし、「[NVI(non virtual interface)](---)」を使用するメンバ関数名は例外とする。
 
 ```cpp
-    // @@@ example/etc/naming.cpp #1:0 begin
+    // @@@ example/naming_practice/naming.cpp #1:0 begin
 ```
 
 * 一般的でない略語を使わない。
@@ -208,7 +208,7 @@ OSによっては、その区別がないものがあるため、この違いが
     * 正規表現[A-Z][A-Z0-9]+で表される文字列(慣習的に小文字を使わない文字列のみ。TCP等)
 
 ```cpp
-    // @@@ example/etc/naming.cpp #2:0 begin
+    // @@@ example/naming_practice/naming.cpp #2:0 begin
 ```
 
 * 責務がわかる名前をつける。
@@ -219,7 +219,7 @@ OSによっては、その区別がないものがあるため、この違いが
   型名と同じルールで生成する。
 
 ```cpp
-    // @@@ example/etc/naming.cpp #3:0 begin
+    // @@@ example/naming_practice/naming.cpp #3:0 begin
 ```
 
 ### ローカル変数名(自動変数名、仮引数名、関数内static変数名)
@@ -238,13 +238,13 @@ OSによっては、その区別がないものがあるため、この違いが
 * [POD](---)のメンバ変数の名前は、ローカル変数名と同じルールで生成する(末尾に'\_'はつけない)。
 
 ```cpp
-    // @@@ example/etc/naming.cpp #4:0 begin
+    // @@@ example/naming_practice/naming.cpp #4:0 begin
 ```
 
 * enumのメンバ名は、型名と同じルールで生成する。
 
 ```cpp
-    // @@@ example/etc/naming.cpp #5:0 begin
+    // @@@ example/naming_practice/naming.cpp #5:0 begin
 ```
 
 ### メンバ関数名
@@ -255,7 +255,7 @@ OSによっては、その区別がないものがあるため、この違いが
 * private、protectedメンバ関数の名前は、ローカル変数名と同じルールで生成する。
 
 ```cpp
-    // @@@ example/etc/naming.cpp #6:0 begin
+    // @@@ example/naming_practice/naming.cpp #6:0 begin
 ```
 
 ### Accessorメンバ関数名
@@ -276,7 +276,7 @@ OSによっては、その区別がないものがあるため、この違いが
   変更対象の変数名の末尾から'\_'を除いた名前にする。
 
 ```cpp
-    // @@@ example/etc/naming.cpp #7:0 begin
+    // @@@ example/naming_practice/naming.cpp #7:0 begin
 ```
 
 ### 関数名
@@ -309,17 +309,17 @@ OSによっては、その区別がないものがあるため、この違いが
     * 集合、群等を名前に取り入れる。
 
 ```cpp
-    // @@@ example/etc/naming.cpp #8:0 begin
+    // @@@ example/naming_practice/naming.cpp #8:0 begin
 ```
 
 * 名前を構成する単語は、概念が大きい順番に左から並べる。
 
 ```cpp
-    // @@@ example/etc/naming.cpp #8:1 begin
+    // @@@ example/naming_practice/naming.cpp #8:1 begin
 ```
 
 ```cpp
-    // @@@ example/etc/naming.cpp #8:2 begin
+    // @@@ example/naming_practice/naming.cpp #8:2 begin
 ```
 
 ---
